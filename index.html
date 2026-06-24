@@ -75,6 +75,7 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);padding:6px 2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
 .nav-links a:hover{color:var(--ink);border-color:var(--lime-d)}
 .nav-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:8px 16px;border-radius:100px;transition:background .25s,transform .25s,box-shadow .25s}
+.nav-actions{display:flex;align-items:center;gap:14px}
 .nav-cta:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
 .hamburger{display:none;flex-direction:column;gap:5px;width:34px;height:34px;align-items:center;justify-content:center;border:none;background:none;cursor:pointer}
 .hamburger span{width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
@@ -344,6 +345,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 @media(max-width:680px){
   nav{padding:0 1.25rem}
   .nav-links{display:none}
+  .nav-actions{gap:10px}
   .hamburger{display:flex}
   .wrap{padding:0 1.25rem}
   .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center}
@@ -380,8 +382,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     <li><a href="#social-media">Social Media</a></li>
     <li><a href="#content-creation">Content Creation</a></li>
   </ul>
-  <a class="nav-cta" href="#thanks">Email Me →</a>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-actions">
+    <a class="nav-cta" href="#thanks">Email Me →</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#graphic-design" class="mlink">Graphic Design</a>
