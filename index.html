@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Adam Balingit — Graphic Design · Social Media · Content Creation</title>
+<title>Leo Adam Balingit — Graphic Design · Social Media · Content Creation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -71,7 +71,7 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap}
 .nav-mark .dot{width:8px;height:8px;border-radius:50%;background:var(--clay);animation:pulse 2.5s ease-in-out infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}}
-.nav-links{display:flex;gap:1.75rem}
+.nav-links{display:flex;gap:1.3rem}
 .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);padding:6px 2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
 .nav-links a:hover{color:var(--ink);border-color:var(--lime-d)}
 .nav-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:8px 16px;border-radius:100px;transition:background .25s,transform .25s,box-shadow .25s;white-space:nowrap}
@@ -135,9 +135,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 
 /* floating doodles */
 .hero-doodle{position:absolute;color:var(--clay);pointer-events:none;z-index:0}
-.hero-doodle:nth-child(1){top:18%;left:9%;width:46px;animation:floatA 6s ease-in-out infinite}
-.hero-doodle:nth-child(2){bottom:16%;right:10%;width:64px;animation:floatB 7s ease-in-out infinite;color:var(--lime-d)}
-.hero-doodle:nth-child(3){top:24%;right:14%;width:30px;animation:spin 20s linear infinite;opacity:.6;color:var(--amber-d)}
+.hero-doodle-bolt{top:18%;left:9%;width:46px;animation:floatA 6s ease-in-out infinite}
+.hero-doodle-wave{bottom:16%;right:10%;width:64px;animation:floatB 7s ease-in-out infinite;color:var(--lime-d)}
+.hero-doodle-circle{top:24%;right:14%;width:30px;animation:spin 20s linear infinite;opacity:.6;color:var(--amber-d)}
 @keyframes floatA{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(5deg)}}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
@@ -314,6 +314,52 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ============================
+   EXPERTISE
+   ============================ */
+.expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px}
+.expertise-item{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--line)}
+.expertise-item .check{flex-shrink:0;width:20px;height:20px;border-radius:5px;background:var(--sage-l);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.expertise-item .check svg{width:12px;height:12px;color:var(--sage)}
+.expertise-item span.label{color:var(--ink);font-weight:500}
+
+/* ============================
+   TOOLS
+   ============================ */
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 18px}
+.tool-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2);padding:6px 0}
+.tool-item .dot-check{flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center}
+.tool-item .dot-check svg{width:9px;height:9px;color:var(--amber-d)}
+
+/* ============================
+   BRANDS & CLIENTS
+   ============================ */
+.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.brand-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.brand-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+.brand-mark{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:16px;color:var(--white)}
+.brand-name{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--ink)}
+.brand-tag{font-family:var(--mono);font-size:9.5px;color:var(--ink3)}
+
+/* ============================
+   CONTACT PAGE
+   ============================ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.contact-icon{width:46px;height:46px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--clay-d)}
+.contact-label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.2rem}
+.contact-value{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink)}
+.contact-form{margin-top:2.5rem;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.2rem;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-field{display:flex;flex-direction:column;gap:.4rem}
+.form-field.full{grid-column:1 / -1}
+.form-field label{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.form-field input,.form-field textarea{font-family:var(--sans);font-size:13.5px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--paper2);color:var(--ink);resize:vertical;transition:border-color .2s,background .2s}
+.form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--amber);background:var(--white)}
+.form-submit{margin-top:.4rem;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s}
+.form-submit:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
+
+/* ============================
    THANKS / FOOTER
    ============================ */
 .thanks{background:var(--surface);color:var(--ink);padding:6rem 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
@@ -341,6 +387,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .process-row{grid-template-columns:repeat(3,1fr)}
   .device-row{grid-template-columns:1fr}
   .counter-strip{grid-template-columns:repeat(3,1fr)}
+  .tools-grid{grid-template-columns:repeat(3,1fr)}
+  .brands-grid{grid-template-columns:repeat(3,1fr)}
+  .contact-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:680px){
@@ -358,9 +407,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }
   /* shrink + reposition doodles so they sit in corners, never over text */
   .hero-doodle{width:30px !important}
-  .hero-doodle:nth-child(1){top:8%;left:5%;width:28px !important}
-  .hero-doodle:nth-child(2){bottom:8%;right:6%;width:36px !important}
-  .hero-doodle:nth-child(3){display:none}
+  .hero-doodle-bolt{top:8%;left:5%;width:28px !important}
+  .hero-doodle-wave{bottom:8%;right:6%;width:36px !important}
+  .hero-doodle-circle{display:none !important}
   .hero-glow{display:none}
 
   .hero-eyebrow{font-size:10px;letter-spacing:0.14em;text-align:center;margin-bottom:1.1rem;white-space:normal}
@@ -382,12 +431,18 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   footer{flex-direction:column;align-items:flex-start}
   .band{padding:3.5rem 0}
   .section{padding:3.5rem 0}
+  .expertise-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .brands-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .nav-links{display:none}
 }
 
 @media(max-width:400px){
   .hero-title{font-size:clamp(2.2rem,15vw,3rem)}
-  .hero-doodle:nth-child(1){top:6%;left:4%;width:22px !important}
-  .hero-doodle:nth-child(2){bottom:6%;right:5%;width:28px !important}
+  .hero-doodle-bolt{top:6%;left:4%;width:22px !important}
+  .hero-doodle-wave{bottom:6%;right:5%;width:28px !important}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -399,22 +454,26 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-name">
-    <span style="animation-delay:.05s">A</span><span style="animation-delay:.1s">D</span><span style="animation-delay:.15s">A</span><span style="animation-delay:.2s">M</span><span style="animation-delay:.3s;margin-left:10px">B</span><span style="animation-delay:.35s">A</span><span style="animation-delay:.4s">L</span><span style="animation-delay:.45s">I</span><span style="animation-delay:.5s">N</span><span style="animation-delay:.55s">G</span><span style="animation-delay:.6s">I</span><span style="animation-delay:.65s">T</span>
+  <div class="loader-name" style="font-size:1.5rem">
+    <span style="animation-delay:.02s">L</span><span style="animation-delay:.05s">E</span><span style="animation-delay:.08s">O</span><span style="animation-delay:.14s;margin-left:8px">A</span><span style="animation-delay:.17s">D</span><span style="animation-delay:.2s">A</span><span style="animation-delay:.23s">M</span><span style="animation-delay:.3s;margin-left:8px">B</span><span style="animation-delay:.33s">A</span><span style="animation-delay:.36s">L</span><span style="animation-delay:.39s">I</span><span style="animation-delay:.42s">N</span><span style="animation-delay:.45s">G</span><span style="animation-delay:.48s">I</span><span style="animation-delay:.51s">T</span>
   </div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
 <!-- NAV -->
 <nav id="navbar">
-  <div class="nav-mark"><span class="dot"></span>ADAM BALINGIT</div>
+  <a href="#top" class="nav-mark"><span class="dot"></span>LEO ADAM BALINGIT</a>
   <ul class="nav-links">
-    <li><a href="#graphic-design">Graphic Design</a></li>
-    <li><a href="#social-media">Social Media</a></li>
-    <li><a href="#content-creation">Content Creation</a></li>
+    <li><a href="#graphic-design">Design</a></li>
+    <li><a href="#social-media">Social</a></li>
+    <li><a href="#content-creation">Content</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#contact-page">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <a class="nav-cta" href="#thanks">Email Me →</a>
+    <a class="nav-cta" href="#contact-page">Email Me →</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -422,28 +481,32 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <a href="#graphic-design" class="mlink">Graphic Design</a>
   <a href="#social-media" class="mlink">Social Media</a>
   <a href="#content-creation" class="mlink">Content Creation</a>
+  <a href="#expertise" class="mlink">Areas of Expertise</a>
+  <a href="#tools" class="mlink">Tools</a>
+  <a href="#brands" class="mlink">Brands &amp; Clients</a>
+  <a href="#contact-page" class="mlink">Contact</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-glow" id="heroGlow"></div>
-  <svg class="hero-doodle" viewBox="0 0 46 46" fill="none">
+  <svg class="hero-doodle hero-doodle-bolt" viewBox="0 0 46 46" fill="none">
     <path d="M8 6 L8 34 L16 27 L21 38 L26 36 L21 25 L31 24 Z" fill="currentColor"/>
   </svg>
-  <svg class="hero-doodle" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+  <svg class="hero-doodle hero-doodle-wave" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
     <path d="M4 28 Q20 4 38 24 T74 18 T98 26"/>
   </svg>
-  <svg class="hero-doodle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4">
+  <svg class="hero-doodle hero-doodle-circle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4">
     <circle cx="20" cy="20" r="14" stroke-dasharray="3 6"/>
   </svg>
   <div class="hero-eyebrow">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
-    Creative Portfolio — 2021–2026
+    Leo Adam Balingit 
   </div>
   <h1 class="hero-title">Portfolio</h1>
-  <p class="hero-sub">Visual design, social strategy, and content that helps brands show up clearly — and be remembered.</p>
+  <p class="hero-sub">Marketing, design, and content built with strong leadership, organisational skills, and marketing acumen — aimed at impactful strategies that hit business goals.</p>
   <div class="hero-roles">
-    <span>Graphic Design</span><span>Social Media Management</span><span>Content Creation</span>
+    <span>Graphic Design</span><span>Social Media Management</span><span>Content Creation</span><span>Marketing Strategy</span>
   </div>
   <div class="hero-scroll">Scroll ↓</div>
 </section>
@@ -492,10 +555,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="reveal-right d2">
         <p class="eyebrow">Hello!</p>
         <h2 class="hello-title">Nice to meet you.</h2>
-        <p class="hello-text">I'm <strong>Adam</strong> — a creative who works across graphic design, social media, and content to help brands look sharp and communicate clearly. Over the past few years I've helped food, wellness, and lifestyle brands build consistent, recognisable presences online and off.</p>
-        <p class="hello-text" style="margin-top:0.9rem">This page covers the three kinds of work I do most — scroll through for the full picture.</p>
+        <p class="hello-text">I'm <strong>Leo Adam Balingit</strong> — with strong leadership, organisational skills, and marketing acumen, I aim to contribute to developing and executing impactful marketing strategies aligned with business goals. Eager to thrive in a fast-paced environment and deliver exceptional results while continuously adapting and communicating effectively.</p>
+        <p class="hello-text" style="margin-top:0.9rem"><strong>Education</strong><br>2025–2026 · Master of Arts in Communication, Major in Communication Management — Polytechnic University of the Philippines<br>2018–2022 · Bachelor of Multimedia Arts, Major in Film — University of Makati</p>
         <div class="hello-tags">
-          <span>Graphic Design</span><span>Social Media</span><span>Content Creation</span><span>Brand Identity</span>
+          <span>Graphic Design</span><span>Social Media</span><span>Content Creation</span><span>Marketing Strategy</span>
         </div>
       </div>
     </div>
@@ -739,15 +802,157 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
+<!-- ═══ 04 AREAS OF EXPERTISE ═══ -->
+<div class="band" id="expertise">
+  <p class="band-tag reveal">04 — Skills</p>
+  <h2 class="band-title reveal">Areas of Expertise</h2>
+  <p class="band-sub reveal">A broad marketing and creative skill set, built across strategy, execution, and reporting.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="expertise-grid">
+      <div class="expertise-item reveal d1"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Digital Marketing Strategy &amp; Execution</span></div>
+      <div class="expertise-item reveal d1"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Cross-functional Team Collaboration</span></div>
+      <div class="expertise-item reveal d2"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Email Marketing</span></div>
+      <div class="expertise-item reveal d2"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Project &amp; Workflow Management</span></div>
+      <div class="expertise-item reveal d3"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Brand Communication &amp; Storytelling</span></div>
+      <div class="expertise-item reveal d3"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Graphic Design &amp; Visual Development</span></div>
+      <div class="expertise-item reveal d4"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Campaign Planning &amp; Management</span></div>
+      <div class="expertise-item reveal d4"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Video Editing &amp; Motion Content Creation</span></div>
+      <div class="expertise-item reveal d5"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Marketing Operations &amp; Coordination</span></div>
+      <div class="expertise-item reveal d5"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Market Research &amp; Trend Analysis</span></div>
+      <div class="expertise-item reveal d6"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Digital Asset Management (DAM)</span></div>
+      <div class="expertise-item reveal d6"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Data Tracking &amp; Performance Reporting</span></div>
+      <div class="expertise-item reveal d1"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Lead Generation &amp; Outreach Campaigns</span></div>
+      <div class="expertise-item reveal d2"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Content Distribution &amp; Platform Management</span></div>
+      <div class="expertise-item reveal d3"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Talent, KOL &amp; Affiliate Recruitment</span></div>
+      <div class="expertise-item reveal d4"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Administrative &amp; Marketing Support</span></div>
+      <div class="expertise-item reveal d5"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Social Media Management</span></div>
+      <div class="expertise-item reveal d6"><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div><span class="label">Content Creation</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ 05 TOOLS ═══ -->
+<div class="band" id="tools">
+  <p class="band-tag reveal">05 — Toolkit</p>
+  <h2 class="band-title reveal">Tools</h2>
+  <p class="band-sub reveal">Software and platforms used daily across design, marketing, and project management.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="tools-grid">
+      <!-- column 1 -->
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Photoshop</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Canva</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Capcut</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Filmora</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Freepik</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Veo</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Elementor</div>
+      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Frame.io</div>
+      <!-- column 2 -->
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Figma</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Opuсslip</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Semrush</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Reachout.Ai</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Envato</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Firefly</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Vercel</div>
+      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Magnific</div>
+      <!-- column 3 -->
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Phantombuster</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Quickmail</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Instantly</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Sales Navigator</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Lastpass</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wix</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dropbox</div>
+      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Onedrive</div>
+      <!-- column 4 -->
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Expandi.io</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Slack</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dingtalk</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Yamdu</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Publer</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>ChatGPT</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Typeform</div>
+      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Calendly</div>
+      <!-- column 5 -->
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Meta Ads</div>
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Ads</div>
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wordstream</div>
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Chatgpt</div>
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Buffer</div>
+      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Veed.io</div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ 06 BRANDS & CLIENTS ═══ -->
+<div class="band" id="brands">
+  <p class="band-tag reveal">06 — Partners</p>
+  <h2 class="band-title reveal">Brands &amp; Clients</h2>
+  <p class="band-sub reveal">A few of the brands I've worked with across design, social, and marketing.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="brands-grid">
+      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#5C6E50">N</div><div class="brand-name">Northwell</div><div class="brand-tag">Wellness</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#B5481F">P</div><div class="brand-name">Petal &amp; Co</div><div class="brand-tag">Skincare</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#2E4D6B">V</div><div class="brand-name">Vessel</div><div class="brand-tag">Homeware</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#7A5C3E">A</div><div class="brand-name">Arcblock</div><div class="brand-tag">Fintech</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#C9810F">K</div><div class="brand-name">Kestrel</div><div class="brand-tag">Outdoor</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#56503F">B</div><div class="brand-name">Bloomhaus</div><div class="brand-tag">Florist</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#8A3B2B">F</div><div class="brand-name">Ferro</div><div class="brand-tag">Coffee</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#3E6B5C">S</div><div class="brand-name">Salt &amp; Smoke</div><div class="brand-tag">Restaurant</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ 07 CONTACT ═══ -->
+<div class="band" id="contact-page">
+  <p class="band-tag reveal">07 — Get in Touch</p>
+  <h2 class="band-title reveal">Contact</h2>
+  <p class="band-sub reveal">Have a project in mind? Let's talk about how I can help.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="contact-grid">
+      <div class="contact-card reveal d1">
+        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="contact-label">Phone</div><div class="contact-value">0967-387-5905</div></div>
+      </div>
+      <div class="contact-card reveal d2">
+        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6L12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">hello@leoadambalingit.design</div></div>
+      </div>
+    </div>
+    <form class="contact-form reveal d3" id="contactForm">
+      <div class="form-row">
+        <div class="form-field"><label>Name</label><input type="text" id="cf-name" placeholder="Your full name" required/></div>
+        <div class="form-field"><label>Email</label><input type="email" id="cf-email" placeholder="you@email.com" required/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full"><label>Subject</label><input type="text" id="cf-subject" placeholder="What's this about?"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full"><label>Message</label><textarea rows="5" id="cf-message" placeholder="Tell me about your project..." required></textarea></div>
+      </div>
+      <button class="form-submit" type="submit">Send Message →</button>
+    </form>
+  </section>
+</div>
+
 <!-- THANKS -->
 <section class="thanks" id="thanks">
   <h2 class="thanks-title reveal">Thanks for scrolling!</h2>
   <p class="thanks-sub reveal d2">If something here sparked an idea for your brand, I'd love to hear about it.</p>
-  <a class="thanks-cta reveal d3" href="mailto:hello@adambalingit.design">Email Me →</a>
+  <a class="thanks-cta reveal d3" href="mailto:hello@leoadambalingit.design">Email Me →</a>
 </section>
 
 <footer>
-  <div class="foot-name">Adam Balingit — Creative Portfolio</div>
+  <div class="foot-name">Leo Adam Balingit</div>
   <div class="foot-links">
     <a href="#">Behance</a>
     <a href="#">Dribbble</a>
@@ -759,6 +964,22 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <script>
 (function(){
+
+  /* ── CONTACT FORM → MAILTO ── */
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const subject = document.getElementById('cf-subject').value.trim() || 'New project inquiry';
+      const message = document.getElementById('cf-message').value.trim();
+
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      const mailtoLink = `mailto:saturog350@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+    });
+  }
 
   /* ── LOADER ── */
   window.addEventListener('load', () => {
