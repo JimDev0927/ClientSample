@@ -290,9 +290,10 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 
 /* TOOLS */
 .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 18px}
-.tool-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2);padding:6px 0}
-.tool-item .dot-check{flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center}
-.tool-item .dot-check svg{width:9px;height:9px;color:var(--amber-d)}
+.tool-item{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink2);padding:6px 0}
+.tool-logo{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tool-logo img{width:14px;height:14px;object-fit:contain;display:block}
+.tool-logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:10px;color:var(--white);background:var(--ink3)}
 
 /* BRANDS & CLIENTS */
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -872,45 +873,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 </div>
 <div class="wrap">
   <section class="section">
-    <div class="tools-grid">
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Photoshop</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Canva</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Capcut</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Filmora</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Freepik</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Veo</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Elementor</div>
-      <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Frame.io</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Figma</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Opuсslip</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Semrush</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Reachout.Ai</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Envato</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Firefly</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Vercel</div>
-      <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Magnific</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Phantombuster</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Quickmail</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Instantly</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Sales Navigator</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Lastpass</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wix</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dropbox</div>
-      <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Onedrive</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Expandi.io</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Slack</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dingtalk</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Yamdu</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Publer</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>ChatGPT</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Typeform</div>
-      <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Calendly</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Meta Ads</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Ads</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wordstream</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Buffer</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Veed.io</div>
-    </div>
+    <div class="tools-grid" id="toolsGrid"></div>
   </section>
 </div>
 
@@ -981,6 +944,80 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
       const mailtoLink = `mailto:saturog350@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
+    });
+  }
+
+  /* TOOLS — brand logos */
+  const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
+  const tools = [
+    { name: 'Adobe Photoshop', icon: `${ICON_CDN}/adobephotoshop.svg` },
+    { name: 'Canva', icon: `${ICON_CDN}/canva.svg` },
+    { name: 'Capcut', icon: 'https://www.google.com/s2/favicons?domain=capcut.com&sz=64' },
+    { name: 'Filmora', icon: 'https://www.google.com/s2/favicons?domain=filmora.wondershare.com&sz=64' },
+    { name: 'Freepik', icon: `${ICON_CDN}/freepik.svg` },
+    { name: 'Google Veo', icon: `${ICON_CDN}/google.svg` },
+    { name: 'Elementor', icon: `${ICON_CDN}/elementor.svg` },
+    { name: 'Frame.io', icon: 'https://www.google.com/s2/favicons?domain=frame.io&sz=64' },
+    { name: 'Figma', icon: `${ICON_CDN}/figma.svg` },
+    { name: 'Opusclip', icon: 'https://www.google.com/s2/favicons?domain=opus.pro&sz=64' },
+    { name: 'Semrush', icon: `${ICON_CDN}/semrush.svg` },
+    { name: 'Reachout.Ai', icon: 'https://www.google.com/s2/favicons?domain=reachout.ai&sz=64' },
+    { name: 'Envato', icon: `${ICON_CDN}/envato.svg` },
+    { name: 'Adobe Firefly', icon: 'https://www.google.com/s2/favicons?domain=firefly.adobe.com&sz=64' },
+    { name: 'Vercel', icon: `${ICON_CDN}/vercel.svg` },
+    { name: 'Magnific', icon: 'https://www.google.com/s2/favicons?domain=magnific.ai&sz=64' },
+    { name: 'Phantombuster', icon: 'https://www.google.com/s2/favicons?domain=phantombuster.com&sz=64' },
+    { name: 'Quickmail', icon: 'https://www.google.com/s2/favicons?domain=quickmail.io&sz=64' },
+    { name: 'Instantly', icon: 'https://www.google.com/s2/favicons?domain=instantly.ai&sz=64' },
+    { name: 'Sales Navigator', icon: `${ICON_CDN}/linkedin.svg` },
+    { name: 'Lastpass', icon: `${ICON_CDN}/lastpass.svg` },
+    { name: 'Wix', icon: `${ICON_CDN}/wix.svg` },
+    { name: 'Dropbox', icon: `${ICON_CDN}/dropbox.svg` },
+    { name: 'Onedrive', icon: `${ICON_CDN}/microsoftonedrive.svg` },
+    { name: 'Expandi.io', icon: 'https://www.google.com/s2/favicons?domain=expandi.io&sz=64' },
+    { name: 'Slack', icon: `${ICON_CDN}/slack.svg` },
+    { name: 'Dingtalk', icon: 'https://www.google.com/s2/favicons?domain=dingtalk.com&sz=64' },
+    { name: 'Yamdu', icon: 'https://www.google.com/s2/favicons?domain=yamdu.com&sz=64' },
+    { name: 'Publer', icon: 'https://www.google.com/s2/favicons?domain=publer.io&sz=64' },
+    { name: 'ChatGPT', icon: `${ICON_CDN}/openai.svg` },
+    { name: 'Typeform', icon: `${ICON_CDN}/typeform.svg` },
+    { name: 'Calendly', icon: `${ICON_CDN}/calendly.svg` },
+    { name: 'Meta Ads', icon: `${ICON_CDN}/meta.svg` },
+    { name: 'Google Ads', icon: `${ICON_CDN}/googleads.svg` },
+    { name: 'Wordstream', icon: 'https://www.google.com/s2/favicons?domain=wordstream.com&sz=64' },
+    { name: 'Buffer', icon: `${ICON_CDN}/buffer.svg` },
+    { name: 'Veed.io', icon: 'https://www.google.com/s2/favicons?domain=veed.io&sz=64' }
+  ];
+  const delays = ['d1','d2','d3','d4','d5'];
+  const toolsGrid = document.getElementById('toolsGrid');
+
+  function toolLogoFallback(name){
+    const span = document.createElement('span');
+    span.className = 'tool-logo-fallback';
+    span.textContent = name.charAt(0);
+    return span;
+  }
+
+  function createToolLogo(tool){
+    const wrap = document.createElement('div');
+    wrap.className = 'tool-logo';
+    const img = document.createElement('img');
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.src = tool.icon;
+    img.onerror = () => wrap.replaceChildren(toolLogoFallback(tool.name));
+    wrap.appendChild(img);
+    return wrap;
+  }
+
+  if(toolsGrid){
+    tools.forEach((tool, i) => {
+      const item = document.createElement('div');
+      item.className = `tool-item reveal ${delays[Math.min(Math.floor(i / 8), 4)]}`;
+      item.appendChild(createToolLogo(tool));
+      item.appendChild(document.createTextNode(tool.name));
+      toolsGrid.appendChild(item);
     });
   }
 
