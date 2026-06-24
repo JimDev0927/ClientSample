@@ -13,21 +13,19 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  /* Light, white-first palette. Body is always white; text is dark charcoal. */
   --paper:#FFFFFF;
   --paper2:#F7F6F1;
   --white:#FFFFFF;
-  --ink:#171510;        /* primary text — near-black, warm */
-  --ink2:#56503F;       /* secondary text */
-  --ink3:#8B8570;       /* muted/tertiary text */
+  --ink:#171510;
+  --ink2:#56503F;
+  --ink3:#8B8570;
   --line:#E6E2D4;
-  --surface:#F1EEE2;    /* light "panel" surface, replaces old black sections */
+  --surface:#F1EEE2;
   --surface2:#EAE5D5;
-
-  --amber:#C9810F;      /* primary accent (darkened for AA contrast on white) */
+  --amber:#C9810F;
   --amber-l:#F2A71B;
   --amber-d:#9C6608;
-  --lime:#7C8F1E;        /* darkened lime so it reads on white */
+  --lime:#7C8F1E;
   --lime-l:#D7F23D;
   --lime-d:#5E6F12;
   --lime-ink:#5E6F12;
@@ -36,7 +34,6 @@
   --sage:#5C6E50;
   --sage-l:#E6EAE0;
   --cream:#EFE6CF;
-
   --display:'Baloo 2',sans-serif;
   --sans:'Inter',sans-serif;
   --mono:'IBM Plex Mono',monospace;
@@ -51,9 +48,7 @@ img,svg{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
-/* ============================
-   PAGE LOADER
-   ============================ */
+/* LOADER */
 #loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s ease,visibility .5s ease;border-bottom:1px solid var(--line)}
 #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-name{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--ink);letter-spacing:-0.02em;overflow:hidden}
@@ -63,9 +58,7 @@ ul{list-style:none}
 @keyframes loaderChar{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes loaderFill{from{width:0}to{width:100%}}
 
-/* ============================
-   NAV
-   ============================ */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;background:rgba(255,255,255,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:background .4s,border-color .4s,backdrop-filter .4s}
 nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
 .nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap}
@@ -74,6 +67,7 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .nav-links{display:flex;gap:1.3rem}
 .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);padding:6px 2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
 .nav-links a:hover{color:var(--ink);border-color:var(--lime-d)}
+.nav-links a.active{color:var(--ink);border-color:var(--clay-d);font-weight:500}
 .nav-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:8px 16px;border-radius:100px;transition:background .25s,transform .25s,box-shadow .25s;white-space:nowrap}
 .nav-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .nav-cta:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
@@ -84,13 +78,11 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .mobile-menu{position:fixed;top:64px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:480;display:flex;flex-direction:column;padding:0.5rem 1.5rem 1.25rem;transform:translateY(-110%);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .25s ease;pointer-events:none}
 .mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:all}
-.mobile-menu a{font-family:var(--display);font-weight:600;font-size:16px;padding:10px 4px;border-bottom:1px solid var(--line);color:var(--ink)}
+.mobile-menu a{font-family:var(--display);font-weight:600;font-size:16px;padding:10px 4px 10px 12px;border-bottom:1px solid var(--line);color:var(--ink);border-left:3px solid transparent;transition:color .2s,border-color .2s,padding-left .2s}
+.mobile-menu a.active{color:var(--clay-d);border-left-color:var(--clay);padding-left:16px}
 
-/* ============================
-   SHARED / REVEAL
-   ============================ */
+/* SHARED / REVEAL */
 .wrap{max-width:1040px;margin:0 auto;padding:0 2.5rem}
-
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
@@ -99,41 +91,30 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .reveal-right.visible{opacity:1;transform:translateX(0)}
 .reveal-scale{opacity:0;transform:scale(0.92);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
 .reveal-scale.visible{opacity:1;transform:scale(1)}
-
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
 .d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
-
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--lime-ink);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem}
 .eyebrow::before{content:'';width:18px;height:1.5px;background:var(--lime-d)}
-
 hr.rule{border:none;border-top:1px solid var(--line)}
 
-/* ============================
-   BAND TITLES
-   ============================ */
+/* BAND TITLES */
 .band{background:var(--surface);color:var(--ink);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%, rgba(201,129,15,0.10), transparent 60%);pointer-events:none}
 .band-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--clay-d);margin-bottom:0.9rem;display:inline-flex;align-items:center;gap:8px}
-.band-title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.01em;line-height:1;color:var(--ink);animation:none}
+.band-title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.01em;line-height:1;color:var(--ink)}
 .band-sub{font-family:var(--sans);font-size:13.5px;color:var(--ink2);max-width:430px;margin:1rem auto 0;line-height:1.7;padding:0 1.25rem}
 
-/* ============================
-   SECTION
-   ============================ */
+/* SECTION */
 .section{padding:5rem 0}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
 .section-title{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3vw,2rem);letter-spacing:-0.01em;color:var(--ink)}
 .section-note{font-size:12.5px;color:var(--ink3);max-width:280px;line-height:1.6}
 
-/* ============================
-   HERO
-   ============================ */
+/* HERO */
 .hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 1.5rem 3rem;background:
   radial-gradient(ellipse at 16% 18%, rgba(201,129,15,0.10), transparent 42%),
   radial-gradient(ellipse at 86% 84%, rgba(124,143,30,0.10), transparent 46%),
   var(--paper);color:var(--ink);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-
-/* floating doodles */
 .hero-doodle{position:absolute;color:var(--clay);pointer-events:none;z-index:0}
 .hero-doodle-bolt{top:18%;left:9%;width:46px;animation:floatA 6s ease-in-out infinite}
 .hero-doodle-wave{bottom:16%;right:10%;width:64px;animation:floatB 7s ease-in-out infinite;color:var(--lime-d)}
@@ -141,8 +122,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 @keyframes floatA{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(5deg)}}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
-/* hero text entrance */
 .hero-eyebrow{position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay-d);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:8px;opacity:0;animation:fadeUp .7s .3s cubic-bezier(.22,1,.36,1) forwards;text-align:center}
 .hero-title{position:relative;z-index:2;font-family:var(--display);font-weight:800;letter-spacing:-0.01em;line-height:0.9;font-size:clamp(3.2rem,15vw,8.5rem);color:var(--ink);opacity:0;animation:fadeUp .8s .5s cubic-bezier(.22,1,.36,1) forwards}
 .hero-sub{position:relative;z-index:2;margin-top:1.6rem;font-family:var(--sans);font-size:14px;color:var(--ink2);max-width:380px;line-height:1.75;opacity:0;animation:fadeUp .7s .75s cubic-bezier(.22,1,.36,1) forwards}
@@ -152,13 +131,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .hero-scroll{position:relative;z-index:2;margin-top:2.4rem;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);animation:bob 2.4s 1.4s ease-in-out infinite,fadeUp .5s 1.2s ease forwards;opacity:0}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
-/* cursor glow on hero */
 .hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle, rgba(201,129,15,0.08) 0%, transparent 70%);pointer-events:none;transition:transform .08s linear;transform:translate(-50%,-50%);z-index:0}
 
-/* ============================
-   HELLO / ABOUT
-   ============================ */
+/* HELLO / ABOUT */
 .hello{padding:6rem 0}
 .hello-grid{display:grid;grid-template-columns:230px 1fr;gap:3rem;align-items:center}
 .portrait-wrap{position:relative;width:210px;height:210px}
@@ -173,23 +148,33 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .hello-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.05em;background:var(--paper2);border:1px solid var(--line);padding:4px 11px;border-radius:6px;color:var(--ink2);transition:background .25s,border-color .25s,color .25s,transform .25s}
 .hello-tags span:hover{background:var(--cream);border-color:var(--amber);color:var(--ink);transform:translateY(-2px)}
 
-/* ============================
-   CONTENTS MAP
-   ============================ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTENTS MAP — FIXED RADIAL LAYOUT
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .contents-wrap{padding:1rem 0 6rem;text-align:center}
-.contents-map{max-width:640px;margin:2.5rem auto 0}
-.contents-map svg{width:100%;height:auto}
-.map-node-label{font-family:var(--display);font-weight:600;font-size:14px;fill:var(--ink)}
-.map-center-label{font-family:var(--display);font-weight:700;font-size:17px;fill:var(--white)}
-.map-edge{fill:none;stroke:var(--line);stroke-width:1.6;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1s ease}
-.map-edge.drawn{stroke-dashoffset:0}
-.map-node{cursor:pointer}
-.map-node rect{fill:var(--white);stroke:var(--line);stroke-width:1.4;transition:stroke .25s,fill .25s,filter .25s}
-.map-node:hover rect{stroke:var(--clay);fill:var(--cream);filter:drop-shadow(0 6px 14px rgba(181,72,31,0.18))}
+.contents-map{max-width:760px;margin:2.5rem auto 0;position:relative}
+.map-svg{width:100%;height:auto;overflow:visible}
 
-/* ============================
-   LOGO GRID
-   ============================ */
+/* Edges */
+.map-edge{fill:none;stroke:var(--line);stroke-width:1.8;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.2s ease}
+.map-edge.drawn{stroke-dashoffset:0}
+
+/* Center node */
+.map-center circle{transition:r .3s}
+.map-center:hover circle{r:66}
+
+/* Outer nodes */
+.map-node{cursor:pointer}
+.map-node rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;rx:22;transition:stroke .25s,fill .25s,filter .25s}
+.map-node text{font-family:'Baloo 2',sans-serif;font-weight:600;font-size:13px;fill:var(--ink);pointer-events:none}
+.map-node:hover rect{stroke:var(--clay);fill:var(--cream);filter:drop-shadow(0 6px 16px rgba(181,72,31,0.18))}
+.map-node:hover text{fill:var(--clay-d)}
+
+/* Center labels */
+.map-center-label{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;fill:var(--white);pointer-events:none}
+.map-center-sub{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;pointer-events:none}
+
+/* LOGO GRID */
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .logo-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:0.9rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
 .logo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
@@ -198,9 +183,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .logo-name{font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:-0.01em;color:var(--ink)}
 .logo-tag{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.04em}
 
-/* ============================
-   BRAND CASE
-   ============================ */
+/* BRAND CASE */
 .case-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.4rem;box-shadow:var(--shadow);transition:box-shadow .35s}
 .case-card:hover{box-shadow:var(--shadow-hover)}
 .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
@@ -221,8 +204,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .mock-tile{background:var(--paper2);border-radius:12px;height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1)}
 .mock-tile:hover{transform:scale(1.03)}
 .mock-tile .label{position:absolute;bottom:9px;left:11px;font-family:var(--mono);font-size:9.5px;color:var(--ink3);letter-spacing:.04em}
-
-/* mock visuals */
 .biz-card{width:120px;height:74px;border-radius:7px;background:var(--white);box-shadow:0 8px 18px rgba(0,0,0,0.12);display:flex;flex-direction:column;justify-content:center;padding:10px;transform:rotate(-4deg);transition:transform .3s;border:1px solid var(--line)}
 .mock-tile:hover .biz-card{transform:rotate(0deg) scale(1.05)}
 .biz-card .mark{width:20px;height:20px;border-radius:50%;background:var(--sage);margin-bottom:6px}
@@ -235,8 +216,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .label-mock{width:70px;height:110px;background:var(--white);border-radius:8px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .label-mock .mark{width:22px;height:22px;border-radius:50%;background:var(--sage)}
 .label-mock .l{width:42px;height:4px;background:var(--ink3);border-radius:2px}
-
-/* device row — kept as dark "screen" chrome since these represent literal device displays */
 .device-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px}
 .laptop{background:var(--paper2);border-radius:12px;padding:1.6rem;display:flex;justify-content:center;border:1px solid var(--line)}
 .laptop-frame{width:100%;max-width:380px}
@@ -254,36 +233,28 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .phone-screen .bar.w50{width:50%;background:var(--amber-l)}
 .phone-screen .tile{flex:1;border-radius:6px;background:rgba(255,255,255,0.1)}
 
-/* ============================
-   COUNTER STRIP
-   ============================ */
+/* COUNTER STRIP */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
 .counter-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center}
 .counter-num{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-0.03em;color:var(--clay-d);line-height:1}
 .counter-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:.4rem}
 
-/* ============================
-   SOCIAL MEDIA
-   ============================ */
+/* SOCIAL MEDIA */
 .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .social-card{aspect-ratio:1;border-radius:12px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;border:1px solid var(--line)}
 .social-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-hover)}
-.social-card .tag{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;opacity:.85;transition:opacity .2s}
+.social-card .tag{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;opacity:.85}
 .social-card .cap{font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-0.01em;margin-top:3px}
 .social-card .deco{position:absolute;border-radius:50%;opacity:.5;transition:transform .5s cubic-bezier(.22,1,.36,1)}
 .social-card:hover .deco{transform:scale(1.3)}
-
-/* strategy cards */
 .strategy-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2rem}
-.strategy-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
-.strategy-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--line)}
+.strategy-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.strategy-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
 .strategy-card .s-title{font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:-0.01em;margin-bottom:.4rem;color:var(--ink)}
 .strategy-card .s-desc{font-size:12.5px;color:var(--ink3);line-height:1.65}
 .strategy-card .s-tag{display:inline-block;margin-top:.8rem;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;background:var(--paper2);border:1px solid var(--line);padding:3px 10px;border-radius:5px;color:var(--ink2)}
 
-/* ============================
-   CONTENT CREATION
-   ============================ */
+/* CONTENT CREATION */
 .content-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .content-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;position:relative;overflow:hidden}
 .content-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,129,15,0.05),transparent);opacity:0;transition:opacity .35s}
@@ -295,7 +266,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .content-card .c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
 .content-card .c-tags span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;background:var(--paper2);border:1px solid var(--line);padding:3px 9px;border-radius:5px;color:var(--ink2);transition:background .2s,border-color .2s}
 .content-card:hover .c-tags span{background:var(--cream);border-color:var(--lime-d)}
-
 .process-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:2.5rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .process-step{padding:1.2rem 1rem;border-right:1px solid var(--line);background:var(--white);transition:background .25s}
 .process-step:last-child{border-right:none}
@@ -304,35 +274,27 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .process-step .p-title{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-0.01em;margin-bottom:.25rem;color:var(--ink)}
 .process-step .p-desc{font-size:11.5px;color:var(--ink3);line-height:1.5}
 
-/* ============================
-   TICKER
-   ============================ */
+/* TICKER */
 .ticker-wrap{background:var(--surface);overflow:hidden;height:42px;display:flex;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 26s linear infinite}
 .ticker-item{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--clay-d);padding:0 2.4rem;display:flex;align-items:center;gap:10px;opacity:0.85}
 .ticker-item::after{content:'✦';font-size:9px;opacity:0.5}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ============================
-   EXPERTISE
-   ============================ */
+/* EXPERTISE */
 .expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px}
 .expertise-item{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--line)}
 .expertise-item .check{flex-shrink:0;width:20px;height:20px;border-radius:5px;background:var(--sage-l);display:flex;align-items:center;justify-content:center;margin-top:1px}
 .expertise-item .check svg{width:12px;height:12px;color:var(--sage)}
 .expertise-item span.label{color:var(--ink);font-weight:500}
 
-/* ============================
-   TOOLS
-   ============================ */
+/* TOOLS */
 .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 18px}
 .tool-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2);padding:6px 0}
 .tool-item .dot-check{flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center}
 .tool-item .dot-check svg{width:9px;height:9px;color:var(--amber-d)}
 
-/* ============================
-   BRANDS & CLIENTS
-   ============================ */
+/* BRANDS & CLIENTS */
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .brand-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .brand-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
@@ -340,9 +302,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .brand-name{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--ink)}
 .brand-tag{font-family:var(--mono);font-size:9.5px;color:var(--ink3)}
 
-/* ============================
-   CONTACT PAGE
-   ============================ */
+/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
@@ -359,16 +319,13 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .form-submit{margin-top:.4rem;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s}
 .form-submit:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
 
-/* ============================
-   THANKS / FOOTER
-   ============================ */
+/* THANKS / FOOTER */
 .thanks{background:var(--surface);color:var(--ink);padding:6rem 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
 .thanks::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%, rgba(201,129,15,0.08), transparent 65%);pointer-events:none}
 .thanks-title{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-0.03em;color:var(--ink)}
 .thanks-sub{font-size:13.5px;color:var(--ink2);max-width:420px;margin:1rem auto 2rem;line-height:1.75;padding:0 1.25rem}
 .thanks-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:13px 26px;border-radius:100px;transition:transform .25s,background .25s,box-shadow .25s}
 .thanks-cta:hover{transform:translateY(-3px);background:var(--amber);color:var(--ink);box-shadow:0 10px 28px rgba(201,129,15,0.30)}
-
 footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--line)}
 .foot-name{font-family:var(--display);font-weight:700;font-size:13px;color:var(--ink)}
 .foot-links{display:flex;gap:1.2rem;flex-wrap:wrap}
@@ -376,9 +333,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 .foot-links a:hover{color:var(--ink);border-color:var(--clay)}
 .foot-meta{font-family:var(--mono);font-size:10px;color:var(--ink3)}
 
-/* ============================
-   RESPONSIVE
-   ============================ */
+/* RESPONSIVE */
 @media(max-width:880px){
   .logo-grid{grid-template-columns:repeat(2,1fr)}
   .social-grid{grid-template-columns:repeat(2,1fr)}
@@ -391,7 +346,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .brands-grid{grid-template-columns:repeat(3,1fr)}
   .contact-grid{grid-template-columns:1fr}
 }
-
 @media(max-width:680px){
   nav{padding:0 1.25rem}
   .nav-links{display:none}
@@ -399,26 +353,18 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .hamburger{display:flex}
   .nav-cta{padding:7px 13px;font-size:10px}
   .wrap{padding:0 1.25rem}
-
-  /* ---- HERO FIXES ---- */
-  .hero{
-    min-height:auto;
-    padding:100px 1.25rem 3.5rem;
-  }
-  /* shrink + reposition doodles so they sit in corners, never over text */
+  .hero{min-height:auto;padding:100px 1.25rem 3.5rem}
   .hero-doodle{width:30px !important}
   .hero-doodle-bolt{top:8%;left:5%;width:28px !important}
   .hero-doodle-wave{bottom:8%;right:6%;width:36px !important}
   .hero-doodle-circle{display:none !important}
   .hero-glow{display:none}
-
   .hero-eyebrow{font-size:10px;letter-spacing:0.14em;text-align:center;margin-bottom:1.1rem;white-space:normal}
   .hero-title{font-size:clamp(2.6rem,16vw,3.6rem);line-height:0.95}
   .hero-sub{font-size:13px;max-width:280px;margin-top:1.2rem}
   .hero-roles{margin-top:1.6rem;gap:8px}
   .hero-roles span{font-size:9.5px;padding:5px 11px}
   .hero-scroll{margin-top:2rem}
-
   .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center}
   .logo-grid{grid-template-columns:repeat(2,1fr)}
   .social-grid{grid-template-columns:repeat(2,1fr)}
@@ -438,13 +384,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .form-row{grid-template-columns:1fr}
   .nav-links{display:none}
 }
-
 @media(max-width:400px){
   .hero-title{font-size:clamp(2.2rem,15vw,3rem)}
   .hero-doodle-bolt{top:6%;left:4%;width:22px !important}
   .hero-doodle-wave{bottom:6%;right:5%;width:28px !important}
 }
-
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
@@ -464,12 +408,12 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <nav id="navbar">
   <a href="#top" class="nav-mark"><span class="dot"></span>LEO ADAM BALINGIT</a>
   <ul class="nav-links">
+    <li><a href="#brands">Brands</a></li>
     <li><a href="#graphic-design">Design</a></li>
     <li><a href="#social-media">Social</a></li>
     <li><a href="#content-creation">Content</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#tools">Tools</a></li>
-    <li><a href="#brands">Brands</a></li>
     <li><a href="#contact-page">Contact</a></li>
   </ul>
   <div class="nav-actions">
@@ -478,12 +422,12 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#brands" class="mlink">Brands &amp; Clients</a>
   <a href="#graphic-design" class="mlink">Graphic Design</a>
   <a href="#social-media" class="mlink">Social Media</a>
   <a href="#content-creation" class="mlink">Content Creation</a>
   <a href="#expertise" class="mlink">Areas of Expertise</a>
   <a href="#tools" class="mlink">Tools</a>
-  <a href="#brands" class="mlink">Brands &amp; Clients</a>
   <a href="#contact-page" class="mlink">Contact</a>
 </div>
 
@@ -501,7 +445,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </svg>
   <div class="hero-eyebrow">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
-    Leo Adam Balingit 
+    Leo Adam Balingit
   </div>
   <h1 class="hero-title">Portfolio</h1>
   <p class="hero-sub">Marketing, design, and content built with strong leadership, organisational skills, and marketing acumen — aimed at impactful strategies that hit business goals.</p>
@@ -565,39 +509,127 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
   <hr class="rule"/>
 
-  <!-- CONTENTS MAP -->
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTENTS MAP — FIXED
+       Center: 400,260
+       Nodes fanned around the center with proper spacing
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
   <section class="contents-wrap" id="contents">
     <p class="eyebrow" style="justify-content:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
+
     <div class="contents-map reveal-scale">
-      <svg viewBox="0 0 700 340">
-        <path class="map-edge" id="edge1" d="M350,170 Q230,110 130,70"/>
-        <path class="map-edge" id="edge2" d="M350,170 Q350,100 350,52"/>
-        <path class="map-edge" id="edge3" d="M350,170 Q470,110 570,70"/>
-        <circle cx="350" cy="170" r="58" fill="#171510"/>
-        <ellipse cx="350" cy="170" rx="68" ry="68" fill="none" stroke="#B5481F" stroke-width="1.5" stroke-dasharray="2 6" opacity="0.6"/>
-        <text x="350" y="166" text-anchor="middle" class="map-center-label" font-size="14">Adam</text>
-        <text x="350" y="183" text-anchor="middle" class="map-center-label" font-size="14">Balingit</text>
-        <a href="#graphic-design"><g class="map-node" transform="translate(60,48)">
-          <rect width="148" height="44" rx="22" x="0" y="0"/>
-          <text x="74" y="28" text-anchor="middle" class="map-node-label">Graphic Design</text>
-        </g></a>
-        <a href="#social-media"><g class="map-node" transform="translate(276,28)">
-          <rect width="148" height="44" rx="22" x="0" y="0"/>
-          <text x="74" y="28" text-anchor="middle" class="map-node-label">Social Media</text>
-        </g></a>
-        <a href="#content-creation"><g class="map-node" transform="translate(490,48)">
-          <rect width="156" height="44" rx="22" x="0" y="0"/>
-          <text x="78" y="28" text-anchor="middle" class="map-node-label">Content Creation</text>
-        </g></a>
+      <!--
+        Layout plan:
+        Center node:  cx=400, cy=270  r=62
+        5 outer nodes placed in a wide arc above + sides:
+          Node 0 (Brands & Clients):    far left     ~(80, 70)   pill 170×44
+          Node 1 (Graphic Design):      mid-left     ~(230, 40)  pill 154×44
+          Node 2 (Social Media):        top-center   ~(323, 22)  pill 154×44
+          Node 3 (Content Creation):    mid-right    ~(416, 40)  pill 166×44
+          Node 4 (Expertise & Tools):   far right    ~(570, 70)  pill 164×44
+
+        Edges connect from center (400,270) to pill mid-bottom:
+          Node 0 center: (165, 114) → (165 + 170/2, 114) = (250, 92)
+          ...etc — we connect to pill's bottom-center
+      -->
+      <svg class="map-svg" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ── EDGES (center→node bottom-center) ── -->
+        <!-- To Brands & Clients: pill rect x=30 y=42 w=172 h=44 → bottom-center=(116,86) -->
+        <path class="map-edge" id="e0" d="M400,208 C340,160 220,120 116,86"/>
+        <!-- To Graphic Design: pill rect x=196 y=22 w=152 h=44 → bottom-center=(272,66) -->
+        <path class="map-edge" id="e1" d="M400,208 C370,150 320,100 272,66"/>
+        <!-- To Social Media: pill rect x=324 y=8 w=152 h=44 → bottom-center=(400,52) -->
+        <path class="map-edge" id="e2" d="M400,208 L400,52"/>
+        <!-- To Content Creation: pill rect x=452 y=22 w=152 h=44 → bottom-center=(528,66) -->
+        <path class="map-edge" id="e3" d="M400,208 C430,150 480,100 528,66"/>
+        <!-- To Expertise & Tools: pill rect x=598 y=42 w=172 h=44 → bottom-center=(684,86) -->
+        <path class="map-edge" id="e4" d="M400,208 C460,160 580,120 684,86"/>
+
+        <!-- ── CENTER NODE ── -->
+        <g class="map-center">
+          <!-- Outer dashed orbit ring -->
+          <circle cx="400" cy="270" r="80" fill="none" stroke="#B5481F" stroke-width="1.4" stroke-dasharray="3 7" opacity="0.45"/>
+          <!-- Solid fill circle -->
+          <circle cx="400" cy="270" r="62" fill="#171510"/>
+          <!-- Subtle inner ring -->
+          <circle cx="400" cy="270" r="62" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <!-- Name lines -->
+          <text x="400" y="261" text-anchor="middle" class="map-center-label" font-size="16">Adam</text>
+          <text x="400" y="281" text-anchor="middle" class="map-center-label" font-size="16">Balingit</text>
+          <text x="400" y="300" text-anchor="middle" class="map-center-sub">Portfolio</text>
+        </g>
+
+        <!-- ── NODE 0 — Brands & Clients (far left) ── -->
+        <a href="#brands">
+          <g class="map-node" transform="translate(30,42)">
+            <rect width="172" height="44" rx="22" ry="22"/>
+            <text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Brands &amp; Clients</text>
+          </g>
+        </a>
+
+        <!-- ── NODE 1 — Graphic Design (mid-left) ── -->
+        <a href="#graphic-design">
+          <g class="map-node" transform="translate(196,22)">
+            <rect width="152" height="44" rx="22" ry="22"/>
+            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Graphic Design</text>
+          </g>
+        </a>
+
+        <!-- ── NODE 2 — Social Media (top center) ── -->
+        <a href="#social-media">
+          <g class="map-node" transform="translate(324,8)">
+            <rect width="152" height="44" rx="22" ry="22"/>
+            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Social Media</text>
+          </g>
+        </a>
+
+        <!-- ── NODE 3 — Content Creation (mid-right) ── -->
+        <a href="#content-creation">
+          <g class="map-node" transform="translate(452,22)">
+            <rect width="152" height="44" rx="22" ry="22"/>
+            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Content Creation</text>
+          </g>
+        </a>
+
+        <!-- ── NODE 4 — Expertise & Tools (far right) ── -->
+        <a href="#expertise">
+          <g class="map-node" transform="translate(598,42)">
+            <rect width="172" height="44" rx="22" ry="22"/>
+            <text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text>
+          </g>
+        </a>
+
       </svg>
     </div>
   </section>
 </div>
 
-<!-- ═══ 01 GRAPHIC DESIGN ═══ -->
+<!-- ═══ 01 BRANDS & CLIENTS ═══ -->
+<div class="band" id="brands">
+  <p class="band-tag reveal">01 — Partners</p>
+  <h2 class="band-title reveal">Brands &amp; Clients</h2>
+  <p class="band-sub reveal">A few of the brands I've worked with across design, social, and marketing.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="brands-grid">
+      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#5C6E50">N</div><div class="brand-name">Northwell</div><div class="brand-tag">Wellness</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#B5481F">P</div><div class="brand-name">Petal &amp; Co</div><div class="brand-tag">Skincare</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#2E4D6B">V</div><div class="brand-name">Vessel</div><div class="brand-tag">Homeware</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#7A5C3E">A</div><div class="brand-name">Arcblock</div><div class="brand-tag">Fintech</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#C9810F">K</div><div class="brand-name">Kestrel</div><div class="brand-tag">Outdoor</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#56503F">B</div><div class="brand-name">Bloomhaus</div><div class="brand-tag">Florist</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#8A3B2B">F</div><div class="brand-name">Ferro</div><div class="brand-tag">Coffee</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#3E6B5C">S</div><div class="brand-name">Salt &amp; Smoke</div><div class="brand-tag">Restaurant</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ 02 GRAPHIC DESIGN ═══ -->
 <div class="band" id="graphic-design">
-  <p class="band-tag reveal">01 — Visual</p>
+  <p class="band-tag reveal">02 — Visual</p>
   <h2 class="band-title reveal">Graphic Design</h2>
   <p class="band-sub reveal">Logos, brand identities, and visual systems built to feel inevitable — not interchangeable.</p>
 </div>
@@ -676,9 +708,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 02 SOCIAL MEDIA MANAGEMENT ═══ -->
+<!-- ═══ 03 SOCIAL MEDIA MANAGEMENT ═══ -->
 <div class="band" id="social-media">
-  <p class="band-tag reveal">02 — Strategy</p>
+  <p class="band-tag reveal">03 — Strategy</p>
   <h2 class="band-title reveal">Social Media Management</h2>
   <p class="band-sub reveal">Managing feeds, building audiences, and making every post worth stopping for.</p>
 </div>
@@ -701,7 +733,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
-
     <div class="section-head">
       <h3 class="section-title reveal">Visual Content</h3>
       <p class="section-note reveal d2">Post designs crafted to stay on-brand and stop the scroll.</p>
@@ -734,9 +765,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 03 CONTENT CREATION ═══ -->
+<!-- ═══ 04 CONTENT CREATION ═══ -->
 <div class="band" id="content-creation">
-  <p class="band-tag reveal">03 — Content</p>
+  <p class="band-tag reveal">04 — Content</p>
   <h2 class="band-title reveal">Content Creation</h2>
   <p class="band-sub reveal">Writing, video, and copy built around the audience, optimised for the platform, and true to the brand.</p>
 </div>
@@ -802,9 +833,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 04 AREAS OF EXPERTISE ═══ -->
+<!-- ═══ 05 AREAS OF EXPERTISE ═══ -->
 <div class="band" id="expertise">
-  <p class="band-tag reveal">04 — Skills</p>
+  <p class="band-tag reveal">05 — Skills</p>
   <h2 class="band-title reveal">Areas of Expertise</h2>
   <p class="band-sub reveal">A broad marketing and creative skill set, built across strategy, execution, and reporting.</p>
 </div>
@@ -833,16 +864,15 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 05 TOOLS ═══ -->
+<!-- ═══ 06 TOOLS ═══ -->
 <div class="band" id="tools">
-  <p class="band-tag reveal">05 — Toolkit</p>
+  <p class="band-tag reveal">06 — Toolkit</p>
   <h2 class="band-title reveal">Tools</h2>
   <p class="band-sub reveal">Software and platforms used daily across design, marketing, and project management.</p>
 </div>
 <div class="wrap">
   <section class="section">
     <div class="tools-grid">
-      <!-- column 1 -->
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Photoshop</div>
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Canva</div>
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Capcut</div>
@@ -851,7 +881,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Veo</div>
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Elementor</div>
       <div class="tool-item reveal d1"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Frame.io</div>
-      <!-- column 2 -->
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Figma</div>
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Opuсslip</div>
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Semrush</div>
@@ -860,7 +889,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Adobe Firefly</div>
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Vercel</div>
       <div class="tool-item reveal d2"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Magnific</div>
-      <!-- column 3 -->
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Phantombuster</div>
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Quickmail</div>
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Instantly</div>
@@ -869,7 +897,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wix</div>
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dropbox</div>
       <div class="tool-item reveal d3"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Onedrive</div>
-      <!-- column 4 -->
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Expandi.io</div>
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Slack</div>
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Dingtalk</div>
@@ -878,34 +905,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>ChatGPT</div>
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Typeform</div>
       <div class="tool-item reveal d4"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Calendly</div>
-      <!-- column 5 -->
       <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Meta Ads</div>
       <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Google Ads</div>
       <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Wordstream</div>
-      <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Chatgpt</div>
       <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Buffer</div>
       <div class="tool-item reveal d5"><div class="dot-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg></div>Veed.io</div>
-    </div>
-  </section>
-</div>
-
-<!-- ═══ 06 BRANDS & CLIENTS ═══ -->
-<div class="band" id="brands">
-  <p class="band-tag reveal">06 — Partners</p>
-  <h2 class="band-title reveal">Brands &amp; Clients</h2>
-  <p class="band-sub reveal">A few of the brands I've worked with across design, social, and marketing.</p>
-</div>
-<div class="wrap">
-  <section class="section">
-    <div class="brands-grid">
-      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#5C6E50">N</div><div class="brand-name">Northwell</div><div class="brand-tag">Wellness</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#B5481F">P</div><div class="brand-name">Petal &amp; Co</div><div class="brand-tag">Skincare</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#2E4D6B">V</div><div class="brand-name">Vessel</div><div class="brand-tag">Homeware</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#7A5C3E">A</div><div class="brand-name">Arcblock</div><div class="brand-tag">Fintech</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#C9810F">K</div><div class="brand-name">Kestrel</div><div class="brand-tag">Outdoor</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#56503F">B</div><div class="brand-name">Bloomhaus</div><div class="brand-tag">Florist</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#8A3B2B">F</div><div class="brand-name">Ferro</div><div class="brand-tag">Coffee</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#3E6B5C">S</div><div class="brand-name">Salt &amp; Smoke</div><div class="brand-tag">Restaurant</div></div>
     </div>
   </section>
 </div>
@@ -965,7 +969,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <script>
 (function(){
 
-  /* ── CONTACT FORM → MAILTO ── */
+  /* CONTACT FORM → MAILTO */
   const contactForm = document.getElementById('contactForm');
   if(contactForm){
     contactForm.addEventListener('submit', function(e){
@@ -974,27 +978,57 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       const email = document.getElementById('cf-email').value.trim();
       const subject = document.getElementById('cf-subject').value.trim() || 'New project inquiry';
       const message = document.getElementById('cf-message').value.trim();
-
       const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
       const mailtoLink = `mailto:saturog350@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
     });
   }
 
-  /* ── LOADER ── */
+  /* LOADER */
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
     }, 1400);
   });
 
-  /* ── NAV SCROLL ── */
+  /* NAV SCROLL + ACTIVE SECTION */
   const navbar = document.getElementById('navbar');
+  const navSections = document.querySelectorAll('#brands, #graphic-design, #social-media, #content-creation, #expertise, #tools, #contact-page');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mlink[href^="#"]');
+
+  function setActiveNav(id){
+    navLinks.forEach(link => {
+      const isActive = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', isActive);
+      if(isActive) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function updateActiveNav(){
+    const offset = navbar.offsetHeight + 120;
+    let current = navSections[0]?.id || '';
+    navSections.forEach(section => {
+      if(window.scrollY >= section.offsetTop - offset) current = section.id;
+    });
+    if(window.scrollY < (navSections[0]?.offsetTop - offset || 0)) current = '';
+    setActiveNav(current);
+  }
+
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
+    updateActiveNav();
   }, {passive:true});
+  updateActiveNav();
 
-  /* ── HAMBURGER ── */
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').slice(1);
+      if(id) setActiveNav(id);
+    });
+  });
+
+  /* HAMBURGER */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1012,7 +1046,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     }
   });
 
-  /* ── HERO CURSOR GLOW (desktop only) ── */
+  /* HERO CURSOR GLOW */
   const heroSection = document.querySelector('.hero');
   const glow = document.getElementById('heroGlow');
   if(heroSection && glow && window.matchMedia('(min-width:681px)').matches){
@@ -1022,7 +1056,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* ── SCROLL REVEAL ── */
+  /* SCROLL REVEAL */
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1034,19 +1068,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }, {threshold:0.08});
   revealEls.forEach(el => io.observe(el));
 
-  /* ── MAP EDGE DRAW ── */
+  /* MAP EDGE DRAW — triggered when the SVG enters viewport */
   const edges = document.querySelectorAll('.map-edge');
   const edgeIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
-        e.target.classList.add('drawn');
-        edgeIO.unobserve(e.target);
+        /* stagger each edge */
+        edges.forEach((edge, i) => {
+          setTimeout(() => edge.classList.add('drawn'), i * 120);
+        });
+        edgeIO.disconnect();
       }
     });
   }, {threshold:0.3});
-  edges.forEach(el => edgeIO.observe(el));
+  const mapSvg = document.querySelector('.map-svg');
+  if(mapSvg) edgeIO.observe(mapSvg);
 
-  /* ── COUNTER ANIMATION ── */
+  /* COUNTER ANIMATION */
   function animateCounter(el){
     const target = parseFloat(el.dataset.target);
     const isDecimal = el.dataset.decimal === 'true';
