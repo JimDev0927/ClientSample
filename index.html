@@ -158,7 +158,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 /* ── CONTENTS MAP ── */
 .contents-wrap{padding:1rem 0 6rem;text-align:center}
 .contents-map{max-width:760px;margin:2.5rem auto 0;position:relative;width:100%}
-/* Desktop: normal SVG */
 .map-svg{width:100%;height:auto;overflow:visible}
 .map-edge{fill:none;stroke:var(--line);stroke-width:1.8;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.2s ease}
 .map-edge.drawn{stroke-dashoffset:0}
@@ -171,72 +170,105 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .map-node:hover text{fill:var(--clay-d)}
 .map-center-label{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;fill:var(--white);pointer-events:none}
 .map-center-sub{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;pointer-events:none}
-
-/* Mobile contents map: pill links instead of SVG */
 .map-mobile{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin:1.75rem auto 0;max-width:400px}
 .map-mobile a{font-family:var(--display);font-weight:600;font-size:13.5px;padding:9px 20px;border:1.5px solid var(--line);border-radius:100px;color:var(--ink);background:var(--white);transition:background .2s,border-color .2s,color .2s}
 .map-mobile a:hover{background:var(--cream);border-color:var(--clay);color:var(--clay-d)}
 
+/* ═══════════════════════════════
+   BRANDS GRID — updated card style
+   Logo image top + name + tag below
+═══════════════════════════════ */
+.brands-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.brand-card,
+.logo-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 14px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:14px;
+  text-align:center;
+  min-height:184px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;
+}
+.brand-card:hover,
+.logo-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--amber);
+}
+
+/* Image area */
+.brand-img-wrap,
+.logo-mark.logo-image{
+  width:76px;
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:18px;
+  color:inherit;
+  overflow:hidden;
+  padding:12px;
+  transition:background .3s;
+}
+.brand-card:hover .brand-img-wrap,
+.logo-card:hover .logo-mark.logo-image{background:var(--cream)}
+.brand-img-wrap img,
+.logo-mark.logo-image img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  padding:0;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.brand-card:hover .brand-img-wrap img,
+.logo-card:hover .logo-mark.logo-image img{transform:scale(1.06)}
+.brand-img-wrap img.logo-lf{transform:scale(2)}
+.brand-card:hover .brand-img-wrap img.logo-lf{transform:scale(2.12)}
+
+/* Label area */
+.brand-info{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  width:100%;
+  min-width:0;
+}
+.brand-name{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  line-height:1.2;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.brand-tag{
+  font-family:var(--mono);
+  font-size:9.5px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  overflow-wrap:anywhere;
+}
+
 /* ── LOGO GRID ── */
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.logo-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:0;display:flex;flex-direction:column;align-items:stretch;gap:0;text-align:center;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
-.logo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
-.logo-mark{width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:19px;color:var(--white);transition:transform .3s cubic-bezier(.22,1,.36,1)}
-.logo-mark.logo-image{width:100%;max-width:none;height:190px;background:var(--white);border:none;border-radius:0;padding:0;color:inherit;overflow:hidden}
-.logo-mark.logo-image img{width:100%;height:100%;object-fit:contain;padding:12px}
-.logo-card:hover .logo-mark{transform:none}
-.logo-name{display:none}
-.logo-tag{display:none}
-
-/* ── BRAND CASE ── */
-.case-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.4rem;box-shadow:var(--shadow);transition:box-shadow .35s}
-.case-card:hover{box-shadow:var(--shadow-hover)}
-.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
-.case-brand{display:flex;align-items:center;gap:14px}
-.case-brand-mark{width:54px;height:54px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.22,1,.36,1);flex-shrink:0}
-.case-brand-mark:hover{transform:rotate(12deg) scale(1.1)}
-.case-brand-name{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.02em;color:var(--ink)}
-.case-brand-sub{font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:0.05em;margin-top:2px}
-.case-desc{font-size:13px;color:var(--ink2);max-width:280px;line-height:1.7}
-.swatches{display:flex;gap:10px;margin-bottom:2rem}
-.swatch{flex:1;height:64px;border-radius:10px;position:relative;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;min-width:0}
-.swatch:hover{transform:translateY(-4px) scaleY(1.08);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
-.swatch span{position:absolute;bottom:7px;left:9px;font-family:var(--mono);font-size:9.5px;color:rgba(255,255,255,0.9)}
-.type-specimen{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.6rem 0;margin-bottom:2rem;display:flex;flex-direction:column;gap:.4rem}
-.type-specimen .big{font-family:var(--display);font-weight:700;font-size:2.6rem;letter-spacing:-0.03em;color:var(--ink)}
-.type-specimen .small{font-family:var(--sans);font-size:13px;color:var(--ink2)}
-.case-mocks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.mock-tile{background:var(--paper2);border-radius:12px;height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1)}
-.mock-tile:hover{transform:scale(1.03)}
-.mock-tile .label{position:absolute;bottom:9px;left:11px;font-family:var(--mono);font-size:9.5px;color:var(--ink3);letter-spacing:.04em}
-.biz-card{width:120px;height:74px;border-radius:7px;background:var(--white);box-shadow:0 8px 18px rgba(0,0,0,0.12);display:flex;flex-direction:column;justify-content:center;padding:10px;transform:rotate(-4deg);transition:transform .3s;border:1px solid var(--line)}
-.mock-tile:hover .biz-card{transform:rotate(0deg) scale(1.05)}
-.biz-card .mark{width:20px;height:20px;border-radius:50%;background:var(--sage);margin-bottom:6px}
-.biz-card .l1{width:55px;height:5px;background:var(--ink);border-radius:2px;margin-bottom:4px}
-.biz-card .l2{width:38px;height:4px;background:var(--ink3);border-radius:2px}
-.tote{width:90px;height:104px;background:var(--cream);border-radius:4px 4px 0 0;position:relative;display:flex;align-items:center;justify-content:center}
-.tote::before,.tote::after{content:'';position:absolute;top:-22px;width:10px;height:26px;border:3px solid var(--ink2);border-bottom:none;border-radius:10px 10px 0 0}
-.tote::before{left:18px}.tote::after{right:18px}
-.tote .mark{width:26px;height:26px;border-radius:50%;background:var(--sage)}
-.label-mock{width:70px;height:110px;background:var(--white);border-radius:8px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.label-mock .mark{width:22px;height:22px;border-radius:50%;background:var(--sage)}
-.label-mock .l{width:42px;height:4px;background:var(--ink3);border-radius:2px}
-.device-row{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px}
-.laptop{background:var(--paper2);border-radius:12px;padding:1.6rem;display:flex;justify-content:center;border:1px solid var(--line)}
-.laptop-frame{width:100%;max-width:380px}
-.laptop-screen{background:#26241F;border-radius:8px 8px 0 0;padding:10px;aspect-ratio:16/10}
-.laptop-screen .bar{height:7px;border-radius:4px;background:rgba(255,255,255,0.18);margin-bottom:7px}
-.laptop-screen .bar.w60{width:60%}
-.laptop-screen .bar.w40{width:40%;background:var(--amber-l)}
-.laptop-screen .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
-.laptop-screen .grid3 div{height:34px;border-radius:5px;background:rgba(255,255,255,0.12)}
-.laptop-base{height:9px;background:#3a3730;border-radius:0 0 8px 8px}
-.phone{background:var(--paper2);border-radius:12px;padding:1.6rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
-.phone-frame{width:120px;height:230px;background:#26241F;border-radius:22px;padding:10px}
-.phone-screen{background:#312F28;border-radius:14px;height:100%;padding:10px;display:flex;flex-direction:column;gap:7px}
-.phone-screen .bar{height:6px;border-radius:3px;background:rgba(255,255,255,0.18)}
-.phone-screen .bar.w50{width:50%;background:var(--amber-l)}
-.phone-screen .tile{flex:1;border-radius:6px;background:rgba(255,255,255,0.1)}
 
 /* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
@@ -300,20 +332,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .tool-logo img{width:14px;height:14px;object-fit:contain;display:block}
 .tool-logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:10px;color:var(--white);background:var(--ink3)}
 
-/* ── BRANDS & CLIENTS ── */
-.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.brand-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:0;display:flex;flex-direction:column;align-items:stretch;gap:0;text-align:center;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
-.brand-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-.brand-mark{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:16px;color:var(--white)}
-.brand-mark.brand-image{width:100%;max-width:none;height:160px;border-radius:0;background:var(--white);border:none;padding:0;color:inherit;overflow:hidden}
-.brand-mark.brand-image img{width:100%;height:100%;object-fit:contain;padding:12px}
-.brand-mark.brand-image.logo-zoom img,.brand-mark.brand-image.logo-zoom-lg img{transform:none}
-.brand-name{display:none}
-.brand-tag{display:none}
-
 /* ── CONTACT ── */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.contact-single{display:flex;justify-content:center;margin-bottom:2rem}
+.contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;max-width:420px;width:100%}
 .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
 .contact-icon{width:46px;height:46px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--clay-d)}
 .contact-label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.2rem}
@@ -342,40 +363,29 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 .foot-links a:hover{color:var(--ink);border-color:var(--clay)}
 .foot-meta{font-family:var(--mono);font-size:10px;color:var(--ink3)}
 
-/* ════════════════════════════════
-   RESPONSIVE — 880px
-════════════════════════════════ */
+/* ════════════════ RESPONSIVE 880px ════════════════ */
 @media(max-width:880px){
   .logo-grid{grid-template-columns:repeat(2,1fr)}
   .social-grid{grid-template-columns:repeat(2,1fr)}
   .strategy-row{grid-template-columns:repeat(2,1fr)}
   .content-grid{grid-template-columns:1fr}
   .process-row{grid-template-columns:repeat(3,1fr)}
-  .device-row{grid-template-columns:1fr}
   .counter-strip{grid-template-columns:repeat(3,1fr)}
   .tools-grid{grid-template-columns:repeat(3,1fr)}
   .brands-grid{grid-template-columns:repeat(3,1fr)}
-  .contact-grid{grid-template-columns:1fr}
   .process-step:nth-child(3){border-right:none}
   .process-step:nth-child(4){border-top:1px solid var(--line)}
   .process-step:nth-child(5){border-top:1px solid var(--line)}
 }
 
-/* ════════════════════════════════
-   RESPONSIVE — 680px (main mobile breakpoint)
-════════════════════════════════ */
+/* ════════════════ RESPONSIVE 680px ════════════════ */
 @media(max-width:680px){
-  /* Nav */
   nav{padding:0 1.25rem;height:60px}
   .nav-links{display:none}
   .nav-cta{display:none}
   .hamburger{display:flex}
   .mobile-menu{top:60px}
-
-  /* Layout */
   .wrap{padding:0 1.1rem}
-
-  /* Hero */
   .hero{min-height:100svh;padding:90px 1.1rem 3.5rem}
   .hero-doodle-bolt{top:8%;left:4%;width:26px}
   .hero-doodle-wave{bottom:8%;right:5%;width:34px}
@@ -386,54 +396,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .hero-sub{font-size:13px;max-width:100%;padding:0 0.25rem}
   .hero-roles{margin-top:1.5rem;gap:7px;padding:0 0.5rem}
   .hero-roles span{font-size:9.5px;padding:5px 10px}
-
-  /* Ticker */
   .ticker-item{font-size:10px;padding:0 1.4rem}
-
-  /* Hello */
   .hello{padding:4rem 0}
   .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center;gap:2rem}
   .hello-text{max-width:100%}
   .hello-tags{justify-content:center}
-
-  /* Contents: hide SVG, show pill links */
   .contents-wrap{padding:1rem 0 3.5rem}
   .map-svg-wrap{display:none}
   .map-mobile{display:flex}
-
-  /* Band */
   .band{padding:3.5rem 0}
   .section{padding:3.5rem 0}
   .section-head{align-items:flex-start;gap:.6rem;margin-bottom:1.75rem}
   .section-note{max-width:100%;font-size:12px}
-
-  /* Logo grid */
   .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .logo-mark.logo-image{height:150px}
-
-  /* Brand grid */
   .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .brand-mark.brand-image{height:130px}
-  .brand-card{padding:0}
-
-  /* Case card */
-  .case-card{padding:1.5rem 1.1rem;border-radius:14px}
-  .case-top{flex-direction:column;gap:1rem}
-  .case-desc{max-width:100%}
-  .swatches{gap:7px}
-  .swatch{height:52px}
-  .swatch span{font-size:8.5px;bottom:5px;left:7px}
-  .type-specimen .big{font-size:1.9rem}
-  .case-mocks{grid-template-columns:repeat(2,1fr);gap:10px}
-  .mock-tile{height:130px}
-  .device-row{grid-template-columns:1fr;gap:10px}
-
-  /* Social */
   .social-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .strategy-row{grid-template-columns:1fr;gap:10px}
   .counter-strip{grid-template-columns:1fr;gap:10px}
-
-  /* Content */
   .content-grid{grid-template-columns:1fr;gap:10px}
   .process-row{grid-template-columns:repeat(2,1fr);border-radius:12px}
   .process-step{border-right:none;border-bottom:1px solid var(--line)}
@@ -441,76 +420,51 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .process-step:last-child{border-bottom:none;border-right:none}
   .process-step:nth-child(4){border-top:none}
   .process-step:nth-child(5){border-top:none}
-
-  /* Expertise */
   .expertise-grid{grid-template-columns:1fr}
   .expertise-item{font-size:13px}
-
-  /* Tools */
   .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px 14px}
   .tool-item{font-size:12px}
-
-  /* Contact */
-  .contact-grid{grid-template-columns:1fr;gap:10px}
-  .contact-value{font-size:13px;word-break:break-all}
+  .contact-card{max-width:100%}
   .contact-form{padding:1.35rem;border-radius:14px}
   .form-row{grid-template-columns:1fr;gap:10px}
   .form-submit{width:100%;justify-content:center}
-
-  /* Footer */
   footer{padding:2rem 1.1rem;flex-direction:column;align-items:flex-start}
   .thanks{padding:4rem 0}
   .thanks-cta{width:auto;padding:12px 22px}
 }
 
-/* ════════════════════════════════
-   RESPONSIVE — 480px (small phones)
-════════════════════════════════ */
+/* ════════════════ RESPONSIVE 480px ════════════════ */
 @media(max-width:480px){
   nav{height:56px;padding:0 1rem}
   .nav-mark{font-size:13px;gap:6px}
   .nav-logo{width:26px;height:26px}
   .mobile-menu{top:56px}
   .mobile-menu a{font-size:15px}
-
   .hero{padding:80px 1rem 3rem}
   .hero-title{font-size:clamp(2.5rem,16vw,3.8rem)}
   .hero-sub{font-size:12.5px}
   .hero-roles span{font-size:9px;padding:4px 9px}
-
   .hello{padding:3rem 0}
   .portrait-wrap,.portrait-circle{width:170px;height:170px}
   .portrait-ring{inset:-10px}
   .hello-title{font-size:1.8rem}
   .hello-text{font-size:13.5px}
-
   .band-title{font-size:clamp(2rem,12vw,3rem)}
   .band-sub{font-size:12.5px}
-
-  .logo-grid{grid-template-columns:1fr;gap:10px}
-  .logo-mark.logo-image{max-width:none;height:180px}
-  .logo-name{display:none}
-
-  .brands-grid{grid-template-columns:1fr;gap:10px}
-  .brand-mark.brand-image{max-width:none;height:170px}
-  .brand-name{display:none}
-
+  .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .brand-card,.logo-card{min-height:168px;padding:18px 10px 15px}
+  .brand-img-wrap,.logo-mark.logo-image{width:68px;height:68px;padding:10px;border-radius:16px}
+  .brand-name{font-size:12px}
+  .brand-tag{font-size:9px}
   .social-grid{grid-template-columns:1fr;gap:10px}
-
   .counter-num{font-size:2.2rem}
-
   .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px 12px}
-
-  .case-mocks{grid-template-columns:1fr;gap:10px}
-  .mock-tile{height:140px}
-
   .process-row{grid-template-columns:1fr}
   .process-step{border-right:none !important;border-bottom:1px solid var(--line)}
   .process-step:last-child{border-bottom:none}
-
   footer{padding:1.75rem 1rem}
   .foot-links{gap:.75rem}
-
   .thanks-cta{width:100%;justify-content:center}
   .form-submit{width:100%;justify-content:center}
 }
@@ -633,7 +587,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     <p class="eyebrow" style="justify-content:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
 
-    <!-- Desktop SVG map -->
     <div class="contents-map reveal-scale map-svg-wrap">
       <svg class="map-svg" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
         <path class="map-edge" id="e0" d="M400,208 C340,160 220,120 116,86"/>
@@ -657,7 +610,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       </svg>
     </div>
 
-    <!-- Mobile pill nav (replaces SVG on small screens) -->
     <div class="map-mobile reveal">
       <a href="#brands">Brands &amp; Clients</a>
       <a href="#graphic-design">Graphic Design</a>
@@ -677,23 +629,143 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="wrap">
   <section class="section">
     <div class="brands-grid">
-      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend%20Experience%20LLC.jpg" alt="Ascend Experience LLC"/></div><div class="brand-name">Ascend Experience LLC</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div><div class="brand-name">AVA Gaming</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div><div class="brand-name">BetAlly</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.jpg" alt="BolaTV"/></div><div class="brand-name">BolaTV</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.jpg" alt="HP"/></div><div class="brand-name">HP</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark brand-image logo-zoom"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div><div class="brand-name">Khelo100</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark brand-image logo-zoom-lg"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LF.jpg" alt="LF"/></div><div class="brand-name">LF</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div><div class="brand-name">LIVEFEST</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div><div class="brand-name">LNPLAY</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div><div class="brand-name">Mikiworld</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div><div class="brand-name">OC Togel</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777.jpg" alt="ole777"/></div><div class="brand-name">ole777</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="OlimpicVIP"/></div><div class="brand-name">OlimpicVIP</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div><div class="brand-name">One2play</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div><div class="brand-name">Tailored Canvases</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="TellmyTale"/></div><div class="brand-name">TellmyTale</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div><div class="brand-name">WonderMe</div></div>
+
+      <div class="brand-card reveal d1">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div>
+        <div class="brand-info">
+          <div class="brand-name">The Ascend Experience</div>
+          <div class="brand-tag">Sales Coaching</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d2">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Ava Gaming</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d3">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div>
+        <div class="brand-info">
+          <div class="brand-name">BetAlly</div>
+          <div class="brand-tag">White Label Solutions</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d4">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div>
+        <div class="brand-info">
+          <div class="brand-name">BolaTV</div>
+          <div class="brand-tag">Entertainment</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d1">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP Lottery"/></div>
+        <div class="brand-info">
+          <div class="brand-name">HP Lottery</div>
+          <div class="brand-tag">Lottery System</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d2">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Khelo100</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d3">
+        <div class="brand-img-wrap"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="Lights &amp; Film"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Lights &amp; Film</div>
+          <div class="brand-tag">Film</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d4">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LiveFest"/></div>
+        <div class="brand-info">
+          <div class="brand-name">LiveFest</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d1">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div>
+        <div class="brand-info">
+          <div class="brand-name">LNPLAY</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d2">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Mikiworld</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d3">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div>
+        <div class="brand-info">
+          <div class="brand-name">OC Togel</div>
+          <div class="brand-tag">Lottery System</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d4">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div>
+        <div class="brand-info">
+          <div class="brand-name">OLE777</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d1">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="OLIMPIC"/></div>
+        <div class="brand-info">
+          <div class="brand-name">OLIMPIC</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d2">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2Play"/></div>
+        <div class="brand-info">
+          <div class="brand-name">One2Play</div>
+          <div class="brand-tag">iGaming</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d3">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Tailored Canvases</div>
+          <div class="brand-tag">Wall Decors</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d4">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="TellMyTale"/></div>
+        <div class="brand-info">
+          <div class="brand-name">TellMyTale</div>
+          <div class="brand-tag">Kid Books</div>
+        </div>
+      </div>
+
+      <div class="brand-card reveal d1">
+        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div>
+        <div class="brand-info">
+          <div class="brand-name">WonderMe</div>
+          <div class="brand-tag">Portraits</div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>
@@ -711,22 +783,88 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <p class="section-note reveal d2">A selection of marks designed to hold up at app-icon size and on a building face.</p>
     </div>
     <div class="logo-grid">
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div><div class="logo-name">A3 Graphics</div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div><div class="logo-name">Barista Hub</div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div><div class="logo-name">Cup &amp; Go</div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div><div class="logo-name">Eleve Wellness</div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div><div class="logo-name">Golden Cafe</div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Logo collection"/></div><div class="logo-name">Logo Collection</div></div>
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div><div class="logo-name">MediTrust</div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div><div class="logo-name">Nails O'Clock</div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Studio Belleza"/></div><div class="logo-name">Studio Belleza</div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div><div class="logo-name">The Quiet Cup</div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div><div class="logo-name">Unwind</div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div><div class="logo-name">Veraluxe</div></div>
-    </div>
-
-    
-          </div>
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div>
+        <div class="brand-info">
+          <div class="brand-name">A3 Graphics</div>
+          <div class="brand-tag">Creative Services</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Barista Hub</div>
+          <div class="brand-tag">Barista Training Center</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Cup &amp; Go</div>
+          <div class="brand-tag">Coffee Shop</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Eleve Wellness</div>
+          <div class="brand-tag">Health &amp; Wellness</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Golden Cafe</div>
+          <div class="brand-tag">Coffee Shop</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Fork Republic</div>
+          <div class="brand-tag">Restaurant</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div>
+        <div class="brand-info">
+          <div class="brand-name">MediTrust</div>
+          <div class="brand-tag">Pharmacy</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Nails O'Clock</div>
+          <div class="brand-tag">Spa Services</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Nature Cosmetic</div>
+          <div class="brand-tag">Beauty &amp; Cosmetics</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div>
+        <div class="brand-info">
+          <div class="brand-name">The Quiet Cup</div>
+          <div class="brand-tag">Coffee Shop</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Unwind</div>
+          <div class="brand-tag">Beauty &amp; Cosmetics</div>
+        </div>
+      </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div>
+        <div class="brand-info">
+          <div class="brand-name">Veraluxe</div>
+          <div class="brand-tag">Beauty &amp; Cosmetics</div>
         </div>
       </div>
     </div>
@@ -909,17 +1047,13 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 </div>
 <div class="wrap">
   <section class="section">
-    <div class="contact-grid">
+    <div class="contact-single">
       <div class="contact-card reveal d1">
-        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <div><div class="contact-label">Phone</div><div class="contact-value">0967-387-5905</div></div>
-      </div>
-      <div class="contact-card reveal d2">
         <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6L12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
-        <div><div class="contact-label">Email</div><div class="contact-value">hello@leoadambalingit.design</div></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">leoadambalingit@gmail.com</div></div>
       </div>
     </div>
-    <form class="contact-form reveal d3" id="contactForm">
+    <form class="contact-form reveal d2" id="contactForm">
       <div class="form-row">
         <div class="form-field"><label>Name</label><input type="text" id="cf-name" placeholder="Your full name" required/></div>
         <div class="form-field"><label>Email</label><input type="email" id="cf-email" placeholder="you@email.com" required/></div>
@@ -939,7 +1073,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <section class="thanks" id="thanks">
   <h2 class="thanks-title reveal">Thanks for scrolling!</h2>
   <p class="thanks-sub reveal d2">If something here sparked an idea for your brand, I'd love to hear about it.</p>
-  <a class="thanks-cta reveal d3" href="mailto:hello@leoadambalingit.design">Email Me →</a>
+  <a class="thanks-cta reveal d3" href="mailto:leoadambalingit@gmail.com">Email Me →</a>
 </section>
 
 <footer>
