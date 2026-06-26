@@ -114,6 +114,11 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .band-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--clay-d);margin-bottom:0.9rem;display:inline-flex;align-items:center;gap:8px}
 .band-title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.01em;line-height:1;color:var(--ink)}
 .band-sub{font-family:var(--sans);font-size:13.5px;color:var(--ink2);max-width:430px;margin:1rem auto 0;line-height:1.7;padding:0 1.25rem}
+#brands .band-sub,
+#graphic-design .band-sub,
+#content-creation .band-sub,
+#expertise .band-sub,
+#tools .band-sub{max-width:620px;padding-left:0.45rem;padding-right:0.45rem}
 
 /* ── SECTION ── */
 .section{padding:5rem 0}
@@ -133,7 +138,8 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 @keyframes floatA{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(5deg)}}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hero-eyebrow{position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay-d);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:8px;opacity:0;animation:fadeUp .7s .3s cubic-bezier(.22,1,.36,1) forwards;text-align:center}
+.hero-eyebrow{position:relative;z-index:2;margin-bottom:1.5rem;display:inline-flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp .7s .3s cubic-bezier(.22,1,.36,1) forwards;text-align:center}
+.hero-logo{width:clamp(64px,8vw,96px);height:auto;object-fit:contain}
 .hero-title{position:relative;z-index:2;font-family:var(--display);font-weight:800;letter-spacing:-0.01em;line-height:0.9;font-size:clamp(3.2rem,15vw,8.5rem);color:var(--ink);opacity:0;animation:fadeUp .8s .5s cubic-bezier(.22,1,.36,1) forwards;word-break:break-word}
 .hero-sub{position:relative;z-index:2;margin-top:1.6rem;font-family:var(--sans);font-size:14px;color:var(--ink2);max-width:380px;line-height:1.75;opacity:0;animation:fadeUp .7s .75s cubic-bezier(.22,1,.36,1) forwards;padding:0 0.5rem}
 .hero-roles{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:2.2rem;opacity:0;animation:fadeUp .7s .95s cubic-bezier(.22,1,.36,1) forwards;padding:0 1rem}
@@ -155,9 +161,25 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .hello-title{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,2.6rem);letter-spacing:-0.01em;margin-bottom:1rem;color:var(--ink)}
 .hello-text{font-size:14.5px;color:var(--ink2);max-width:520px;line-height:1.85}
 .hello-text strong{color:var(--ink);font-weight:600}
+.hello-text + .hello-text{margin-top:0.9rem}
+.hello-edu-title{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-0.01em;color:var(--ink);margin-top:1.6rem;margin-bottom:0.7rem}
+.hello-edu-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+.hello-edu-block{min-width:0}
+.hello-edu-block .deg{font-family:var(--sans);font-weight:700;font-size:14.5px;color:var(--ink);display:block;line-height:1.35}
+.hello-edu-block .maj{font-style:italic;color:var(--ink2);display:block;font-size:13.5px;line-height:1.35;margin-top:1px}
+.hello-edu-block .sch{font-weight:700;color:var(--ink);display:block;font-size:13.5px;line-height:1.35;margin-top:1px}
+.hello-edu-block .yrs{font-style:italic;color:var(--ink3);display:block;font-size:12.5px;line-height:1.35;margin-top:1px}
 .hello-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.4rem}
 .hello-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.05em;background:var(--paper2);border:1px solid var(--line);padding:4px 11px;border-radius:6px;color:var(--ink2);transition:background .25s,border-color .25s,color .25s,transform .25s}
 .hello-tags span:hover{background:var(--cream);border-color:var(--amber);color:var(--ink);transform:translateY(-2px)}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem 1.4rem;display:flex;align-items:flex-start;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
+.service-emoji{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:20px;transition:background .3s}
+.service-card:hover .service-emoji{background:var(--cream)}
+.service-name{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-0.01em;color:var(--ink);line-height:1.35}
 
 /* ── CONTENTS MAP ── */
 .contents-wrap{padding:1rem 0 6rem;text-align:center}
@@ -291,6 +313,8 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .asset-type{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:5px}
 .asset-grid.compact .asset-thumb{height:150px}
 .asset-grid.wide .asset-thumb{height:210px}
+.email-feature{display:block;width:min(100%,920px);margin:0 auto}
+.email-feature img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow);object-fit:contain}
 
 /* ═══════════════════════════════════════════════════
    INSTAGRAM-STYLE CARD — used for Email, Website,
@@ -386,6 +410,21 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .ig-image-wrap.ig-tall{
   aspect-ratio:4/5;
 }
+.ig-image-wrap.ig-fullpage{
+  aspect-ratio:3/4;
+  background:var(--paper2);
+}
+.ig-image-wrap.ig-fullpage img{
+  object-fit:contain;
+  object-position:top center;
+}
+.ig-card:hover .ig-image-wrap.ig-fullpage img{
+  transform:none;
+}
+#websiteAssets{
+  grid-template-columns:minmax(0,620px);
+  justify-content:center;
+}
 
 /* Action bar */
 .ig-actions{
@@ -438,7 +477,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 /* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
 .counter-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center}
+.counter-main{display:flex;align-items:flex-start;justify-content:center;gap:10px}
 .counter-num{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-0.03em;color:var(--clay-d);line-height:1}
+.counter-side{font-family:var(--sans);font-weight:500;font-size:1.15rem;color:var(--ink3);line-height:1.15;margin-top:.28rem}
 .counter-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:.4rem}
 
 /* ── SOCIAL MEDIA (placeholder swatches kept, real grid uses ig-grid) ── */
@@ -522,10 +563,11 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .tool-logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:10px;color:var(--white);background:var(--ink3)}
 
 /* ── CONTACT ── */
-.contact-single{display:flex;justify-content:center;margin-bottom:2rem}
+.contact-single{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:2rem}
 .contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;max-width:420px;width:100%}
 .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
 .contact-icon{width:46px;height:46px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--clay-d)}
+.contact-card.whatsapp .contact-icon{color:#25D366}
 .contact-label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.2rem}
 .contact-value{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);word-break:break-all}
 .contact-form{margin-top:2.5rem;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.2rem;box-shadow:var(--shadow)}
@@ -568,6 +610,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .counter-strip{grid-template-columns:repeat(3,1fr)}
   .tools-grid{grid-template-columns:repeat(3,1fr)}
   .brands-grid{grid-template-columns:repeat(3,1fr)}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
   .process-step:nth-child(3){border-right:none}
   .process-step:nth-child(4){border-top:1px solid var(--line)}
   .process-step:nth-child(5){border-top:1px solid var(--line)}
@@ -596,6 +639,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center;gap:2rem}
   .hello-text{max-width:100%}
   .hello-tags{justify-content:center}
+  .services-grid{grid-template-columns:1fr;gap:10px}
   .contents-wrap{padding:1rem 0 3.5rem}
   .map-svg-wrap{display:none}
   .map-mobile{display:flex}
@@ -698,11 +742,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     LEO ADAM BALINGIT
   </a>
   <ul class="nav-links">
-    <li><a href="#clients-brands">Clients</a></li>
+    <li><a href="#clients-brands">Clients and Brands</a></li>
     <li><a href="#brands">Logofolio</a></li>
     <li><a href="#graphic-design">Graphic Design</a></li>
-    <li><a href="#social-media">Social</a></li>
-    <li><a href="#content-creation">Video Editing</a></li>
+    <li><a href="#social-media">Social Media</a></li>
+    <li><a href="#content-creation">Content Creation</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="#contact-page">Contact</a></li>
@@ -717,7 +761,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <a href="#brands" class="mlink">Logofolio</a>
   <a href="#graphic-design" class="mlink">Graphic Design</a>
   <a href="#social-media" class="mlink">Social Media</a>
-  <a href="#content-creation" class="mlink">Content Creation / Video Editing</a>
+  <a href="#content-creation" class="mlink">Content Creation</a>
   <a href="#expertise" class="mlink">Areas of Expertise</a>
   <a href="#tools" class="mlink">Tools</a>
   <a href="#contact-page" class="mlink">Contact</a>
@@ -730,13 +774,12 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <svg class="hero-doodle hero-doodle-wave" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 28 Q20 4 38 24 T74 18 T98 26"/></svg>
   <svg class="hero-doodle hero-doodle-circle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="14" stroke-dasharray="3 6"/></svg>
   <div class="hero-eyebrow">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
-    Leo Adam Balingit
+    <img class="hero-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
   </div>
-  <h1 class="hero-title">Portfolio</h1>
-  <p class="hero-sub">Marketing, design, and content built with strong leadership, organisational skills, and marketing acumen — aimed at impactful strategies that hit business goals.</p>
+  <h1 class="hero-title">Leo Adam Balingit </h1>
+  <p class="hero-sub">Creating designs and marketing strategies that help businesses attract, engage, and convert customers</p>
   <div class="hero-roles">
-    <span>Graphic Design</span><span>Social Media Management</span><span>Content Creation</span><span>Marketing Strategy</span>
+    <span>Digital Marketing Specialist</span><span>Graphic Designer</span><span>Social Media Manager</span>
   </div>
   <div class="hero-scroll">Scroll ↓</div>
 </section>
@@ -778,14 +821,47 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
       </div>
       <div class="reveal-right d2">
-        <p class="eyebrow">Hello!</p>
-        <h2 class="hello-title">Nice to meet you.</h2>
-        <p class="hello-text">I'm <strong>Leo Adam Balingit</strong> — with strong leadership, organisational skills, and marketing acumen, I aim to contribute to developing and executing impactful marketing strategies aligned with business goals. Eager to thrive in a fast-paced environment and deliver exceptional results while continuously adapting and communicating effectively.</p>
-        <p class="hello-text" style="margin-top:0.9rem"><strong>Education</strong><br>2025–2026 · Master of Arts in Communication, Major in Communication Management — Polytechnic University of the Philippines<br>2018–2022 · Bachelor of Multimedia Arts, Major in Film — University of Makati</p>
-        <div class="hello-tags">
-          <span>Graphic Design</span><span>Social Media</span><span>Content Creation</span><span>Marketing Strategy</span>
+        <p class=>Hello!</p>
+        <h2 class="hello-title">I'm Leo Adam Balingit.</h2>
+        <p class="hello-text">I'm a <strong>Digital Marketing and Creative Professional</strong> passionate about transforming ideas into impactful brands through strategic marketing, creative design, and compelling digital experiences.</p>
+        <p class="hello-text">With a strong foundation in <strong>leadership, marketing strategy, and visual communication</strong>, I help businesses achieve their goals by creating campaigns that not only look great but also deliver meaningful results. I thrive in fast-paced environments, embrace continuous learning, and enjoy collaborating with teams to turn creative ideas into successful outcomes.</p>
+
+        <h3 class="hello-edu-title">Education</h3>
+        <div class="hello-edu-list">
+        <div class="hello-edu-block">
+          <span class="deg">Master of Arts in Communication</span>
+          <span class="maj">Major in Communication Management</span>
+          <span class="sch">Polytechnic University of the Philippines</span>
+          <span class="yrs">2025 – 2026</span>
+        </div>
+        <div class="hello-edu-block">
+          <span class="deg">Bachelor of Multimedia Arts</span>
+          <span class="maj">Major in Film</span>
+          <span class="sch">University of Makati</span>
+          <span class="yrs">2018 – 2022</span>
+        </div>
         </div>
       </div>
+    </div>
+  </section>
+  <hr class="rule"/>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <p class="eyebrow">What I Offer</p>
+    <h2 class="section-title" style="margin-bottom:2rem">My Services</h2>
+    <div class="services-grid">
+      <div class="service-card reveal d1"><div class="service-emoji">🎨</div><div class="service-name">Graphic Design</div></div>
+      <div class="service-card reveal d2"><div class="service-emoji">📱</div><div class="service-name">Social Media Management</div></div>
+      <div class="service-card reveal d3"><div class="service-emoji">📢</div><div class="service-name">Digital Marketing</div></div>
+      <div class="service-card reveal d4"><div class="service-emoji">✨</div><div class="service-name">Branding &amp; Brand Identity</div></div>
+      <div class="service-card reveal d5"><div class="service-emoji">🌐</div><div class="service-name">Website Design</div></div>
+      <div class="service-card reveal d6"><div class="service-emoji">🎥</div><div class="service-name">Video Editing</div></div>
+      <div class="service-card reveal d1"><div class="service-emoji">📝</div><div class="service-name">Content Creation &amp; Copywriting</div></div>
+      <div class="service-card reveal d2"><div class="service-emoji">📸</div><div class="service-name">Photo Editing &amp; Creative Retouching</div></div>
+      <div class="service-card reveal d3"><div class="service-emoji">📈</div><div class="service-name">Marketing Strategy &amp; Campaign Planning</div></div>
+      <div class="service-card reveal d4"><div class="service-emoji">🎯</div><div class="service-name">Paid Advertising (Meta &amp; Google)</div></div>
+      <div class="service-card reveal d5"><div class="service-emoji">🤝</div><div class="service-name">Influencer Marketing</div></div>
     </div>
   </section>
   <hr class="rule"/>
@@ -911,7 +987,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="brands">
   <p class="band-tag reveal">02 - Identity</p>
   <h2 class="band-title reveal">Logofolio</h2>
-  <p class="band-sub reveal">A selection of marks designed to hold up at app-icon size and on a building face.</p>
+  <p class="band-sub reveal">A logo is often the first impression of a brand, and I believe it should be memorable, meaningful,
+and built to last. In this collection, you'll find logos I've designed to work seamlessly across
+digital platforms, print materials, packaging, and everything in between.</p>
 </div>
 <div class="wrap">
   <section class="section">
@@ -972,7 +1050,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="graphic-design">
   <p class="band-tag reveal">02 — Visual</p>
   <h2 class="band-title reveal">Graphic Design</h2>
-  <p class="band-sub reveal">Brand guidelines, packaging, booth layouts, email designs, website visuals, and flyers.</p>
+  <p class="band-sub reveal">This section showcases some of my favorite design projects from social media creatives and
+brand guidelines to packaging, website visuals, email campaigns, flyers, and event materials. I
+enjoy turning ideas into visuals that not only look great but also communicate a brand's
+message effectively.</p>
 </div>
 <div class="wrap">
   <section class="section">
@@ -1010,7 +1091,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
         <p class="portfolio-note reveal d2">Event booth layouts built for different activation levels and footprints.</p>
       </div>
-      <div class="asset-grid wide" id="boothAssets"></div>
+      <div class="ig-grid" id="boothAssets"></div>
     </div>
 
     <!-- 02d Email Designs — INSTAGRAM STYLE -->
@@ -1022,7 +1103,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
         <p class="portfolio-note reveal d2">Campaign-ready email banners and newsletters designed for clean, quick scanning.</p>
       </div>
-      <div class="ig-grid" id="emailAssets"></div>
+      <a class="email-feature reveal" href="Cle777design.jpg" target="_blank" rel="noopener" aria-label="Open CLE777 email design full view">
+        <img src="Cle777design.jpg" alt="CLE777 email design"/>
+      </a>
     </div>
 
     <!-- 02e Website Design — INSTAGRAM STYLE -->
@@ -1062,18 +1145,24 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <section class="section">
     <div class="counter-strip">
       <div class="counter-card reveal-scale d1">
-        <div class="counter-num" data-target="340">0</div>
-        <div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--clay-d)">K+</div>
+        <div class="counter-main">
+          <div class="counter-num" data-target="340">0</div>
+          <div class="counter-side">k+</div>
+        </div>
         <div class="counter-label">Followers grown across client accounts</div>
       </div>
       <div class="counter-card reveal-scale d2">
-        <div class="counter-num" data-target="8" data-decimal="true">0</div>
-        <div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--clay-d)">%</div>
-        <div class="counter-label">Average engagement rate</div>
+        <div class="counter-main">
+          <div class="counter-num" data-target="500">0</div>
+          <div class="counter-side">+</div>
+        </div>
+        <div class="counter-label">Social media posts created</div>
       </div>
       <div class="counter-card reveal-scale d3">
-        <div class="counter-num" data-target="50">0</div>
-        <div style="font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--clay-d)">+</div>
+        <div class="counter-main">
+          <div class="counter-num" data-target="50">0</div>
+          <div class="counter-side">+</div>
+        </div>
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
@@ -1124,7 +1213,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="content-creation">
   <p class="band-tag reveal">04 — Video</p>
   <h2 class="band-title reveal">Content Creation / Video Editing</h2>
-  <p class="band-sub reveal">Short-form reels and long-form video edits shaped for platform, pacing, and brand clarity.</p>
+  <p class="band-sub reveal">Video is one of the most powerful ways to tell a story. I create and edit videos that are optimized
+for different platforms, whether it's short-form content for Reels and TikTok or longer promotional
+videos that strengthen a brand's identity and message.</p>
 </div>
 <div class="wrap">
   <section class="section video-section">
@@ -1193,7 +1284,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="expertise">
   <p class="band-tag reveal">05 — Skills</p>
   <h2 class="band-title reveal">Areas of Expertise</h2>
-  <p class="band-sub reveal">A broad marketing and creative skill set, built across strategy, execution, and reporting.</p>
+  <p class="band-sub reveal">Over the years, I've developed a diverse skill set that combines creativity with strategy. Whether it's graphic design, branding, digital marketing, content creation, or campaign planning, I enjoy helping businesses bring their ideas to life and achieve meaningful results. I approach every project with a problem-solving mindset — blending analytical thinking with creative execution to deliver outcomes that are both intentional and effective.</p>
 </div>
 <div class="wrap">
   <section class="section">
@@ -1224,7 +1315,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="tools">
   <p class="band-tag reveal">06 — Toolkit</p>
   <h2 class="band-title reveal">Tools</h2>
-  <p class="band-sub reveal">Software and platforms used daily across design, marketing, and project management.</p>
+  <p class="band-sub reveal">These are the tools I rely on every day to design, create, collaborate, and manage projects efficiently. From Adobe Creative Suite and Canva to marketing platforms and project management software, each tool plays a role in delivering high-quality work with consistency and precision. I continuously learn and adapt to new platforms so I can offer the most effective solutions for every client and project.</p>
 </div>
 <div class="wrap">
   <section class="section">
@@ -1235,7 +1326,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <!-- ═══ 07 CONTACT ═══ -->
 <div class="band" id="contact-page">
   <p class="band-tag reveal">07 — Get in Touch</p>
-  <h2 class="band-title reveal">Contact</h2>
+  <h2 class="band-title reveal">Let's Work Together</h2>
   <p class="band-sub reveal">Have a project in mind? Let's talk about how I can help.</p>
 </div>
 <div class="wrap">
@@ -1245,6 +1336,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6L12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
         <div><div class="contact-label">Email</div><div class="contact-value">leoadambalingit@gmail.com</div></div>
       </div>
+      <a class="contact-card whatsapp reveal d2" href="https://wa.me/639673875905" target="_blank" rel="noopener" aria-label="Message on WhatsApp">
+        <div class="contact-icon"><svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 15.98c0 2.29.6 4.53 1.73 6.49L3 29l6.7-1.75a13 13 0 0 0 6.34 1.61h.01c7.17 0 13-5.82 13-12.98C29.05 8.82 23.22 3 16.04 3zm0 23.66h-.01a10.78 10.78 0 0 1-5.49-1.5l-.39-.23-3.97 1.04 1.06-3.87-.25-.4a10.7 10.7 0 0 1-1.64-5.72c0-5.94 4.85-10.77 10.81-10.77 2.89 0 5.6 1.12 7.64 3.16a10.7 10.7 0 0 1 3.17 7.61c0 5.94-4.85 10.78-10.93 10.78zm5.93-8.07c-.32-.16-1.91-.94-2.21-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.59-.96-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.5.14-.66.14-.14.32-.38.48-.57.16-.19.22-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.7s1.17 3.14 1.33 3.36c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.91-.78 2.18-1.54.27-.76.27-1.41.19-1.54-.08-.14-.3-.22-.62-.38z"/></svg></div>
+        <div><div class="contact-label">WhatsApp</div><div class="contact-value">+63 967 387 5905</div></div>
+      </a>
     </div>
     <form class="contact-form reveal d2" id="contactForm">
       <div class="form-row">
@@ -1257,25 +1352,21 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="form-row">
         <div class="form-field full"><label>Message</label><textarea rows="5" id="cf-message" placeholder="Tell me about your project..." required></textarea></div>
       </div>
-      <button class="form-submit" type="submit">Send Message →</button>
+      <button class="form-submit" type="submit">EMAIL ME →</button>
     </form>
   </section>
 </div>
 
-<!-- THANKS -->
-<section class="thanks" id="thanks">
-  <h2 class="thanks-title reveal">Thanks for scrolling!</h2>
-  <p class="thanks-sub reveal d2">If something here sparked an idea for your brand, I'd love to hear about it.</p>
-  <a class="thanks-cta reveal d3" href="mailto:leoadambalingit@gmail.com">Email Me →</a>
-</section>
+
 
 <footer>
-  <div class="foot-name">Leo Adam Balingit</div>
+  <div class="foot-name" style="display:flex;align-items:center;gap:8px;">
+    <img src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" style="width:24px;height:24px;object-fit:contain;"/>
+    Leo Adam Balingit
+  </div>
   <div class="foot-links">
-    <a href="#">Behance</a>
-    <a href="#">Dribbble</a>
-    <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
+    <a href="https://wa.me/639673875905">WhatsApp</a>
+    <a href="http://linkedin.com/in/leo-adam-balingit-0b4428217/tl?originalSubdomain=ph">LinkedIn</a>
   </div>
   <div class="foot-meta">© 2026</div>
 </footer>
@@ -1306,7 +1397,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
   /* ── BUILD INSTAGRAM CARD ── */
   function createIgCard(opts){
-    const { src, name, type, href, username, caption, tall } = opts;
+    const { src, name, type, href, username, caption, tall, fullPage } = opts;
     const card = document.createElement('a');
     card.className = 'ig-card reveal';
     card.href = href || src;
@@ -1330,7 +1421,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
     // Image
     const imgWrap = document.createElement('div');
-    imgWrap.className = 'ig-image-wrap' + (tall ? ' ig-tall' : '');
+    imgWrap.className = 'ig-image-wrap' + (tall ? ' ig-tall' : '') + (fullPage ? ' ig-fullpage' : '');
     const img = document.createElement('img');
     img.src = src;
     img.alt = name;
@@ -1403,7 +1494,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     { id:'brandingAssets', type:'Brand Guidelines', mode:'standard', items:[
       ['BetAlly Brand Guide','Brand Guides/BetAlly Brand Guide.pdf','pdf','betAlly.png'],
       ['OLE777 Brand Guide','Brand Guides/OLE777 Brand Guide.pdf','pdf','ole777.png'],
-      ['Olimpic Brand Guide','Brand Guides/Olimpic Brand Guide.jpg','image']
+      ['Olimpic Brand Guide','olimpic.jpg','image']
     ]},
     { id:'packagingAssets', type:'Package / Merch', mode:'standard', items:[
       ['Butterfly Skin Product Packaging','Product Packaging/Butterfly Skin product packaging.png','image'],
@@ -1421,26 +1512,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       ['BetAlly Merch Set B','Product Packaging/BetAlly/magnific_create-a-highquality-prem_LUodHbaswO.png','image'],
       ['BetAlly Merch Set C','Product Packaging/BetAlly/magnific_create-a-premium-professi_WMlzYWJcXe.png','image']
     ]},
-    { id:'boothAssets', type:'Booth Design', mode:'standard', wide:true, items:[
-      ['Entry Level 2 Mock Up','Booth Designs/Entry Level 2 Mock Up.png','image'],
-      ['Mid Level Mock Up 1','Booth Designs/Mid Level Mock Up 1.png','image'],
-      ['Mid Level Mockup 2','Booth Designs/Mid Level Mockup 2.png','image'],
-      ['Top Level Mock Up 1','Booth Designs/Top Level Mock Up 1.png','image'],
-      ['Top Level Mock Up 2','Booth Designs/Top Level Mock Up 2.png','image']
+    { id:'boothAssets', type:'Booth Design', mode:'instagram', username:'leoadambalingit', items:[
+      ['','Booth Designs/Entry Level 2 Mock Up.png','image'],
+      ['','Booth Designs/Mid Level Mock Up 1.png','image'],
+      ['','Booth Designs/Mid Level Mockup 2.png','image'],
+      ['','Booth Designs/Top Level Mock Up 1.png','image'],
+      ['','Booth Designs/Top Level Mock Up 2.png','image']
     ]},
-    { id:'emailAssets', type:'Email Design', mode:'instagram', tall:true, username:'leoadambalingit', items:[
-      ['Email 1','Email Banners/Email 1.png'],
-      ['Email 2','Email Banners/Email 2.png'],
-      ['Email 3','Email Banners/Email 3.png'],
-      ['Email 4','Email Banners/Email 4.png'],
-      ['Email 5','Email Banners/Email 5.png'],
-      ['Email 6','Email Banners/Email 6.png'],
-      ['Email Newsletter 1','Email News Letters/Email Newsletter 1.png'],
-      ['Email Newsletter 2','Email News Letters/Email Newsletter 2.png'],
-      ['Email Newsletter 3','Email News Letters/Email Newsletter 3.png'],
-      ['Email Newsletter 4','Email News Letters/Email Newsletter 4.png']
-    ]},
-    { id:'websiteAssets', type:'Website Design', mode:'instagram', tall:true, username:'leoadambalingit', items:[
+    { id:'websiteAssets', type:'Website Design', mode:'instagram', fullPage:true, username:'leoadambalingit', items:[
       ['Elementor Homepage','Website Design/Elementor Homepage.png']
     ]},
     { id:'flyerAssets', type:'Flyer', mode:'standard', items:[
@@ -1455,31 +1534,31 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       ['April 24','Social Media Posts/April 24.png'],['April 28','Social Media Posts/April 28.png'],
       ['April 30','Social Media Posts/April 30.png'],['March 3','Social Media Posts/March 3.png'],
       ['March 4','Social Media Posts/March 4.png'],['March 5','Social Media Posts/March 5.png'],
-      ['March 5 Repost','Social Media Posts/March 5 Repost.png'],['March 7','Social Media Posts/March 7.png'],
-      ['March 7 Repost','Social Media Posts/March 7 Repost.png'],['March 10','Social Media Posts/March 10.png'],
-      ['March 10 New','Social Media Posts/March 10 New.png'],['March 12','Social Media Posts/March 12.png'],
-      ['March 12 New','Social Media Posts/March 12 New.png'],['March 14 New','Social Media Posts/March 14 New.png'],
+      ['March 5','Social Media Posts/March 5 Repost.png'],['March 7','Social Media Posts/March 7.png'],
+      ['March 7','Social Media Posts/March 7 Repost.png'],['March 10','Social Media Posts/March 10.png'],
+      ['March 10','Social Media Posts/March 10 New.png'],['March 12','Social Media Posts/March 12.png'],
+      ['March 12','Social Media Posts/March 12 New.png'],['March 14 New','Social Media Posts/March 14 New.png'],
       ['March 17','Social Media Posts/March 17.png'],['March 19','Social Media Posts/March 19.png'],
       ['March 21','Social Media Posts/March 21.png'],['March 24','Social Media Posts/March 24.png'],
       ['March 26','Social Media Posts/March 26.png'],['March 28','Social Media Posts/March 28.png'],
-      ['March 31','Social Media Posts/March 31.png'],['Message 1.2','Social Media Posts/Message 1.2.png'],
-      ['Message 2','Social Media Posts/Message 2.png'],['Message 3','Social Media Posts/Message 3.png'],
-      ['Message 4','Social Media Posts/Message 4.png'],['Message 5','Social Media Posts/Message 5.png'],
-      ['Message 6','Social Media Posts/Message 6.png'],['Message 7','Social Media Posts/Message 7.png'],
-      ['Message 8','Social Media Posts/Message 8.png'],['Message 9','Social Media Posts/Message 9.png'],
-      ['Message 10','Social Media Posts/Message 10.png']
+      ['March 31','Social Media Posts/March 31.png'],['April 10','Social Media Posts/Message 1.2.png'],
+      ['June 2','Social Media Posts/Message 2.png'],['June 3','Social Media Posts/Message 3.png'],
+      ['June 4','Social Media Posts/Message 4.png'],['June 5','Social Media Posts/Message 5.png'],
+      ['July 6','Social Media Posts/Message 6.png'],['July 7','Social Media Posts/Message 7.png'],
+      ['July 8','Social Media Posts/Message 8.png'],['July 9','Social Media Posts/Message 9.png'],
+      ['July 10','Social Media Posts/Message 10.png']
     ]},
     { id:'digitalAdAssets', type:'Digital Ad', mode:'instagram', username:'leoadambalingit', items:[
-      ['1080x1080 TH','Digital Ads/1080X1080 TH.png'],['1080x1920 TH','Digital Ads/1080x1920 TH.png'],
-      ['1200x628 TH','Digital Ads/1200x628 TH.png'],['BetAlly Cindy 1080x1080','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png'],
-      ['BetAlly Cindy 1080x1920','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png'],
-      ['BetAlly Cindy 1200x628','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png'],
-      ['Sales Team Final','Digital Ads/Sales Team Final.png'],['Sales Team','Digital Ads/Sales Team.png'],
-      ['Carousel Design 1 - 1','Digital Ads/Carousel Ads/Design 1/1.png'],['Carousel Design 1 - 2','Digital Ads/Carousel Ads/Design 1/2.png'],
-      ['Carousel Design 1 - 3','Digital Ads/Carousel Ads/Design 1/3.png'],['Carousel Design 1 - 4','Digital Ads/Carousel Ads/Design 1/4.png'],
-      ['Carousel Design 1 - 5','Digital Ads/Carousel Ads/Design 1/5.png'],['Carousel Design 2 - 1','Digital Ads/Carousel Ads/Design 2/1.jpg'],
-      ['Carousel Design 2 - 2','Digital Ads/Carousel Ads/Design 2/2.png'],['Carousel Design 2 - 3','Digital Ads/Carousel Ads/Design 2/3.png'],
-      ['Carousel Design 2 - 4','Digital Ads/Carousel Ads/Design 2/4.png'],['Carousel Design 2 - 5','Digital Ads/Carousel Ads/Design 2/5.png']
+      ['July 11','Digital Ads/1080X1080 TH.png'],['July 12','Digital Ads/1080x1920 TH.png'],
+      ['July 14','Digital Ads/1200x628 TH.png'],['July 18','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png'],
+      ['August 1','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png'],
+      ['August 3','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png'],
+      ['August 4','Digital Ads/Sales Team Final.png'],['August 6','Digital Ads/Sales Team.png'],
+      ['August 7','Digital Ads/Carousel Ads/Design 1/1.png'],['August 9','Digital Ads/Carousel Ads/Design 1/2.png'],
+      ['August 14','Digital Ads/Carousel Ads/Design 1/3.png'],['August 18','Digital Ads/Carousel Ads/Design 1/4.png'],
+      ['August 20','Digital Ads/Carousel Ads/Design 1/5.png'],['August 22','Digital Ads/Carousel Ads/Design 2/1.jpg'],
+      ['September 3','Digital Ads/Carousel Ads/Design 2/2.png'],['September 5','Digital Ads/Carousel Ads/Design 2/3.png'],
+      ['September 8','Digital Ads/Carousel Ads/Design 2/4.png'],['September 16','Digital Ads/Carousel Ads/Design 2/5.png']
     ]}
   ];
 
@@ -1495,7 +1574,8 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
           href: src,
           username: group.username || 'leoadambalingit',
           caption: name,
-          tall: group.tall || false
+          tall: group.tall || false,
+          fullPage: group.fullPage || false
         });
         card.classList.add(revealDelays[i % revealDelays.length]);
         return card;
