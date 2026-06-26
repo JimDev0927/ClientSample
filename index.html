@@ -179,8 +179,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .map-mobile a:hover{background:var(--cream);border-color:var(--clay);color:var(--clay-d)}
 
 /* ═══════════════════════════════
-   BRANDS GRID — updated card style
-   Logo image top + name + tag below
+   BRANDS GRID
 ═══════════════════════════════ */
 .brands-grid{
   display:grid;
@@ -210,7 +209,6 @@ hr.rule{border:none;border-top:1px solid var(--line)}
   border-color:var(--amber);
 }
 
-/* Image area */
 .brand-img-wrap,
 .logo-mark.logo-image{
   width:76px;
@@ -240,10 +238,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 }
 .brand-card:hover .brand-img-wrap img,
 .logo-card:hover .logo-mark.logo-image img{transform:scale(1.06)}
-.brand-img-wrap img.logo-lf{transform:scale(2)}
-.brand-card:hover .brand-img-wrap img.logo-lf{transform:scale(2.12)}
+.logo-mark.logo-image img.logo-lf{transform:scale(1.75)}
+.logo-card:hover .logo-mark.logo-image img.logo-lf{transform:scale(1.86)}
 
-/* Label area */
 .brand-info{
   display:flex;
   flex-direction:column;
@@ -280,6 +277,8 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .portfolio-title{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.7rem);letter-spacing:-0.01em;color:var(--ink);line-height:1}
 .portfolio-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-ink);margin-bottom:.35rem}
 .portfolio-note{font-size:12px;color:var(--ink3);max-width:300px;line-height:1.55}
+
+/* ── STANDARD ASSET GRID (branding, packaging, booth) ── */
 .asset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .asset-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
 .asset-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
@@ -293,14 +292,156 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .asset-grid.compact .asset-thumb{height:150px}
 .asset-grid.wide .asset-thumb{height:210px}
 
+/* ═══════════════════════════════════════════════════
+   INSTAGRAM-STYLE CARD — used for Email, Website,
+   Social Posts, Digital Ads
+═══════════════════════════════════════════════════ */
+.ig-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+/* The outer "phone chrome" wrapper */
+.ig-card{
+  background:#fff;
+  border:1px solid #dbdbdb;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 2px 12px rgba(0,0,0,0.07);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+}
+.ig-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.13);
+}
+
+/* Top bar: logo + username + dots */
+.ig-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 10px;
+  border-bottom:1px solid #f0f0f0;
+  flex-shrink:0;
+}
+.ig-logo{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+}
+.ig-logo svg{
+  width:18px;
+  height:18px;
+}
+.ig-username{
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  color:#111;
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.ig-dots{
+  display:flex;
+  gap:2.5px;
+  flex-shrink:0;
+}
+.ig-dots span{
+  width:3px;
+  height:3px;
+  background:#aaa;
+  border-radius:50%;
+  display:block;
+}
+
+/* Image area */
+.ig-image-wrap{
+  width:100%;
+  aspect-ratio:1/1;
+  background:var(--surface);
+  overflow:hidden;
+  flex-shrink:0;
+  position:relative;
+}
+.ig-image-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.ig-card:hover .ig-image-wrap img{
+  transform:scale(1.04);
+}
+/* Tall variant for email / website designs */
+.ig-image-wrap.ig-tall{
+  aspect-ratio:4/5;
+}
+
+/* Action bar */
+.ig-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:7px 10px 4px;
+  flex-shrink:0;
+}
+.ig-action-left{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  flex:1;
+}
+.ig-action-icon{
+  width:18px;
+  height:18px;
+  color:#262626;
+  flex-shrink:0;
+}
+.ig-action-icon.save{
+  margin-left:auto;
+  color:#262626;
+}
+
+/* Caption / label */
+.ig-caption{
+  padding:3px 10px 9px;
+  flex-shrink:0;
+}
+.ig-caption-user{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;
+  font-weight:700;
+  color:#111;
+}
+.ig-caption-text{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;
+  color:#555;
+  margin-top:1px;
+  line-height:1.4;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
 /* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
 .counter-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center}
 .counter-num{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-0.03em;color:var(--clay-d);line-height:1}
 .counter-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:.4rem}
 
-/* ── SOCIAL MEDIA ── */
-.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+/* ── SOCIAL MEDIA (placeholder swatches kept, real grid uses ig-grid) ── */
 .social-card{aspect-ratio:1;border-radius:12px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;border:1px solid var(--line)}
 .social-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-hover)}
 .social-card .tag{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;opacity:.85}
@@ -326,12 +467,19 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .content-card .c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
 .content-card .c-tags span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;background:var(--paper2);border:1px solid var(--line);padding:3px 9px;border-radius:5px;color:var(--ink2);transition:background .2s,border-color .2s}
 .content-card:hover .c-tags span{background:var(--cream);border-color:var(--lime-d)}
+.video-section{position:relative}
+.video-head{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:2rem;align-items:end;margin-bottom:1.6rem}
+.video-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--lime-ink);margin-bottom:.45rem}
+.video-title{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1;letter-spacing:-.01em;color:var(--ink)}
+.video-copy{font-size:13px;color:var(--ink2);line-height:1.65}
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.video-grid.video-reels{grid-template-columns:repeat(4,1fr)}
 .video-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
 .video-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
 .video-frame{aspect-ratio:9/16;background:var(--surface);overflow:hidden;border-bottom:1px solid var(--line);position:relative}
 .video-frame.video-wide{aspect-ratio:16/9}
 .video-frame video,.video-frame iframe{width:100%;height:100%;border:0;display:block;object-fit:cover}
+.video-pill{position:absolute;top:10px;left:10px;z-index:2;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--white);background:rgba(23,21,16,.72);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:4px 8px;backdrop-filter:blur(8px)}
 .video-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:18px;text-align:center;background:linear-gradient(135deg,var(--surface),var(--cream));color:var(--ink2);font-size:12px;line-height:1.5}
 .video-fallback a{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--clay-d);border:1px solid var(--line);background:var(--white);border-radius:6px;padding:7px 10px}
 .video-frame.video-unavailable video{display:none}
@@ -339,6 +487,11 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .video-info{padding:12px 14px 14px;text-align:left}
 .video-name{font-family:var(--display);font-weight:700;font-size:13px;line-height:1.2;color:var(--ink);overflow-wrap:anywhere}
 .video-type{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+.video-feature{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,1.4fr);gap:18px;align-items:center;margin-top:2rem;padding:1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.video-feature-copy{padding:0 1rem 0 .2rem}
+.video-feature-copy h3{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.5vw,1.9rem);line-height:1.05;color:var(--ink);letter-spacing:-.01em;margin-bottom:.6rem}
+.video-feature-copy p{font-size:13px;color:var(--ink2);line-height:1.7;max-width:360px}
+.video-card.video-card-wide .video-info{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .process-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:2.5rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .process-step{padding:1.2rem 1rem;border-right:1px solid var(--line);background:var(--white);transition:background .25s}
 .process-step:last-child{border-right:none}
@@ -403,10 +556,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 @media(max-width:880px){
   .logo-grid{grid-template-columns:repeat(2,1fr)}
   .asset-grid{grid-template-columns:repeat(2,1fr)}
-  .social-grid{grid-template-columns:repeat(2,1fr)}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
   .strategy-row{grid-template-columns:repeat(2,1fr)}
   .content-grid{grid-template-columns:1fr}
   .video-grid{grid-template-columns:repeat(2,1fr)}
+  .video-grid.video-reels{grid-template-columns:repeat(2,1fr)}
+  .video-head{grid-template-columns:1fr;gap:.75rem}
+  .video-feature{grid-template-columns:1fr}
+  .video-feature-copy{padding-right:0}
   .process-row{grid-template-columns:repeat(3,1fr)}
   .counter-strip{grid-template-columns:repeat(3,1fr)}
   .tools-grid{grid-template-columns:repeat(3,1fr)}
@@ -449,12 +606,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .asset-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .asset-thumb,.asset-grid.compact .asset-thumb,.asset-grid.wide .asset-thumb{height:150px}
+  .ig-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .social-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .strategy-row{grid-template-columns:1fr;gap:10px}
   .counter-strip{grid-template-columns:1fr;gap:10px}
   .content-grid{grid-template-columns:1fr;gap:10px}
   .video-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .video-grid.video-reels{grid-template-columns:repeat(2,1fr);gap:10px}
+  .video-feature{gap:12px;margin-top:1.5rem;padding-top:1.5rem}
   .process-row{grid-template-columns:repeat(2,1fr);border-radius:12px}
   .process-step{border-right:none;border-bottom:1px solid var(--line)}
   .process-step:nth-child(odd){border-right:1px solid var(--line)}
@@ -496,13 +655,15 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .asset-grid{grid-template-columns:1fr;gap:10px}
   .asset-thumb,.asset-grid.compact .asset-thumb,.asset-grid.wide .asset-thumb{height:210px}
   .video-grid{grid-template-columns:1fr;gap:10px}
+  .video-grid.video-reels{grid-template-columns:1fr;gap:10px}
+  .video-card.video-card-wide .video-info{display:block}
   .portfolio-head{align-items:flex-start;gap:.55rem}
   .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .brand-card,.logo-card{min-height:168px;padding:18px 10px 15px}
   .brand-img-wrap,.logo-mark.logo-image{width:68px;height:68px;padding:10px;border-radius:16px}
   .brand-name{font-size:12px}
   .brand-tag{font-size:9px}
-  .social-grid{grid-template-columns:1fr;gap:10px}
+  .ig-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .counter-num{font-size:2.2rem}
   .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px 12px}
   .process-row{grid-template-columns:1fr}
@@ -514,7 +675,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .form-submit{width:100%;justify-content:center}
 }
 
-/* ── Reduced motion ── */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
@@ -538,6 +698,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     LEO ADAM BALINGIT
   </a>
   <ul class="nav-links">
+    <li><a href="#clients-brands">Clients</a></li>
     <li><a href="#brands">Logofolio</a></li>
     <li><a href="#graphic-design">Graphic Design</a></li>
     <li><a href="#social-media">Social</a></li>
@@ -552,6 +713,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#clients-brands" class="mlink">Clients and Brands</a>
   <a href="#brands" class="mlink">Logofolio</a>
   <a href="#graphic-design" class="mlink">Graphic Design</a>
   <a href="#social-media" class="mlink">Social Media</a>
@@ -632,7 +794,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <section class="contents-wrap" id="contents">
     <p class="eyebrow" style="justify-content:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
-
     <div class="contents-map reveal-scale map-svg-wrap">
       <svg class="map-svg" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
         <path class="map-edge" id="e0" d="M400,208 C340,160 220,120 116,86"/>
@@ -655,7 +816,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <a href="#expertise"><g class="map-node" transform="translate(598,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text></g></a>
       </svg>
     </div>
-
     <div class="map-mobile reveal">
       <a href="#brands">Logofolio</a>
       <a href="#graphic-design">Graphic Design</a>
@@ -666,9 +826,90 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 01 LOGOFOLIO ═══ -->
+<!-- ═══ 01 CLIENTS AND BRANDS ═══ -->
+<div class="band" id="clients-brands">
+  <p class="band-tag reveal">01 - Collaborations</p>
+  <h2 class="band-title reveal">Clients and Brands</h2>
+  <p class="band-sub reveal">Brands and client identities I've worked with across design, marketing, and content projects.</p>
+</div>
+<div class="wrap">
+  <section class="section">
+    <div class="logo-grid">
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div>
+        <div class="brand-info"><div class="brand-name">Ascend Experience LLC</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div>
+        <div class="brand-info"><div class="brand-name">AVA Gaming</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div>
+        <div class="brand-info"><div class="brand-name">BetAlly</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div>
+        <div class="brand-info"><div class="brand-name">BolaTV</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP"/></div>
+        <div class="brand-info"><div class="brand-name">HP</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div>
+        <div class="brand-info"><div class="brand-name">Khelo100</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="LF"/></div>
+        <div class="brand-info"><div class="brand-name">LF</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div>
+        <div class="brand-info"><div class="brand-name">LIVEFEST</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div>
+        <div class="brand-info"><div class="brand-name">LNPLAY</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div>
+        <div class="brand-info"><div class="brand-name">Mikiworld</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div>
+        <div class="brand-info"><div class="brand-name">OC Togel</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div>
+        <div class="brand-info"><div class="brand-name">OLE777</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="Olimpic VIP"/></div>
+        <div class="brand-info"><div class="brand-name">Olimpic VIP</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div>
+        <div class="brand-info"><div class="brand-name">One2play</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div>
+        <div class="brand-info"><div class="brand-name">Tailored Canvases</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="Tell My Tale"/></div>
+        <div class="brand-info"><div class="brand-name">Tell My Tale</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div>
+        <div class="brand-info"><div class="brand-name">WonderMe</div><div class="brand-tag">Client Brand</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ 02 LOGOFOLIO ═══ -->
 <div class="band" id="brands">
-  <p class="band-tag reveal">01 — Identity</p>
+  <p class="band-tag reveal">02 - Identity</p>
   <h2 class="band-title reveal">Logofolio</h2>
   <p class="band-sub reveal">A selection of marks designed to hold up at app-icon size and on a building face.</p>
 </div>
@@ -735,6 +976,8 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 </div>
 <div class="wrap">
   <section class="section">
+
+    <!-- 02a Branding — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -746,6 +989,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="asset-grid" id="brandingAssets"></div>
     </div>
 
+    <!-- 02b Packaging — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -757,6 +1001,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="asset-grid" id="packagingAssets"></div>
     </div>
 
+    <!-- 02c Booth — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -768,6 +1013,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="asset-grid wide" id="boothAssets"></div>
     </div>
 
+    <!-- 02d Email Designs — INSTAGRAM STYLE -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -776,9 +1022,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
         <p class="portfolio-note reveal d2">Campaign-ready email banners and newsletters designed for clean, quick scanning.</p>
       </div>
-      <div class="asset-grid wide" id="emailAssets"></div>
+      <div class="ig-grid" id="emailAssets"></div>
     </div>
 
+    <!-- 02e Website Design — INSTAGRAM STYLE -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -787,9 +1034,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
         <p class="portfolio-note reveal d2">Web page visuals and layout design for digital-first presentation.</p>
       </div>
-      <div class="asset-grid wide" id="websiteAssets"></div>
+      <div class="ig-grid" id="websiteAssets"></div>
     </div>
 
+    <!-- 02f Flyers — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -800,6 +1048,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       </div>
       <div class="asset-grid" id="flyerAssets"></div>
     </div>
+
   </section>
 </div>
 
@@ -828,6 +1077,8 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
+
+    <!-- 03a Social Media Posts — INSTAGRAM STYLE -->
     <div class="portfolio-head">
       <div>
         <div class="portfolio-kicker reveal">03a</div>
@@ -835,14 +1086,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       </div>
       <p class="portfolio-note reveal d2">Feed-ready social visuals built for campaigns, announcements, and engagement.</p>
     </div>
-    <div class="asset-grid compact" id="socialPostAssets">
-      <div class="social-card reveal d1" style="background:#5C6E50"><div class="deco" style="width:90px;height:90px;background:#fff;top:-30px;right:-30px"></div><div class="tag" style="color:#fff">Instagram · New Drop</div><div class="cap" style="color:#fff">Spring restock is live</div></div>
-      <div class="social-card reveal d2" style="background:#EFE6CF"><div class="deco" style="width:70px;height:70px;background:#B5481F;bottom:-20px;left:-20px"></div><div class="tag" style="color:#56503F">Facebook · Behind the scenes</div><div class="cap" style="color:#171510">In the studio today</div></div>
-      <div class="social-card reveal d3" style="background:#F1EEE2"><div class="deco" style="width:60px;height:60px;background:#C9810F;top:14px;right:14px"></div><div class="tag" style="color:#56503F">Instagram · Founder note</div><div class="cap" style="color:#171510">Why we started Petal</div></div>
-      <div class="social-card reveal d4" style="background:#B5481F"><div class="deco" style="width:100px;height:100px;background:#fff;bottom:-40px;right:-30px"></div><div class="tag" style="color:#fff">Instagram · Tutorial</div><div class="cap" style="color:#fff">3-step evening ritual</div></div>
-      <div class="social-card reveal d5" style="background:#2E4D6B"><div class="deco" style="width:80px;height:80px;background:#F2A71B;top:-25px;left:-25px"></div><div class="tag" style="color:#D9E2EA">Facebook · Social proof</div><div class="cap" style="color:#fff">"This is my favorite step"</div></div>
-      <div class="social-card reveal d6" style="background:#F2A71B"><div class="deco" style="width:64px;height:64px;background:#171510;bottom:10px;right:10px"></div><div class="tag" style="color:#5B4205">Instagram · Weekly drop</div><div class="cap" style="color:#171510">Five things we loved</div></div>
-    </div>
+    <div class="ig-grid" id="socialPostAssets"></div>
+
+    <!-- 03b Digital Ads — INSTAGRAM STYLE -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div>
@@ -851,7 +1097,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
         <p class="portfolio-note reveal d2">Static ads, story placements, and carousel creatives for paid campaigns.</p>
       </div>
-      <div class="asset-grid" id="digitalAdAssets"></div>
+      <div class="ig-grid" id="digitalAdAssets"></div>
     </div>
 
     <div class="strategy-row">
@@ -881,124 +1127,64 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <p class="band-sub reveal">Short-form reels and long-form video edits shaped for platform, pacing, and brand clarity.</p>
 </div>
 <div class="wrap">
-  <section class="section">
-    <div class="section-head">
-      <h3 class="section-title reveal">Reels &amp; Video Projects</h3>
-      <p class="section-note reveal d2">Brand reels plus a Japan vlog edit hosted on YouTube.</p>
+  <section class="section video-section">
+    <div class="video-head">
+      <div>
+        <div class="video-eyebrow reveal">Selected edits</div>
+        <h3 class="video-title reveal d1">Reels &amp; Video Projects</h3>
+      </div>
+      <p class="video-copy reveal d2">Short-form edits and a long-form vlog sample, arranged as one clean video portfolio section.</p>
     </div>
-    <div class="video-grid">
+    <div class="video-grid video-reels">
       <div class="video-card reveal d1">
         <div class="video-frame">
-          <video src="4th June.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+          <span class="video-pill">Reel</span>
+          <video src="Videos/Wall%20Decors.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
         </div>
-        <div class="video-info">
-          <div class="video-name">WonderMe Reel</div>
-          <div class="video-type">Reel / Video Editing</div>
-        </div>
+        <div class="video-info"><div class="video-name">Wall Decors</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d2">
         <div class="video-frame">
-          <video src="TMT-1014 _ AGL_Faith-avatar-FS _ SC_TPW-insp _ CS_Harel _ ED_Adam _ S-886 _ VO-375 _ 59sec _ VR4 _ Set 1 _ ITR10.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+          <span class="video-pill">Reel</span>
+          <video src="Videos/Portraits.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
         </div>
-        <div class="video-info">
-          <div class="video-name">TellMyTale Reel</div>
-          <div class="video-type">Reel / Video Editing</div>
-        </div>
+        <div class="video-info"><div class="video-name">Portraits</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d3">
         <div class="video-frame">
-          <video src="ART 5486 _ AGL_Legacy&amp;Memory _ SC_ ZharaVSL4 — RootsLegacy _ CS_ Rexie _ ED_Adam _ NN _ S-1549 _ VO-433 _ 48sec _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+          <span class="video-pill">Reel</span>
+          <video src="Videos/Kid%20Books.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
         </div>
-        <div class="video-info">
-          <div class="video-name">Tailored Canvases Reel</div>
-          <div class="video-type">Reel / Video Editing</div>
-        </div>
+        <div class="video-info"><div class="video-name">Kid Books</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d4">
         <div class="video-frame">
-          <video src="Wall Decor/ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+          <span class="video-pill">Reel</span>
+          <video src="Videos/iGaming.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
         </div>
-        <div class="video-info">
-          <div class="video-name">BetAlly Reel</div>
-          <div class="video-type">Reel / Video Editing</div>
-        </div>
-      </div>
-      <div class="video-card reveal d5">
-        <div class="video-frame">
-          <video src="Wall Decor/PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
-        </div>
-        <div class="video-info">
-          <div class="video-name">OLE777 Reel</div>
-          <div class="video-type">Reel / Video Editing</div>
-        </div>
+        <div class="video-info"><div class="video-name">iGaming</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
     </div>
-    <div class="portfolio-block">
-      <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">04b</div>
-          <h3 class="portfolio-title reveal">Wall Decor Videos</h3>
-        </div>
-        <p class="portfolio-note reveal d2">All videos from the Wall Decor folder displayed as playable cards.</p>
+    <div class="video-feature reveal d2">
+      <div class="video-feature-copy">
+        <div class="video-eyebrow">04b &mdash; Long-form edit</div>
+        <h3>Vlog</h3>
+        <p>Long-form YouTube edit displayed as the feature piece below the reel grid.</p>
       </div>
-      <div class="video-grid" id="wallDecorVideos"></div>
-    </div>
-    <div class="portfolio-block">
-      <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">04c</div>
-          <h3 class="portfolio-title reveal">Portrait Wall Decor Videos</h3>
+      <div class="video-card video-card-wide">
+        <div class="video-frame video-wide">
+          <span class="video-pill">YouTube</span>
+          <iframe src="https://www.youtube.com/embed/kvbsp0wM9f0" title="Japan Vlog Part 1" loading="lazy" allowfullscreen></iframe>
         </div>
-        <p class="portfolio-note reveal d2">All videos from the Portrait Wall Decor folder displayed as playable cards.</p>
-      </div>
-      <div class="video-grid" id="portraitWallDecorVideos"></div>
-    </div>
-    <div class="portfolio-block">
-      <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">04d</div>
-          <h3 class="portfolio-title reveal">Japan Vlog Part 1</h3>
-        </div>
-        <p class="portfolio-note reveal d2">Long-form YouTube edit displayed separately below the decor video galleries.</p>
-      </div>
-      <div class="video-grid">
-        <div class="video-card reveal d1">
-          <div class="video-frame video-wide">
-            <iframe src="https://www.youtube.com/embed/kvbsp0wM9f0" title="Japan Vlog Part 1" loading="lazy" allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <div class="video-name">Japan Vlog Part 1</div>
-            <div class="video-type">YouTube / Long-form Edit</div>
-          </div>
-        </div>
+        <div class="video-info"><div class="video-name">Japan Vlog Part 1</div><div class="video-type">YouTube / Long-form Edit</div></div>
       </div>
     </div>
     <div class="process-row reveal">
-      <div class="process-step">
-        <div class="p-num">Step 01</div>
-        <div class="p-title">Plan</div>
-        <div class="p-desc">Concept, references &amp; content direction</div>
-      </div>
-      <div class="process-step">
-        <div class="p-num">Step 02</div>
-        <div class="p-title">Edit</div>
-        <div class="p-desc">Pacing, sequencing &amp; story structure</div>
-      </div>
-      <div class="process-step">
-        <div class="p-num">Step 03</div>
-        <div class="p-title">Enhance</div>
-        <div class="p-desc">Captions, sound, color &amp; motion touches</div>
-      </div>
-      <div class="process-step">
-        <div class="p-num">Step 04</div>
-        <div class="p-title">Export</div>
-        <div class="p-desc">Format for Reels, Shorts, TikTok &amp; YouTube</div>
-      </div>
-      <div class="process-step">
-        <div class="p-num">Step 05</div>
-        <div class="p-title">Review</div>
-        <div class="p-desc">Final polish for brand and platform fit</div>
-      </div>
+      <div class="process-step"><div class="p-num">Step 01</div><div class="p-title">Plan</div><div class="p-desc">Concept, references &amp; content direction</div></div>
+      <div class="process-step"><div class="p-num">Step 02</div><div class="p-title">Edit</div><div class="p-desc">Pacing, sequencing &amp; story structure</div></div>
+      <div class="process-step"><div class="p-num">Step 03</div><div class="p-title">Enhance</div><div class="p-desc">Captions, sound, color &amp; motion touches</div></div>
+      <div class="process-step"><div class="p-num">Step 04</div><div class="p-title">Export</div><div class="p-desc">Format for Reels, Shorts, TikTok &amp; YouTube</div></div>
+      <div class="process-step"><div class="p-num">Step 05</div><div class="p-title">Review</div><div class="p-desc">Final polish for brand and platform fit</div></div>
     </div>
   </section>
 </div>
@@ -1097,7 +1283,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <script>
 (function(){
 
-  /* CONTACT FORM → MAILTO */
+  /* ── CONTACT FORM → MAILTO ── */
   const contactForm = document.getElementById('contactForm');
   if(contactForm){
     contactForm.addEventListener('submit', function(e){
@@ -1111,94 +1297,76 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* TOOLS */
-  const portfolioGroups = [
-    { id:'brandingAssets', type:'Brand Guidelines', items:[
-      ['BetAlly Brand Guide','Brand Guides/BetAlly Brand Guide.pdf','pdf'],
-      ['OLE777 Brand Guide','Brand Guides/OLE777 Brand Guide.pdf','pdf'],
-      ['Olimpic Brand Guide','Brand Guides/Olimpic Brand Guide.jpg','image']
-    ]},
-    { id:'packagingAssets', type:'Package / Merch', items:[
-      ['Butterfly Skin Product Packaging','Product Packaging/Butterfly Skin product packaging.png','image'],
-      ['Cup & Go Product Packaging','Product Packaging/Cup & Go product packaging.png','image'],
-      ['Eleve Wellness Product Packaging','Product Packaging/Eleve Wellness product packaging.png','image'],
-      ['Fork Product Packaging','Product Packaging/fork product packaging.png','image'],
-      ['Nature Cosmetic','Product Packaging/nature cosmetic.png','image'],
-      ['Unwind Product Packaging','Product Packaging/Unwind product packaging.png','image'],
-      ['Veraluxe Product Packaging','Product Packaging/veraluxe product packaging.png','image'],
-      ['BetAlly All Giveaways','Product Packaging/BetAlly/BetAlly All Giveaways.png','image'],
-      ['BetAlly Shirt 1','Product Packaging/BetAlly/BetAlly Shirt 1.jpg','image'],
-      ['BetAlly Shirt 2','Product Packaging/BetAlly/BetAlly Shirt 2.jpg','image'],
-      ['BetAlly Shirt 3','Product Packaging/BetAlly/BetAlly Shirt 3.jpg','image'],
-      ['BetAlly Cap Mockup','Product Packaging/BetAlly/magnific_change-the-color-of-cap-t_CHza1OMEEy.png','image'],
-      ['BetAlly Product Mockup','Product Packaging/BetAlly/magnific_create-a-highquality-prem_LUodHbaswO.png','image'],
-      ['BetAlly Merch Mockup','Product Packaging/BetAlly/magnific_create-a-premium-professi_WMlzYWJcXe.png','image']
-    ]},
-    { id:'boothAssets', type:'Booth Design', items:[
-      ['Entry Level 2 Mock Up','Booth Designs/Entry Level 2 Mock Up.png','image'],
-      ['Mid Level Mock Up 1','Booth Designs/Mid Level Mock Up 1.png','image'],
-      ['Mid Level Mockup 2','Booth Designs/Mid Level Mockup 2.png','image'],
-      ['Top Level Mock Up 1','Booth Designs/Top Level Mock Up 1.png','image'],
-      ['Top Level Mock Up 2','Booth Designs/Top Level Mock Up 2.png','image']
-    ]},
-    { id:'emailAssets', type:'Email Design', items:[
-      ['Email 1','Email Banners/Email 1.png','image'],
-      ['Email 2','Email Banners/Email 2.png','image'],
-      ['Email 3','Email Banners/Email 3.png','image'],
-      ['Email 4','Email Banners/Email 4.png','image'],
-      ['Email 5','Email Banners/Email 5.png','image'],
-      ['Email 6','Email Banners/Email 6.png','image'],
-      ['Email Newsletter 1','Email News Letters/Email Newsletter 1.png','image'],
-      ['Email Newsletter 2','Email News Letters/Email Newsletter 2.png','image'],
-      ['Email Newsletter 3','Email News Letters/Email Newsletter 3.png','image'],
-      ['Email Newsletter 4','Email News Letters/Email Newsletter 4.png','image']
-    ]},
-    { id:'websiteAssets', type:'Website Design', items:[
-      ['Elementor Homepage','Website Design/Elementor Homepage.png','image']
-    ]},
-    { id:'flyerAssets', type:'Flyer', items:[
-      ['BetAlly Flyer 1','Flyers/BetAlly Flyer 1.png','image'],
-      ['BetAlly Flyer 2','Flyers/BetAlly Flyer 2.png','image']
-    ]},
-    { id:'socialPostAssets', type:'Social Media Post', items:[
-      ['April 1','Social Media Posts/April 1.png','image'],['April 3','Social Media Posts/April 3.png','image'],
-      ['April 8','Social Media Posts/April 8.png','image'],['April 10','Social Media Posts/April 10.png','image'],
-      ['April 14','Social Media Posts/April 14.png','image'],['April 16','Social Media Posts/April 16.png','image'],
-      ['April 18','Social Media Posts/April 18.png','image'],['April 22','Social Media Posts/April 22.png','image'],
-      ['April 24','Social Media Posts/April 24.png','image'],['April 28','Social Media Posts/April 28.png','image'],
-      ['April 30','Social Media Posts/April 30.png','image'],['March 3','Social Media Posts/March 3.png','image'],
-      ['March 4','Social Media Posts/March 4.png','image'],['March 5','Social Media Posts/March 5.png','image'],
-      ['March 5 Repost','Social Media Posts/March 5 Repost.png','image'],['March 7','Social Media Posts/March 7.png','image'],
-      ['March 7 Repost','Social Media Posts/March 7 Repost.png','image'],['March 10','Social Media Posts/March 10.png','image'],
-      ['March 10 New','Social Media Posts/March 10 New.png','image'],['March 12','Social Media Posts/March 12.png','image'],
-      ['March 12 New','Social Media Posts/March 12 New.png','image'],['March 14 New','Social Media Posts/March 14 New.png','image'],
-      ['March 17','Social Media Posts/March 17.png','image'],['March 19','Social Media Posts/March 19.png','image'],
-      ['March 21','Social Media Posts/March 21.png','image'],['March 24','Social Media Posts/March 24.png','image'],
-      ['March 26','Social Media Posts/March 26.png','image'],['March 28','Social Media Posts/March 28.png','image'],
-      ['March 31','Social Media Posts/March 31.png','image'],['Message 1.2','Social Media Posts/Message 1.2.png','image'],
-      ['Message 2','Social Media Posts/Message 2.png','image'],['Message 3','Social Media Posts/Message 3.png','image'],
-      ['Message 4','Social Media Posts/Message 4.png','image'],['Message 5','Social Media Posts/Message 5.png','image'],
-      ['Message 6','Social Media Posts/Message 6.png','image'],['Message 7','Social Media Posts/Message 7.png','image'],
-      ['Message 8','Social Media Posts/Message 8.png','image'],['Message 9','Social Media Posts/Message 9.png','image'],
-      ['Message 10','Social Media Posts/Message 10.png','image']
-    ]},
-    { id:'digitalAdAssets', type:'Digital Ad', items:[
-      ['1080x1080 TH','Digital Ads/1080X1080 TH.png','image'],['1080x1920 TH','Digital Ads/1080x1920 TH.png','image'],
-      ['1200x628 TH','Digital Ads/1200x628 TH.png','image'],['BetAlly Cindy 1080x1080','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png','image'],
-      ['BetAlly Cindy 1080x1920','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png','image'],
-      ['BetAlly Cindy 1200x628','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png','image'],
-      ['Sales Team Final','Digital Ads/Sales Team Final.png','image'],['Sales Team','Digital Ads/Sales Team.png','image'],
-      ['Carousel Design 1 - 1','Digital Ads/Carousel Ads/Design 1/1.png','image'],['Carousel Design 1 - 2','Digital Ads/Carousel Ads/Design 1/2.png','image'],
-      ['Carousel Design 1 - 3','Digital Ads/Carousel Ads/Design 1/3.png','image'],['Carousel Design 1 - 4','Digital Ads/Carousel Ads/Design 1/4.png','image'],
-      ['Carousel Design 1 - 5','Digital Ads/Carousel Ads/Design 1/5.png','image'],['Carousel Design 2 - 1','Digital Ads/Carousel Ads/Design 2/1.jpg','image'],
-      ['Carousel Design 2 - 2','Digital Ads/Carousel Ads/Design 2/2.png','image'],['Carousel Design 2 - 3','Digital Ads/Carousel Ads/Design 2/3.png','image'],
-      ['Carousel Design 2 - 4','Digital Ads/Carousel Ads/Design 2/4.png','image'],['Carousel Design 2 - 5','Digital Ads/Carousel Ads/Design 2/5.png','image']
-    ]}
-  ];
+  /* ── INSTAGRAM CARD SVG ICONS ── */
+  const IG_LOGO_SVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#262626" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="#262626" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="#262626"/></svg>`;
+  const HEART_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  const COMMENT_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+  const SEND_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+  const SAVE_SVG = `<svg class="ig-action-icon save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
 
+  /* ── BUILD INSTAGRAM CARD ── */
+  function createIgCard(opts){
+    const { src, name, type, href, username, caption, tall } = opts;
+    const card = document.createElement('a');
+    card.className = 'ig-card reveal';
+    card.href = href || src;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.setAttribute('aria-label', `Open ${name}`);
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'ig-header';
+    const logoWrap = document.createElement('div');
+    logoWrap.className = 'ig-logo';
+    logoWrap.innerHTML = IG_LOGO_SVG;
+    const uname = document.createElement('span');
+    uname.className = 'ig-username';
+    uname.textContent = username || 'leoadambalingit';
+    const dots = document.createElement('div');
+    dots.className = 'ig-dots';
+    dots.innerHTML = '<span></span><span></span><span></span>';
+    header.append(logoWrap, uname, dots);
+
+    // Image
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'ig-image-wrap' + (tall ? ' ig-tall' : '');
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = name;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    imgWrap.appendChild(img);
+
+    // Actions
+    const actions = document.createElement('div');
+    actions.className = 'ig-actions';
+    const left = document.createElement('div');
+    left.className = 'ig-action-left';
+    left.innerHTML = HEART_SVG + COMMENT_SVG + SEND_SVG;
+    actions.append(left);
+    actions.innerHTML += SAVE_SVG;
+
+    // Caption
+    const cap = document.createElement('div');
+    cap.className = 'ig-caption';
+    const capUser = document.createElement('span');
+    capUser.className = 'ig-caption-user';
+    capUser.textContent = username || 'leoadambalingit';
+    const capText = document.createElement('span');
+    capText.className = 'ig-caption-text';
+    capText.textContent = ' ' + (caption || name);
+    cap.append(capUser, capText);
+
+    card.append(header, imgWrap, actions, cap);
+    return card;
+  }
+
+  /* ── STANDARD ASSET CARD (unchanged) ── */
   const revealDelays = ['d1','d2','d3','d4','d5','d6'];
+
   function createAssetCard(item, type, index){
-    const [name, src, kind] = item;
+    const [name, src, kind, placeholder] = item;
     const card = document.createElement('a');
     card.className = `asset-card reveal ${revealDelays[index % revealDelays.length]}`;
     card.href = src;
@@ -1207,11 +1375,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     card.setAttribute('aria-label', `Open ${name}`);
     const thumb = document.createElement('div');
     thumb.className = kind === 'pdf' ? 'asset-thumb asset-doc' : 'asset-thumb';
-    if(kind === 'pdf'){
+    if(kind === 'pdf' && !placeholder){
       thumb.textContent = 'PDF';
-    }else{
+    } else {
       const img = document.createElement('img');
-      img.src = src;
+      img.src = placeholder || src;
       img.alt = name;
       img.loading = 'lazy';
       img.decoding = 'async';
@@ -1229,151 +1397,116 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     card.append(thumb, info);
     return card;
   }
-  portfolioGroups.forEach(group => {
-    const grid = document.getElementById(group.id);
-    if(grid) grid.replaceChildren(...group.items.map((item, index) => createAssetCard(item, group.type, index)));
-  });
 
-  const videoGroups = [
-    { id:'wallDecorVideos', type:'Wall Decor Video', folder:'Wall Decor', items:[
-      "ART 5486 _ AGL_Legacy&Memory _ SC_ ZharaVSL4 — RootsLegacy _ CS_ Rexie _ ED_Adam _ NN _ S-1549 _ VO-433 _ 48sec _ VR1.mp4",
-      "ART 6221 _ AGL_Atmosphere Transformation _ SC_ SPHomeopt-3 _ CS_ Soliva _ ED_Adam _ NN _ S-1505 _ VO-22 _ 50sec _ VR1.mp4",
-      "ART 6221 _ AGL_Skeptic-to-Believer  _ SC_ Shortopt-3 _ CS_ Soliva _ ED_Adam _ NN _ S-1503 _ NO-VO _ 15sec _ VR1.mp4",
-      "ART5612 _ AGL_  _ SC_NotJustWallArt _ CS_Soliva _ ED_Adam _ NN _ S-1466 _ NO-VO _ 15sec _  VR2.mp4",
-      "ART5658 _ AGL_Gifting _ SC_ 60sec-short-opt1 _ CS_Soliva _ ED_Adam _ NN _ S-1492 _ VO-411 _ 31sec _  VR1.mp4",
-      "ART5658 _ AGL_Gifting _ SC_ 60sec-short-opt3 _ CS_Soliva _ ED_Adam _ NN _ S-1493 _ VO-411 _ 32sec _  VR1.mp4",
-      "ART5658 _ SC_POV-Mothersday _ CS_Soliva _ ED_Adam _ NN _ S-1464 _ NO-VO _ 15sec _  VR2.mp4",
-      "ART6156 _ SC_BarInspo-v2-NL _ CS_Soliva _ ED_Adam _ NN _ S-1478 _ NO-VO _ 15sec _  VR2.mp4",
-      "ART6156 _ SC_MakeSensev2 _ CS_Soliva _ ED_Adam _ NN _ S-1479 _ NO-VO _ 15sec _  VR2 .mp4",
-      "ART6156 _ SC_POV-Mothersday _ CS_Soliva _ ED_Adam _ NN _ S-1471_ NO-VO _ 15sec _  VR2.mp4",
-      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR1.mp4",
-      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR2.mp4",
-      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR3.mp4",
-      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR4.mp4",
-      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR5.mp4",
-      "ART6902 _ Short Videos _ CS_Bryan _ ED_Adam _ VR1.mp4",
-      "ART6961 _ ShortVideos _ CS_Bryan _ ED_Adam _ VR1.mp4",
-      "NON4651 _ AGL_SmartBuyer _ SC_FlyHugzDirect-opt4651 _ CS_Rexie _ ED_Adam _ NN _ S-1502 _ VO- 22 _ 65sec _ VR1.mp4",
-      "NON4651 _ AGL_SoulReset _ SC_LateNotice-opt4651 _ CS_Rexie _ ED_Adam _ NN _ S-1501 _ VO- 716 _ 67sec _ VR1.mp4",
-      "PAS2777 _ AGL_ Gifting _ SC_Short-opt3 _ CS_Soliva _ ED_Adam _ NN _ S-1499 _ NO-VO _ 15sec _  VR1.mp4",
-      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR1.mp4",
-      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR2.mp4",
-      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR3.mp4",
-      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR4.mp4",
-      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR5.mp4"
+  /* ── DATA ── */
+  const portfolioGroups = [
+    { id:'brandingAssets', type:'Brand Guidelines', mode:'standard', items:[
+      ['BetAlly Brand Guide','Brand Guides/BetAlly Brand Guide.pdf','pdf','betAlly.png'],
+      ['OLE777 Brand Guide','Brand Guides/OLE777 Brand Guide.pdf','pdf','ole777.png'],
+      ['Olimpic Brand Guide','Brand Guides/Olimpic Brand Guide.jpg','image']
     ]},
-    { id:'portraitWallDecorVideos', type:'Portrait Wall Decor Video', folder:'Portrait Wall Decor', items:[
-      "General Collection _ SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_SND _ S- 1054_ VO-70 _ 15sec _ SET5_ITR1.mp4",
-      "General Collection _ SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_SND _ S- 1054_ VO-70 _ 15sec _ SET5_ITR7.mp4",
-      "INB823_BB-1001 _ AGL_Gift Reveal _ SC_INB823_BB-1001 _ Christa Somers - christasbliss _ CS_Inbal _ ED_Adam _ NN _ S-439 _ NO-VO _ 37sec _ VR1.mp4",
-      "INB823_BB-1001 _ AGL_Gift Reveal _ SC_INB823_BB-1001 _ ShortVersion _ CS_Inbal _ ED_Adam _ NN _ S-1059 _ NO-VO _ 20sec _ VR2.mp4",
-      "INB828_BB-1001 _ AGL_Gift Reveal _ SC_INB828_BB-1001 _ Khushi - khussshhiiee2 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-198 _ 39sec _ VR1.mp4",
-      "INB828_BB-1001 _ AGL_Gift Reveal _ SC_INB828_BB-1001 _ Khushi - khussshhiiee2 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-296 _ 39sec _ VR2.mp4",
-      "INB830_BB-1001 _ AGL_Gift Reveal _ SC_INB830_BB-1001 _ Khushi - khussshhiieee4 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-296 _ 31sec _ VR1.mp4",
-      "INB831_BB-1001 _ AGL_Gift Reveal _ SC_INB831_BB-1001 _ Khushi - khussshhiieee5 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1097 _ 28sec _ VR1.mp4",
-      "INB832_BB-1002 _ AGL_Gift Reveal _ SC_INB832_BB-1002 _ Gabriela - monday__mrning _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-484 _ 30sec _ VR1.mp4",
-      "INB836_WMB-1367 _ AGL_Gift Reveal _ SC_INB836_WMB-1367 _ Alexis - alexisfreytiz _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-28 _ 20sec _ VR1.mp4",
-      "INB837_WMB-1367 _ AGL_Gift Reveal _ SC_INB837_WMB-1367 _ Alexis - alexisfreytiz1 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-28 _ 20sec _ VR1.mp4",
-      "INB839_WMB-1367 _ AGL_Gift Reveal _ SC_INB839_WMB-1367 _ Alexis - alexisfreytiz3 _ CS_Inbal _ ED_Adam _  NN _ VO-03 _ S-713 _ 39sec _ VR1 .mp4",
-      "INB858 _ AGL_UnboxingAndDisplay _ SC_INB858_ The Majesty’s Bouquet1 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-01 _ 19sec _ VR1.mp4",
-      "INB859 _ AGL_UnboxingAndDisplay _ SC_INB859_ The Majesty’s Bouquet2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-07 _ 20sec _ VR1.mp4",
-      "INB863 _ AGL_UnboxingAndDisplay _ SC_INB863_The Frost Majesty2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1128 _ 21sec _ VR1.mp4",
-      "INB863 _ AGL_UnboxingAndDisplay _ SC_INB863_The Frost Majesty2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1128 _ 21sec _ VR2.mp4",
-      "Myth & fantasy-angle_WF-avatar_CG-script_the-discovery-dinoadventurer-insp_Loverse-STR_Rexie-ED_Adam-VO-370-S-1185-19secs-VR1.mp4",
-      "SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_HK _ S-378_ VO-70 _ 15sec _ SET2_ITR12 _ SET6 _ ITR1.mp4",
-      "SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_HK _ S-378_ VO-70 _ 15sec _ SET2_ITR12 _ SET6 _ ITR10.mp4",
-      "Unicorn Collection-angle_CC-avatar_DG-script_grandma-confidence-pinkunicorn-insp_Keesley-STR_Rexie-ED_Adam-S_01-VO_249-62secs-VR1.mp4",
-      "WM-1011-angle_Not A Toy-avatar_The Proud Grandma-script_You know that feeling-insp_PetLab-STR_Inbal-ED_Adam-VO_357-S-1145-39secs-VR2.mp4",
-      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-NO-VO-S-1151-20secs-VR10.mp4",
-      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-NO-VO-S-1151-24secs-VR11.mp4",
-      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-VO-357-S-439-27secs-VR1.mp4"
+    { id:'packagingAssets', type:'Package / Merch', mode:'standard', items:[
+      ['Butterfly Skin Product Packaging','Product Packaging/Butterfly Skin product packaging.png','image'],
+      ['Cup & Go Product Packaging','Product Packaging/Cup & Go product packaging.png','image'],
+      ['Eleve Wellness Product Packaging','Product Packaging/Eleve Wellness product packaging.png','image'],
+      ['Fork Product Packaging','Product Packaging/fork product packaging.png','image'],
+      ['Nature Cosmetic','Product Packaging/nature cosmetic.png','image'],
+      ['Unwind Product Packaging','Product Packaging/Unwind product packaging.png','image'],
+      ['Veraluxe Product Packaging','Product Packaging/veraluxe product packaging.png','image'],
+      ['BetAlly All Giveaways','Product Packaging/BetAlly/BetAlly All Giveaways.png','image'],
+      ['BetAlly Shirt 1','Product Packaging/BetAlly/BetAlly Shirt 1.jpg','image'],
+      ['BetAlly Shirt 2','Product Packaging/BetAlly/BetAlly Shirt 2.jpg','image'],
+      ['BetAlly Shirt 3','Product Packaging/BetAlly/BetAlly Shirt 3.jpg','image'],
+      ['BetAlly Merch Set A','Product Packaging/BetAlly/magnific_change-the-color-of-cap-t_CHza1OMEEy.png','image'],
+      ['BetAlly Merch Set B','Product Packaging/BetAlly/magnific_create-a-highquality-prem_LUodHbaswO.png','image'],
+      ['BetAlly Merch Set C','Product Packaging/BetAlly/magnific_create-a-premium-professi_WMlzYWJcXe.png','image']
+    ]},
+    { id:'boothAssets', type:'Booth Design', mode:'standard', wide:true, items:[
+      ['Entry Level 2 Mock Up','Booth Designs/Entry Level 2 Mock Up.png','image'],
+      ['Mid Level Mock Up 1','Booth Designs/Mid Level Mock Up 1.png','image'],
+      ['Mid Level Mockup 2','Booth Designs/Mid Level Mockup 2.png','image'],
+      ['Top Level Mock Up 1','Booth Designs/Top Level Mock Up 1.png','image'],
+      ['Top Level Mock Up 2','Booth Designs/Top Level Mock Up 2.png','image']
+    ]},
+    { id:'emailAssets', type:'Email Design', mode:'instagram', tall:true, username:'leoadambalingit', items:[
+      ['Email 1','Email Banners/Email 1.png'],
+      ['Email 2','Email Banners/Email 2.png'],
+      ['Email 3','Email Banners/Email 3.png'],
+      ['Email 4','Email Banners/Email 4.png'],
+      ['Email 5','Email Banners/Email 5.png'],
+      ['Email 6','Email Banners/Email 6.png'],
+      ['Email Newsletter 1','Email News Letters/Email Newsletter 1.png'],
+      ['Email Newsletter 2','Email News Letters/Email Newsletter 2.png'],
+      ['Email Newsletter 3','Email News Letters/Email Newsletter 3.png'],
+      ['Email Newsletter 4','Email News Letters/Email Newsletter 4.png']
+    ]},
+    { id:'websiteAssets', type:'Website Design', mode:'instagram', tall:true, username:'leoadambalingit', items:[
+      ['Elementor Homepage','Website Design/Elementor Homepage.png']
+    ]},
+    { id:'flyerAssets', type:'Flyer', mode:'standard', items:[
+      ['BetAlly Flyer 1','Flyers/BetAlly Flyer 1.png','image'],
+      ['BetAlly Flyer 2','Flyers/BetAlly Flyer 2.png','image']
+    ]},
+    { id:'socialPostAssets', type:'Social Media Post', mode:'instagram', username:'leoadambalingit', items:[
+      ['April 1','Social Media Posts/April 1.png'],['April 3','Social Media Posts/April 3.png'],
+      ['April 8','Social Media Posts/April 8.png'],['April 10','Social Media Posts/April 10.png'],
+      ['April 14','Social Media Posts/April 14.png'],['April 16','Social Media Posts/April 16.png'],
+      ['April 18','Social Media Posts/April 18.png'],['April 22','Social Media Posts/April 22.png'],
+      ['April 24','Social Media Posts/April 24.png'],['April 28','Social Media Posts/April 28.png'],
+      ['April 30','Social Media Posts/April 30.png'],['March 3','Social Media Posts/March 3.png'],
+      ['March 4','Social Media Posts/March 4.png'],['March 5','Social Media Posts/March 5.png'],
+      ['March 5 Repost','Social Media Posts/March 5 Repost.png'],['March 7','Social Media Posts/March 7.png'],
+      ['March 7 Repost','Social Media Posts/March 7 Repost.png'],['March 10','Social Media Posts/March 10.png'],
+      ['March 10 New','Social Media Posts/March 10 New.png'],['March 12','Social Media Posts/March 12.png'],
+      ['March 12 New','Social Media Posts/March 12 New.png'],['March 14 New','Social Media Posts/March 14 New.png'],
+      ['March 17','Social Media Posts/March 17.png'],['March 19','Social Media Posts/March 19.png'],
+      ['March 21','Social Media Posts/March 21.png'],['March 24','Social Media Posts/March 24.png'],
+      ['March 26','Social Media Posts/March 26.png'],['March 28','Social Media Posts/March 28.png'],
+      ['March 31','Social Media Posts/March 31.png'],['Message 1.2','Social Media Posts/Message 1.2.png'],
+      ['Message 2','Social Media Posts/Message 2.png'],['Message 3','Social Media Posts/Message 3.png'],
+      ['Message 4','Social Media Posts/Message 4.png'],['Message 5','Social Media Posts/Message 5.png'],
+      ['Message 6','Social Media Posts/Message 6.png'],['Message 7','Social Media Posts/Message 7.png'],
+      ['Message 8','Social Media Posts/Message 8.png'],['Message 9','Social Media Posts/Message 9.png'],
+      ['Message 10','Social Media Posts/Message 10.png']
+    ]},
+    { id:'digitalAdAssets', type:'Digital Ad', mode:'instagram', username:'leoadambalingit', items:[
+      ['1080x1080 TH','Digital Ads/1080X1080 TH.png'],['1080x1920 TH','Digital Ads/1080x1920 TH.png'],
+      ['1200x628 TH','Digital Ads/1200x628 TH.png'],['BetAlly Cindy 1080x1080','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png'],
+      ['BetAlly Cindy 1080x1920','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png'],
+      ['BetAlly Cindy 1200x628','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png'],
+      ['Sales Team Final','Digital Ads/Sales Team Final.png'],['Sales Team','Digital Ads/Sales Team.png'],
+      ['Carousel Design 1 - 1','Digital Ads/Carousel Ads/Design 1/1.png'],['Carousel Design 1 - 2','Digital Ads/Carousel Ads/Design 1/2.png'],
+      ['Carousel Design 1 - 3','Digital Ads/Carousel Ads/Design 1/3.png'],['Carousel Design 1 - 4','Digital Ads/Carousel Ads/Design 1/4.png'],
+      ['Carousel Design 1 - 5','Digital Ads/Carousel Ads/Design 1/5.png'],['Carousel Design 2 - 1','Digital Ads/Carousel Ads/Design 2/1.jpg'],
+      ['Carousel Design 2 - 2','Digital Ads/Carousel Ads/Design 2/2.png'],['Carousel Design 2 - 3','Digital Ads/Carousel Ads/Design 2/3.png'],
+      ['Carousel Design 2 - 4','Digital Ads/Carousel Ads/Design 2/4.png'],['Carousel Design 2 - 5','Digital Ads/Carousel Ads/Design 2/5.png']
     ]}
   ];
 
-  function videoTitle(filename){
-    return filename.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
-  }
-
-  function h264VideoFile(filename){
-    return filename.replace(/\.mp4$/i, '.h264.mp4');
-  }
-
-  function h264VideoSrc(src){
-    const timeHash = src.includes('#') ? src.slice(src.indexOf('#')) : '';
-    const cleanSrc = src.replace(/#.*$/, '');
-    return cleanSrc.replace(/\.mp4$/i, '.h264.mp4') + timeHash;
-  }
-
-  function addVideoFallback(video, originalSrc){
-    const frame = video.closest('.video-frame');
-    if(!frame || frame.querySelector('.video-fallback')) return;
-    const fallback = document.createElement('div');
-    fallback.className = 'video-fallback';
-    const message = document.createElement('span');
-    message.textContent = 'This browser cannot play this video.';
-    const link = document.createElement('a');
-    link.href = originalSrc.replace(/#.*$/, '');
-    link.textContent = 'Open original';
-    link.target = '_blank';
-    link.rel = 'noopener';
-    fallback.append(message, link);
-    frame.appendChild(fallback);
-  }
-
-  function prepareVideo(video){
-    const originalSrc = video.getAttribute('src') || '';
-    if(!originalSrc || originalSrc.includes('.h264.mp4')) return;
-    video.dataset.originalSrc = originalSrc;
-    video.src = h264VideoSrc(originalSrc);
-    addVideoFallback(video, originalSrc);
-    video.addEventListener('error', () => {
-      const frame = video.closest('.video-frame');
-      if(frame) frame.classList.add('video-unavailable');
-    });
-  }
-
-  function createVideoCard(folder, filename, type, index){
-    const card = document.createElement('div');
-    card.className = `video-card reveal ${revealDelays[index % revealDelays.length]}`;
-    const frame = document.createElement('div');
-    frame.className = 'video-frame';
-    const video = document.createElement('video');
-    video.src = `${folder}/${h264VideoFile(filename)}#t=0.1`;
-    video.dataset.originalSrc = `${folder}/${filename}#t=0.1`;
-    video.controls = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.preload = 'auto';
-    frame.appendChild(video);
-    addVideoFallback(video, video.dataset.originalSrc);
-    video.addEventListener('error', () => frame.classList.add('video-unavailable'));
-    const info = document.createElement('div');
-    info.className = 'video-info';
-    const title = document.createElement('div');
-    title.className = 'video-name';
-    title.textContent = videoTitle(filename);
-    const label = document.createElement('div');
-    label.className = 'video-type';
-    label.textContent = type;
-    info.append(title, label);
-    card.append(frame, info);
-    return card;
-  }
-
-  videoGroups.forEach(group => {
+  portfolioGroups.forEach(group => {
     const grid = document.getElementById(group.id);
-    if(grid) grid.replaceChildren(...group.items.map((filename, index) => createVideoCard(group.folder, filename, group.type, index)));
+    if(!grid) return;
+    if(group.mode === 'instagram'){
+      const cards = group.items.map((item, i) => {
+        const [name, src] = item;
+        const card = createIgCard({
+          src, name,
+          type: group.type,
+          href: src,
+          username: group.username || 'leoadambalingit',
+          caption: name,
+          tall: group.tall || false
+        });
+        card.classList.add(revealDelays[i % revealDelays.length]);
+        return card;
+      });
+      grid.replaceChildren(...cards);
+    } else {
+      grid.replaceChildren(...group.items.map((item, index) => createAssetCard(item, group.type, index)));
+    }
   });
 
-  document.querySelectorAll('video').forEach(video => {
-    prepareVideo(video);
-    video.addEventListener('loadedmetadata', () => {
-      if(video.currentTime < 0.05 && video.duration > 0.2){
-        video.currentTime = 0.1;
-      }
-    }, {once:true});
-  });
-
+  /* ── TOOLS ── */
   const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
   const tools = [
     { name: 'Adobe Photoshop', icon: `${ICON_CDN}/adobephotoshop.svg` },
@@ -1447,16 +1580,16 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* LOADER */
+  /* ── LOADER ── */
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loader').classList.add('hidden');
     }, 1400);
   });
 
-  /* NAV SCROLL + ACTIVE SECTION */
+  /* ── NAV SCROLL + ACTIVE SECTION ── */
   const navbar = document.getElementById('navbar');
-  const navSections = document.querySelectorAll('#brands,#graphic-design,#social-media,#content-creation,#expertise,#tools,#contact-page');
+  const navSections = document.querySelectorAll('#clients-brands,#brands,#graphic-design,#social-media,#content-creation,#expertise,#tools,#contact-page');
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"],.mlink[href^="#"]');
 
   function setActiveNav(id){
@@ -1491,7 +1624,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   });
 
-  /* HAMBURGER */
+  /* ── HAMBURGER ── */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1509,7 +1642,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     }
   });
 
-  /* HERO CURSOR GLOW — desktop only */
+  /* ── HERO CURSOR GLOW ── */
   const heroSection = document.querySelector('.hero');
   const glow = document.getElementById('heroGlow');
   if(heroSection && glow && window.matchMedia('(min-width:681px)').matches){
@@ -1519,7 +1652,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* SCROLL REVEAL */
+  /* ── SCROLL REVEAL ── */
   const revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1528,7 +1661,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }, {threshold:0.08});
   revealEls.forEach(el => io.observe(el));
 
-  /* MAP EDGE DRAW */
+  /* ── MAP EDGE DRAW ── */
   const edges = document.querySelectorAll('.map-edge');
   const edgeIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1541,7 +1674,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   const mapSvg = document.querySelector('.map-svg');
   if(mapSvg) edgeIO.observe(mapSvg);
 
-  /* COUNTER ANIMATION */
+  /* ── COUNTER ANIMATION ── */
   function animateCounter(el){
     const target = parseFloat(el.dataset.target);
     const isDecimal = el.dataset.decimal === 'true';
@@ -1562,6 +1695,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }, {threshold:0.4});
   document.querySelectorAll('.counter-num[data-target]').forEach(el => counterIO.observe(el));
+
+  /* ── REVEAL newly injected ig-cards after they're in DOM ── */
+  const igRevealIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); igRevealIO.unobserve(e.target); }
+    });
+  }, {threshold:0.05});
+  document.querySelectorAll('.ig-card').forEach(el => igRevealIO.observe(el));
 
 })();
 </script>
