@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/png" href="My%20Logo/My%20Logo/My%20Logo.png"/>
+<link rel="preload" as="image" href="My%20Logo/My%20Logo/My%20Logo.png"/>
 
 <style>
 /* ── RESET ── */
@@ -51,20 +52,23 @@ ul{list-style:none}
 }
 
 /* ── LOADER ── */
-#loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s ease,visibility .5s ease}
+#loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .7s ease,visibility .7s ease}
 #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{width:82px;height:82px;object-fit:contain;animation:loaderLogo 1.05s cubic-bezier(.22,1,.36,1) both,loaderLogoPulse 1.8s .9s ease-in-out infinite}
 .loader-name{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--ink);letter-spacing:-0.02em;overflow:hidden;text-align:center;padding:0 1rem}
 .loader-name span{display:inline-block;animation:loaderChar .6s cubic-bezier(.22,1,.36,1) both}
 .loader-bar-wrap{width:160px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
 .loader-bar{height:100%;width:0;background:var(--amber);border-radius:2px;animation:loaderFill 1.2s ease forwards}
+@keyframes loaderLogo{from{transform:translateY(10px) scale(.92);opacity:0;filter:blur(4px)}to{transform:translateY(0) scale(1);opacity:1;filter:blur(0)}}
+@keyframes loaderLogoPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.035);opacity:.88}}
 @keyframes loaderChar{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes loaderFill{from{width:0}to{width:100%}}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;background:rgba(255,255,255,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:background .4s,border-color .4s,backdrop-filter .4s;width:100%}
 nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
-.nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap;flex-shrink:0;min-width:0}
-.nav-logo{width:30px;height:30px;border-radius:9px;object-fit:contain;background:var(--white);border:1px solid var(--line);padding:3px;box-shadow:0 4px 12px rgba(23,21,16,0.08);flex-shrink:0}
+.nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;line-height:1;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap;flex-shrink:0;min-width:0}
+.nav-logo{width:30px;height:30px;object-fit:contain;flex-shrink:0}
 .nav-mark .dot{width:8px;height:8px;border-radius:50%;background:var(--clay);animation:pulse 2.5s ease-in-out infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}}
 .nav-links{display:flex;gap:1.3rem}
@@ -270,6 +274,25 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 /* ── LOGO GRID ── */
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 
+.portfolio-block{margin-top:3rem}
+.portfolio-block + .portfolio-block{margin-top:3.5rem}
+.portfolio-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.portfolio-title{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.7rem);letter-spacing:-0.01em;color:var(--ink);line-height:1}
+.portfolio-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-ink);margin-bottom:.35rem}
+.portfolio-note{font-size:12px;color:var(--ink3);max-width:300px;line-height:1.55}
+.asset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.asset-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.asset-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
+.asset-thumb{height:180px;background:var(--surface);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.asset-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.asset-card:hover .asset-thumb img{transform:scale(1.04)}
+.asset-thumb.asset-doc{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--clay-d);background:linear-gradient(135deg,var(--surface),var(--cream))}
+.asset-info{padding:12px 14px 14px;text-align:left}
+.asset-name{font-family:var(--display);font-weight:700;font-size:13px;line-height:1.2;color:var(--ink);overflow-wrap:anywhere}
+.asset-type{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:5px}
+.asset-grid.compact .asset-thumb{height:150px}
+.asset-grid.wide .asset-thumb{height:210px}
+
 /* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
 .counter-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center}
@@ -303,6 +326,15 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .content-card .c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
 .content-card .c-tags span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;background:var(--paper2);border:1px solid var(--line);padding:3px 9px;border-radius:5px;color:var(--ink2);transition:background .2s,border-color .2s}
 .content-card:hover .c-tags span{background:var(--cream);border-color:var(--lime-d)}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.video-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.video-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
+.video-frame{aspect-ratio:9/16;background:var(--surface);overflow:hidden;border-bottom:1px solid var(--line)}
+.video-frame.video-wide{aspect-ratio:16/9}
+.video-frame video,.video-frame iframe{width:100%;height:100%;border:0;display:block;object-fit:cover}
+.video-info{padding:12px 14px 14px;text-align:left}
+.video-name{font-family:var(--display);font-weight:700;font-size:13px;line-height:1.2;color:var(--ink);overflow-wrap:anywhere}
+.video-type{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:6px}
 .process-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:2.5rem;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .process-step{padding:1.2rem 1rem;border-right:1px solid var(--line);background:var(--white);transition:background .25s}
 .process-step:last-child{border-right:none}
@@ -366,9 +398,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 /* ════════════════ RESPONSIVE 880px ════════════════ */
 @media(max-width:880px){
   .logo-grid{grid-template-columns:repeat(2,1fr)}
+  .asset-grid{grid-template-columns:repeat(2,1fr)}
   .social-grid{grid-template-columns:repeat(2,1fr)}
   .strategy-row{grid-template-columns:repeat(2,1fr)}
   .content-grid{grid-template-columns:1fr}
+  .video-grid{grid-template-columns:repeat(2,1fr)}
   .process-row{grid-template-columns:repeat(3,1fr)}
   .counter-strip{grid-template-columns:repeat(3,1fr)}
   .tools-grid{grid-template-columns:repeat(3,1fr)}
@@ -409,11 +443,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .section-head{align-items:flex-start;gap:.6rem;margin-bottom:1.75rem}
   .section-note{max-width:100%;font-size:12px}
   .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .asset-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .asset-thumb,.asset-grid.compact .asset-thumb,.asset-grid.wide .asset-thumb{height:150px}
   .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .social-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .strategy-row{grid-template-columns:1fr;gap:10px}
   .counter-strip{grid-template-columns:1fr;gap:10px}
   .content-grid{grid-template-columns:1fr;gap:10px}
+  .video-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .process-row{grid-template-columns:repeat(2,1fr);border-radius:12px}
   .process-step{border-right:none;border-bottom:1px solid var(--line)}
   .process-step:nth-child(odd){border-right:1px solid var(--line)}
@@ -452,6 +489,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .band-title{font-size:clamp(2rem,12vw,3rem)}
   .band-sub{font-size:12.5px}
   .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .asset-grid{grid-template-columns:1fr;gap:10px}
+  .asset-thumb,.asset-grid.compact .asset-thumb,.asset-grid.wide .asset-thumb{height:210px}
+  .video-grid{grid-template-columns:1fr;gap:10px}
+  .portfolio-head{align-items:flex-start;gap:.55rem}
   .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .brand-card,.logo-card{min-height:168px;padding:18px 10px 15px}
   .brand-img-wrap,.logo-mark.logo-image{width:68px;height:68px;padding:10px;border-radius:16px}
@@ -479,6 +520,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <!-- LOADER -->
 <div id="loader">
+  <img class="loader-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
   <div class="loader-name">
     <span style="animation-delay:.02s">L</span><span style="animation-delay:.05s">E</span><span style="animation-delay:.08s">O</span><span style="animation-delay:.14s;margin-left:8px">A</span><span style="animation-delay:.17s">D</span><span style="animation-delay:.2s">A</span><span style="animation-delay:.23s">M</span><span style="animation-delay:.3s;margin-left:8px">B</span><span style="animation-delay:.33s">A</span><span style="animation-delay:.36s">L</span><span style="animation-delay:.39s">I</span><span style="animation-delay:.42s">N</span><span style="animation-delay:.45s">G</span><span style="animation-delay:.48s">I</span><span style="animation-delay:.51s">T</span>
   </div>
@@ -492,10 +534,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     LEO ADAM BALINGIT
   </a>
   <ul class="nav-links">
-    <li><a href="#brands">Brands</a></li>
-    <li><a href="#graphic-design">Design</a></li>
+    <li><a href="#brands">Logofolio</a></li>
+    <li><a href="#graphic-design">Graphic Design</a></li>
     <li><a href="#social-media">Social</a></li>
-    <li><a href="#content-creation">Content</a></li>
+    <li><a href="#content-creation">Video Editing</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#tools">Tools</a></li>
     <li><a href="#contact-page">Contact</a></li>
@@ -506,10 +548,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#brands" class="mlink">Brands &amp; Clients</a>
+  <a href="#brands" class="mlink">Logofolio</a>
   <a href="#graphic-design" class="mlink">Graphic Design</a>
   <a href="#social-media" class="mlink">Social Media</a>
-  <a href="#content-creation" class="mlink">Content Creation</a>
+  <a href="#content-creation" class="mlink">Content Creation / Video Editing</a>
   <a href="#expertise" class="mlink">Areas of Expertise</a>
   <a href="#tools" class="mlink">Tools</a>
   <a href="#contact-page" class="mlink">Contact</a>
@@ -602,170 +644,81 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
           <text x="400" y="281" text-anchor="middle" class="map-center-label" font-size="16">Balingit</text>
           <text x="400" y="300" text-anchor="middle" class="map-center-sub">Portfolio</text>
         </g>
-        <a href="#brands"><g class="map-node" transform="translate(30,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Brands &amp; Clients</text></g></a>
+        <a href="#brands"><g class="map-node" transform="translate(30,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Logofolio</text></g></a>
         <a href="#graphic-design"><g class="map-node" transform="translate(196,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Graphic Design</text></g></a>
         <a href="#social-media"><g class="map-node" transform="translate(324,8)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Social Media</text></g></a>
-        <a href="#content-creation"><g class="map-node" transform="translate(452,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Content Creation</text></g></a>
+        <a href="#content-creation"><g class="map-node" transform="translate(452,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Video Editing</text></g></a>
         <a href="#expertise"><g class="map-node" transform="translate(598,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text></g></a>
       </svg>
     </div>
 
     <div class="map-mobile reveal">
-      <a href="#brands">Brands &amp; Clients</a>
+      <a href="#brands">Logofolio</a>
       <a href="#graphic-design">Graphic Design</a>
       <a href="#social-media">Social Media</a>
-      <a href="#content-creation">Content Creation</a>
+      <a href="#content-creation">Content Creation / Video Editing</a>
       <a href="#expertise">Expertise &amp; Tools</a>
     </div>
   </section>
 </div>
 
-<!-- ═══ 01 BRANDS & CLIENTS ═══ -->
+<!-- ═══ 01 LOGOFOLIO ═══ -->
 <div class="band" id="brands">
-  <p class="band-tag reveal">01 — Partners</p>
-  <h2 class="band-title reveal">Brands &amp; Clients</h2>
-  <p class="band-sub reveal">A few of the brands I've worked with across design, social, and marketing.</p>
+  <p class="band-tag reveal">01 — Identity</p>
+  <h2 class="band-title reveal">Logofolio</h2>
+  <p class="band-sub reveal">A selection of marks designed to hold up at app-icon size and on a building face.</p>
 </div>
 <div class="wrap">
   <section class="section">
-    <div class="brands-grid">
-
-      <div class="brand-card reveal d1">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div>
-        <div class="brand-info">
-          <div class="brand-name">The Ascend Experience</div>
-          <div class="brand-tag">Sales Coaching</div>
-        </div>
+    <div class="logo-grid">
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div>
+        <div class="brand-info"><div class="brand-name">A3 Graphics</div><div class="brand-tag">Creative Services</div></div>
       </div>
-
-      <div class="brand-card reveal d2">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Ava Gaming</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div>
+        <div class="brand-info"><div class="brand-name">Barista Hub</div><div class="brand-tag">Barista Training Center</div></div>
       </div>
-
-      <div class="brand-card reveal d3">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div>
-        <div class="brand-info">
-          <div class="brand-name">BetAlly</div>
-          <div class="brand-tag">White Label Solutions</div>
-        </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div>
+        <div class="brand-info"><div class="brand-name">Cup &amp; Go</div><div class="brand-tag">Coffee Shop</div></div>
       </div>
-
-      <div class="brand-card reveal d4">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div>
-        <div class="brand-info">
-          <div class="brand-name">BolaTV</div>
-          <div class="brand-tag">Entertainment</div>
-        </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div>
+        <div class="brand-info"><div class="brand-name">Eleve Wellness</div><div class="brand-tag">Health &amp; Wellness</div></div>
       </div>
-
-      <div class="brand-card reveal d1">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP Lottery"/></div>
-        <div class="brand-info">
-          <div class="brand-name">HP Lottery</div>
-          <div class="brand-tag">Lottery System</div>
-        </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div>
+        <div class="brand-info"><div class="brand-name">Golden Cafe</div><div class="brand-tag">Coffee Shop</div></div>
       </div>
-
-      <div class="brand-card reveal d2">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Khelo100</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div>
+        <div class="brand-info"><div class="brand-name">Fork Republic</div><div class="brand-tag">Restaurant</div></div>
       </div>
-
-      <div class="brand-card reveal d3">
-        <div class="brand-img-wrap"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="Lights &amp; Film"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Lights &amp; Film</div>
-          <div class="brand-tag">Film</div>
-        </div>
+      <div class="logo-card reveal d1">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div>
+        <div class="brand-info"><div class="brand-name">MediTrust</div><div class="brand-tag">Pharmacy</div></div>
       </div>
-
-      <div class="brand-card reveal d4">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LiveFest"/></div>
-        <div class="brand-info">
-          <div class="brand-name">LiveFest</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d2">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div>
+        <div class="brand-info"><div class="brand-name">Nails O'Clock</div><div class="brand-tag">Spa Services</div></div>
       </div>
-
-      <div class="brand-card reveal d1">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div>
-        <div class="brand-info">
-          <div class="brand-name">LNPLAY</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d3">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div>
+        <div class="brand-info"><div class="brand-name">Nature Cosmetic</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
       </div>
-
-      <div class="brand-card reveal d2">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Mikiworld</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d4">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div>
+        <div class="brand-info"><div class="brand-name">The Quiet Cup</div><div class="brand-tag">Coffee Shop</div></div>
       </div>
-
-      <div class="brand-card reveal d3">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div>
-        <div class="brand-info">
-          <div class="brand-name">OC Togel</div>
-          <div class="brand-tag">Lottery System</div>
-        </div>
+      <div class="logo-card reveal d5">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div>
+        <div class="brand-info"><div class="brand-name">Unwind</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
       </div>
-
-      <div class="brand-card reveal d4">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div>
-        <div class="brand-info">
-          <div class="brand-name">OLE777</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
+      <div class="logo-card reveal d6">
+        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div>
+        <div class="brand-info"><div class="brand-name">Veraluxe</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
       </div>
-
-      <div class="brand-card reveal d1">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="OLIMPIC"/></div>
-        <div class="brand-info">
-          <div class="brand-name">OLIMPIC</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
-      </div>
-
-      <div class="brand-card reveal d2">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2Play"/></div>
-        <div class="brand-info">
-          <div class="brand-name">One2Play</div>
-          <div class="brand-tag">iGaming</div>
-        </div>
-      </div>
-
-      <div class="brand-card reveal d3">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Tailored Canvases</div>
-          <div class="brand-tag">Wall Decors</div>
-        </div>
-      </div>
-
-      <div class="brand-card reveal d4">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="TellMyTale"/></div>
-        <div class="brand-info">
-          <div class="brand-name">TellMyTale</div>
-          <div class="brand-tag">Kid Books</div>
-        </div>
-      </div>
-
-      <div class="brand-card reveal d1">
-        <div class="brand-img-wrap"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div>
-        <div class="brand-info">
-          <div class="brand-name">WonderMe</div>
-          <div class="brand-tag">Portraits</div>
-        </div>
-      </div>
-
     </div>
   </section>
 </div>
@@ -774,99 +727,74 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="graphic-design">
   <p class="band-tag reveal">02 — Visual</p>
   <h2 class="band-title reveal">Graphic Design</h2>
-  <p class="band-sub reveal">Logos, brand identities, and visual systems built to feel inevitable — not interchangeable.</p>
+  <p class="band-sub reveal">Brand guidelines, packaging, booth layouts, email designs, website visuals, and flyers.</p>
 </div>
 <div class="wrap">
   <section class="section">
-    <div class="section-head">
-      <h3 class="section-title reveal">Logo Folio</h3>
-      <p class="section-note reveal d2">A selection of marks designed to hold up at app-icon size and on a building face.</p>
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02a</div>
+          <h3 class="portfolio-title reveal">Branding</h3>
+        </div>
+        <p class="portfolio-note reveal d2">Brand guidelines and identity systems prepared for consistent rollout.</p>
+      </div>
+      <div class="asset-grid" id="brandingAssets"></div>
     </div>
-    <div class="logo-grid">
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div>
-        <div class="brand-info">
-          <div class="brand-name">A3 Graphics</div>
-          <div class="brand-tag">Creative Services</div>
+
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02b</div>
+          <h3 class="portfolio-title reveal">Package Designs / Merch Designs</h3>
         </div>
+        <p class="portfolio-note reveal d2">Packaging mockups, product concepts, and branded merchandise applications.</p>
       </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Barista Hub</div>
-          <div class="brand-tag">Barista Training Center</div>
+      <div class="asset-grid" id="packagingAssets"></div>
+    </div>
+
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02c</div>
+          <h3 class="portfolio-title reveal">Booth Designs</h3>
         </div>
+        <p class="portfolio-note reveal d2">Event booth layouts built for different activation levels and footprints.</p>
       </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Cup &amp; Go</div>
-          <div class="brand-tag">Coffee Shop</div>
+      <div class="asset-grid wide" id="boothAssets"></div>
+    </div>
+
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02d</div>
+          <h3 class="portfolio-title reveal">Email Designs</h3>
         </div>
+        <p class="portfolio-note reveal d2">Campaign-ready email banners and newsletters designed for clean, quick scanning.</p>
       </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Eleve Wellness</div>
-          <div class="brand-tag">Health &amp; Wellness</div>
+      <div class="asset-grid wide" id="emailAssets"></div>
+    </div>
+
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02e</div>
+          <h3 class="portfolio-title reveal">Website Design</h3>
         </div>
+        <p class="portfolio-note reveal d2">Web page visuals and layout design for digital-first presentation.</p>
       </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Golden Cafe</div>
-          <div class="brand-tag">Coffee Shop</div>
+      <div class="asset-grid wide" id="websiteAssets"></div>
+    </div>
+
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">02f</div>
+          <h3 class="portfolio-title reveal">Flyers</h3>
         </div>
+        <p class="portfolio-note reveal d2">Promotional layouts for campaign and event communication.</p>
       </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Fork Republic</div>
-          <div class="brand-tag">Restaurant</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div>
-        <div class="brand-info">
-          <div class="brand-name">MediTrust</div>
-          <div class="brand-tag">Pharmacy</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Nails O'Clock</div>
-          <div class="brand-tag">Spa Services</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Nature Cosmetic</div>
-          <div class="brand-tag">Beauty &amp; Cosmetics</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div>
-        <div class="brand-info">
-          <div class="brand-name">The Quiet Cup</div>
-          <div class="brand-tag">Coffee Shop</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Unwind</div>
-          <div class="brand-tag">Beauty &amp; Cosmetics</div>
-        </div>
-      </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div>
-        <div class="brand-info">
-          <div class="brand-name">Veraluxe</div>
-          <div class="brand-tag">Beauty &amp; Cosmetics</div>
-        </div>
-      </div>
+      <div class="asset-grid" id="flyerAssets"></div>
     </div>
   </section>
 </div>
@@ -896,11 +824,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
-    <div class="section-head">
-      <h3 class="section-title reveal">Visual Content</h3>
-      <p class="section-note reveal d2">Post designs crafted to stay on-brand and stop the scroll.</p>
+    <div class="portfolio-head">
+      <div>
+        <div class="portfolio-kicker reveal">03a</div>
+        <h3 class="portfolio-title reveal">Social Media Posts</h3>
+      </div>
+      <p class="portfolio-note reveal d2">Feed-ready social visuals built for campaigns, announcements, and engagement.</p>
     </div>
-    <div class="social-grid">
+    <div class="asset-grid compact" id="socialPostAssets">
       <div class="social-card reveal d1" style="background:#5C6E50"><div class="deco" style="width:90px;height:90px;background:#fff;top:-30px;right:-30px"></div><div class="tag" style="color:#fff">Instagram · New Drop</div><div class="cap" style="color:#fff">Spring restock is live</div></div>
       <div class="social-card reveal d2" style="background:#EFE6CF"><div class="deco" style="width:70px;height:70px;background:#B5481F;bottom:-20px;left:-20px"></div><div class="tag" style="color:#56503F">Facebook · Behind the scenes</div><div class="cap" style="color:#171510">In the studio today</div></div>
       <div class="social-card reveal d3" style="background:#F1EEE2"><div class="deco" style="width:60px;height:60px;background:#C9810F;top:14px;right:14px"></div><div class="tag" style="color:#56503F">Instagram · Founder note</div><div class="cap" style="color:#171510">Why we started Petal</div></div>
@@ -908,6 +839,17 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <div class="social-card reveal d5" style="background:#2E4D6B"><div class="deco" style="width:80px;height:80px;background:#F2A71B;top:-25px;left:-25px"></div><div class="tag" style="color:#D9E2EA">Facebook · Social proof</div><div class="cap" style="color:#fff">"This is my favorite step"</div></div>
       <div class="social-card reveal d6" style="background:#F2A71B"><div class="deco" style="width:64px;height:64px;background:#171510;bottom:10px;right:10px"></div><div class="tag" style="color:#5B4205">Instagram · Weekly drop</div><div class="cap" style="color:#171510">Five things we loved</div></div>
     </div>
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">03b</div>
+          <h3 class="portfolio-title reveal">Digital Ads</h3>
+        </div>
+        <p class="portfolio-note reveal d2">Static ads, story placements, and carousel creatives for paid campaigns.</p>
+      </div>
+      <div class="asset-grid" id="digitalAdAssets"></div>
+    </div>
+
     <div class="strategy-row">
       <div class="strategy-card reveal d1">
         <div class="s-title">Content Calendar</div>
@@ -928,69 +870,130 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-<!-- ═══ 04 CONTENT CREATION ═══ -->
+<!-- ═══ 04 CONTENT CREATION / VIDEO EDITING ═══ -->
 <div class="band" id="content-creation">
-  <p class="band-tag reveal">04 — Content</p>
-  <h2 class="band-title reveal">Content Creation</h2>
-  <p class="band-sub reveal">Writing, video, and copy built around the audience, optimised for the platform, and true to the brand.</p>
+  <p class="band-tag reveal">04 — Video</p>
+  <h2 class="band-title reveal">Content Creation / Video Editing</h2>
+  <p class="band-sub reveal">Short-form reels and long-form video edits shaped for platform, pacing, and brand clarity.</p>
 </div>
 <div class="wrap">
   <section class="section">
     <div class="section-head">
-      <h3 class="section-title reveal">What I Create</h3>
-      <p class="section-note reveal d2">From long-form articles to short-form video — content across every format.</p>
+      <h3 class="section-title reveal">Reels &amp; Video Projects</h3>
+      <p class="section-note reveal d2">Brand reels plus a Japan vlog edit hosted on YouTube.</p>
     </div>
-    <div class="content-grid">
-      <div class="content-card reveal d1">
-        <div class="c-label">Long-form</div>
-        <div class="c-title">Blog &amp; Article Writing</div>
-        <div class="c-desc">SEO-aware articles, brand storytelling, and thought-leadership pieces that rank on search and get read — not just published.</div>
-        <div class="c-tags"><span>SEO</span><span>Brand Voice</span><span>WordPress</span></div>
+    <div class="video-grid">
+      <div class="video-card reveal d1">
+        <div class="video-frame">
+          <video src="4th June.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+        </div>
+        <div class="video-info">
+          <div class="video-name">WonderMe Reel</div>
+          <div class="video-type">Reel / Video Editing</div>
+        </div>
       </div>
-      <div class="content-card reveal d2">
-        <div class="c-label">Short-form Video</div>
-        <div class="c-title">Reels, Shorts &amp; TikTok</div>
-        <div class="c-desc">Concept, scripting, captions, and visual direction for short-form video that hooks in the first two seconds.</div>
-        <div class="c-tags"><span>Scripting</span><span>CapCut</span><span>Hooks</span></div>
+      <div class="video-card reveal d2">
+        <div class="video-frame">
+          <video src="TMT-1014 _ AGL_Faith-avatar-FS _ SC_TPW-insp _ CS_Harel _ ED_Adam _ S-886 _ VO-375 _ 59sec _ VR4 _ Set 1 _ ITR10.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+        </div>
+        <div class="video-info">
+          <div class="video-name">TellMyTale Reel</div>
+          <div class="video-type">Reel / Video Editing</div>
+        </div>
       </div>
-      <div class="content-card reveal d3">
-        <div class="c-label">Email</div>
-        <div class="c-title">Newsletters &amp; Campaigns</div>
-        <div class="c-desc">Welcome sequences, product launch campaigns, and weekly newsletters — written to open, click, and convert.</div>
-        <div class="c-tags"><span>Mailchimp</span><span>Flows</span><span>Copywriting</span></div>
+      <div class="video-card reveal d3">
+        <div class="video-frame">
+          <video src="ART 5486 _ AGL_Legacy&amp;Memory _ SC_ ZharaVSL4 — RootsLegacy _ CS_ Rexie _ ED_Adam _ NN _ S-1549 _ VO-433 _ 48sec _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+        </div>
+        <div class="video-info">
+          <div class="video-name">Tailored Canvases Reel</div>
+          <div class="video-type">Reel / Video Editing</div>
+        </div>
       </div>
-      <div class="content-card reveal d4">
-        <div class="c-label">Brand</div>
-        <div class="c-title">Voice &amp; Tone Guidelines</div>
-        <div class="c-desc">Defining how a brand sounds — vocabulary, tone, do's and don'ts — so every piece of content feels unmistakably theirs.</div>
-        <div class="c-tags"><span>Tone of Voice</span><span>Style Guide</span><span>Templates</span></div>
+      <div class="video-card reveal d4">
+        <div class="video-frame">
+          <video src="Wall Decor/ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+        </div>
+        <div class="video-info">
+          <div class="video-name">BetAlly Reel</div>
+          <div class="video-type">Reel / Video Editing</div>
+        </div>
       </div>
+      <div class="video-card reveal d5">
+        <div class="video-frame">
+          <video src="Wall Decor/PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR1.mp4#t=0.1" controls muted playsinline preload="auto"></video>
+        </div>
+        <div class="video-info">
+          <div class="video-name">OLE777 Reel</div>
+          <div class="video-type">Reel / Video Editing</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">04b</div>
+          <h3 class="portfolio-title reveal">Japan Vlog Part 1</h3>
+        </div>
+        <p class="portfolio-note reveal d2">Long-form YouTube edit displayed separately from the reel gallery.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal d1">
+          <div class="video-frame video-wide">
+            <iframe src="https://www.youtube.com/embed/kvbsp0wM9f0" title="Japan Vlog Part 1" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-name">Japan Vlog Part 1</div>
+            <div class="video-type">YouTube / Long-form Edit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">04c</div>
+          <h3 class="portfolio-title reveal">Wall Decor Videos</h3>
+        </div>
+        <p class="portfolio-note reveal d2">All videos from the Wall Decor folder displayed as playable cards.</p>
+      </div>
+      <div class="video-grid" id="wallDecorVideos"></div>
+    </div>
+    <div class="portfolio-block">
+      <div class="portfolio-head">
+        <div>
+          <div class="portfolio-kicker reveal">04d</div>
+          <h3 class="portfolio-title reveal">Portrait Wall Decor Videos</h3>
+        </div>
+        <p class="portfolio-note reveal d2">All videos from the Portrait Wall Decor folder displayed as playable cards.</p>
+      </div>
+      <div class="video-grid" id="portraitWallDecorVideos"></div>
     </div>
     <div class="process-row reveal">
       <div class="process-step">
         <div class="p-num">Step 01</div>
-        <div class="p-title">Research</div>
-        <div class="p-desc">Audience, platform &amp; brand deep-dive</div>
+        <div class="p-title">Plan</div>
+        <div class="p-desc">Concept, references &amp; content direction</div>
       </div>
       <div class="process-step">
         <div class="p-num">Step 02</div>
-        <div class="p-title">Strategy</div>
-        <div class="p-desc">Pillars, formats &amp; content cadence</div>
+        <div class="p-title">Edit</div>
+        <div class="p-desc">Pacing, sequencing &amp; story structure</div>
       </div>
       <div class="process-step">
         <div class="p-num">Step 03</div>
-        <div class="p-title">Create</div>
-        <div class="p-desc">Write, design, edit &amp; refine</div>
+        <div class="p-title">Enhance</div>
+        <div class="p-desc">Captions, sound, color &amp; motion touches</div>
       </div>
       <div class="process-step">
         <div class="p-num">Step 04</div>
-        <div class="p-title">Publish</div>
-        <div class="p-desc">Schedule, post &amp; monitor</div>
+        <div class="p-title">Export</div>
+        <div class="p-desc">Format for Reels, Shorts, TikTok &amp; YouTube</div>
       </div>
       <div class="process-step">
         <div class="p-num">Step 05</div>
-        <div class="p-title">Optimise</div>
-        <div class="p-desc">Review data &amp; iterate next cycle</div>
+        <div class="p-title">Review</div>
+        <div class="p-desc">Final polish for brand and platform fit</div>
       </div>
     </div>
   </section>
@@ -1105,6 +1108,226 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }
 
   /* TOOLS */
+  const portfolioGroups = [
+    { id:'brandingAssets', type:'Brand Guidelines', items:[
+      ['BetAlly Brand Guide','Brand Guides/BetAlly Brand Guide.pdf','pdf'],
+      ['OLE777 Brand Guide','Brand Guides/OLE777 Brand Guide.pdf','pdf'],
+      ['Olimpic Brand Guide','Brand Guides/Olimpic Brand Guide.jpg','image']
+    ]},
+    { id:'packagingAssets', type:'Package / Merch', items:[
+      ['Butterfly Skin Product Packaging','Product Packaging/Butterfly Skin product packaging.png','image'],
+      ['Cup & Go Product Packaging','Product Packaging/Cup & Go product packaging.png','image'],
+      ['Eleve Wellness Product Packaging','Product Packaging/Eleve Wellness product packaging.png','image'],
+      ['Fork Product Packaging','Product Packaging/fork product packaging.png','image'],
+      ['Nature Cosmetic','Product Packaging/nature cosmetic.png','image'],
+      ['Unwind Product Packaging','Product Packaging/Unwind product packaging.png','image'],
+      ['Veraluxe Product Packaging','Product Packaging/veraluxe product packaging.png','image'],
+      ['BetAlly All Giveaways','Product Packaging/BetAlly/BetAlly All Giveaways.png','image'],
+      ['BetAlly Shirt 1','Product Packaging/BetAlly/BetAlly Shirt 1.jpg','image'],
+      ['BetAlly Shirt 2','Product Packaging/BetAlly/BetAlly Shirt 2.jpg','image'],
+      ['BetAlly Shirt 3','Product Packaging/BetAlly/BetAlly Shirt 3.jpg','image'],
+      ['BetAlly Cap Mockup','Product Packaging/BetAlly/magnific_change-the-color-of-cap-t_CHza1OMEEy.png','image'],
+      ['BetAlly Product Mockup','Product Packaging/BetAlly/magnific_create-a-highquality-prem_LUodHbaswO.png','image'],
+      ['BetAlly Merch Mockup','Product Packaging/BetAlly/magnific_create-a-premium-professi_WMlzYWJcXe.png','image']
+    ]},
+    { id:'boothAssets', type:'Booth Design', items:[
+      ['Entry Level 2 Mock Up','Booth Designs/Entry Level 2 Mock Up.png','image'],
+      ['Mid Level Mock Up 1','Booth Designs/Mid Level Mock Up 1.png','image'],
+      ['Mid Level Mockup 2','Booth Designs/Mid Level Mockup 2.png','image'],
+      ['Top Level Mock Up 1','Booth Designs/Top Level Mock Up 1.png','image'],
+      ['Top Level Mock Up 2','Booth Designs/Top Level Mock Up 2.png','image']
+    ]},
+    { id:'emailAssets', type:'Email Design', items:[
+      ['Email 1','Email Banners/Email 1.png','image'],
+      ['Email 2','Email Banners/Email 2.png','image'],
+      ['Email 3','Email Banners/Email 3.png','image'],
+      ['Email 4','Email Banners/Email 4.png','image'],
+      ['Email 5','Email Banners/Email 5.png','image'],
+      ['Email 6','Email Banners/Email 6.png','image'],
+      ['Email Newsletter 1','Email News Letters/Email Newsletter 1.png','image'],
+      ['Email Newsletter 2','Email News Letters/Email Newsletter 2.png','image'],
+      ['Email Newsletter 3','Email News Letters/Email Newsletter 3.png','image'],
+      ['Email Newsletter 4','Email News Letters/Email Newsletter 4.png','image']
+    ]},
+    { id:'websiteAssets', type:'Website Design', items:[
+      ['Elementor Homepage','Website Design/Elementor Homepage.png','image']
+    ]},
+    { id:'flyerAssets', type:'Flyer', items:[
+      ['BetAlly Flyer 1','Flyers/BetAlly Flyer 1.png','image'],
+      ['BetAlly Flyer 2','Flyers/BetAlly Flyer 2.png','image']
+    ]},
+    { id:'socialPostAssets', type:'Social Media Post', items:[
+      ['April 1','Social Media Posts/April 1.png','image'],['April 3','Social Media Posts/April 3.png','image'],
+      ['April 8','Social Media Posts/April 8.png','image'],['April 10','Social Media Posts/April 10.png','image'],
+      ['April 14','Social Media Posts/April 14.png','image'],['April 16','Social Media Posts/April 16.png','image'],
+      ['April 18','Social Media Posts/April 18.png','image'],['April 22','Social Media Posts/April 22.png','image'],
+      ['April 24','Social Media Posts/April 24.png','image'],['April 28','Social Media Posts/April 28.png','image'],
+      ['April 30','Social Media Posts/April 30.png','image'],['March 3','Social Media Posts/March 3.png','image'],
+      ['March 4','Social Media Posts/March 4.png','image'],['March 5','Social Media Posts/March 5.png','image'],
+      ['March 5 Repost','Social Media Posts/March 5 Repost.png','image'],['March 7','Social Media Posts/March 7.png','image'],
+      ['March 7 Repost','Social Media Posts/March 7 Repost.png','image'],['March 10','Social Media Posts/March 10.png','image'],
+      ['March 10 New','Social Media Posts/March 10 New.png','image'],['March 12','Social Media Posts/March 12.png','image'],
+      ['March 12 New','Social Media Posts/March 12 New.png','image'],['March 14 New','Social Media Posts/March 14 New.png','image'],
+      ['March 17','Social Media Posts/March 17.png','image'],['March 19','Social Media Posts/March 19.png','image'],
+      ['March 21','Social Media Posts/March 21.png','image'],['March 24','Social Media Posts/March 24.png','image'],
+      ['March 26','Social Media Posts/March 26.png','image'],['March 28','Social Media Posts/March 28.png','image'],
+      ['March 31','Social Media Posts/March 31.png','image'],['Message 1.2','Social Media Posts/Message 1.2.png','image'],
+      ['Message 2','Social Media Posts/Message 2.png','image'],['Message 3','Social Media Posts/Message 3.png','image'],
+      ['Message 4','Social Media Posts/Message 4.png','image'],['Message 5','Social Media Posts/Message 5.png','image'],
+      ['Message 6','Social Media Posts/Message 6.png','image'],['Message 7','Social Media Posts/Message 7.png','image'],
+      ['Message 8','Social Media Posts/Message 8.png','image'],['Message 9','Social Media Posts/Message 9.png','image'],
+      ['Message 10','Social Media Posts/Message 10.png','image']
+    ]},
+    { id:'digitalAdAssets', type:'Digital Ad', items:[
+      ['1080x1080 TH','Digital Ads/1080X1080 TH.png','image'],['1080x1920 TH','Digital Ads/1080x1920 TH.png','image'],
+      ['1200x628 TH','Digital Ads/1200x628 TH.png','image'],['BetAlly Cindy 1080x1080','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png','image'],
+      ['BetAlly Cindy 1080x1920','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png','image'],
+      ['BetAlly Cindy 1200x628','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png','image'],
+      ['Sales Team Final','Digital Ads/Sales Team Final.png','image'],['Sales Team','Digital Ads/Sales Team.png','image'],
+      ['Carousel Design 1 - 1','Digital Ads/Carousel Ads/Design 1/1.png','image'],['Carousel Design 1 - 2','Digital Ads/Carousel Ads/Design 1/2.png','image'],
+      ['Carousel Design 1 - 3','Digital Ads/Carousel Ads/Design 1/3.png','image'],['Carousel Design 1 - 4','Digital Ads/Carousel Ads/Design 1/4.png','image'],
+      ['Carousel Design 1 - 5','Digital Ads/Carousel Ads/Design 1/5.png','image'],['Carousel Design 2 - 1','Digital Ads/Carousel Ads/Design 2/1.jpg','image'],
+      ['Carousel Design 2 - 2','Digital Ads/Carousel Ads/Design 2/2.png','image'],['Carousel Design 2 - 3','Digital Ads/Carousel Ads/Design 2/3.png','image'],
+      ['Carousel Design 2 - 4','Digital Ads/Carousel Ads/Design 2/4.png','image'],['Carousel Design 2 - 5','Digital Ads/Carousel Ads/Design 2/5.png','image']
+    ]}
+  ];
+
+  const revealDelays = ['d1','d2','d3','d4','d5','d6'];
+  function createAssetCard(item, type, index){
+    const [name, src, kind] = item;
+    const card = document.createElement('a');
+    card.className = `asset-card reveal ${revealDelays[index % revealDelays.length]}`;
+    card.href = src;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.setAttribute('aria-label', `Open ${name}`);
+    const thumb = document.createElement('div');
+    thumb.className = kind === 'pdf' ? 'asset-thumb asset-doc' : 'asset-thumb';
+    if(kind === 'pdf'){
+      thumb.textContent = 'PDF';
+    }else{
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      thumb.appendChild(img);
+    }
+    const info = document.createElement('div');
+    info.className = 'asset-info';
+    const title = document.createElement('div');
+    title.className = 'asset-name';
+    title.textContent = name;
+    const label = document.createElement('div');
+    label.className = 'asset-type';
+    label.textContent = type;
+    info.append(title, label);
+    card.append(thumb, info);
+    return card;
+  }
+  portfolioGroups.forEach(group => {
+    const grid = document.getElementById(group.id);
+    if(grid) grid.replaceChildren(...group.items.map((item, index) => createAssetCard(item, group.type, index)));
+  });
+
+  const videoGroups = [
+    { id:'wallDecorVideos', type:'Wall Decor Video', folder:'Wall Decor', items:[
+      "ART 5486 _ AGL_Legacy&Memory _ SC_ ZharaVSL4 — RootsLegacy _ CS_ Rexie _ ED_Adam _ NN _ S-1549 _ VO-433 _ 48sec _ VR1.mp4",
+      "ART 6221 _ AGL_Atmosphere Transformation _ SC_ SPHomeopt-3 _ CS_ Soliva _ ED_Adam _ NN _ S-1505 _ VO-22 _ 50sec _ VR1.mp4",
+      "ART 6221 _ AGL_Skeptic-to-Believer  _ SC_ Shortopt-3 _ CS_ Soliva _ ED_Adam _ NN _ S-1503 _ NO-VO _ 15sec _ VR1.mp4",
+      "ART5612 _ AGL_  _ SC_NotJustWallArt _ CS_Soliva _ ED_Adam _ NN _ S-1466 _ NO-VO _ 15sec _  VR2.mp4",
+      "ART5658 _ AGL_Gifting _ SC_ 60sec-short-opt1 _ CS_Soliva _ ED_Adam _ NN _ S-1492 _ VO-411 _ 31sec _  VR1.mp4",
+      "ART5658 _ AGL_Gifting _ SC_ 60sec-short-opt3 _ CS_Soliva _ ED_Adam _ NN _ S-1493 _ VO-411 _ 32sec _  VR1.mp4",
+      "ART5658 _ SC_POV-Mothersday _ CS_Soliva _ ED_Adam _ NN _ S-1464 _ NO-VO _ 15sec _  VR2.mp4",
+      "ART6156 _ SC_BarInspo-v2-NL _ CS_Soliva _ ED_Adam _ NN _ S-1478 _ NO-VO _ 15sec _  VR2.mp4",
+      "ART6156 _ SC_MakeSensev2 _ CS_Soliva _ ED_Adam _ NN _ S-1479 _ NO-VO _ 15sec _  VR2 .mp4",
+      "ART6156 _ SC_POV-Mothersday _ CS_Soliva _ ED_Adam _ NN _ S-1471_ NO-VO _ 15sec _  VR2.mp4",
+      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR1.mp4",
+      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR2.mp4",
+      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR3.mp4",
+      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR4.mp4",
+      "ART6401 _ Short Videos _ CS_Jasmin _ ED_Adam _ VR5.mp4",
+      "ART6902 _ Short Videos _ CS_Bryan _ ED_Adam _ VR1.mp4",
+      "ART6961 _ ShortVideos _ CS_Bryan _ ED_Adam _ VR1.mp4",
+      "NON4651 _ AGL_SmartBuyer _ SC_FlyHugzDirect-opt4651 _ CS_Rexie _ ED_Adam _ NN _ S-1502 _ VO- 22 _ 65sec _ VR1.mp4",
+      "NON4651 _ AGL_SoulReset _ SC_LateNotice-opt4651 _ CS_Rexie _ ED_Adam _ NN _ S-1501 _ VO- 716 _ 67sec _ VR1.mp4",
+      "PAS2777 _ AGL_ Gifting _ SC_Short-opt3 _ CS_Soliva _ ED_Adam _ NN _ S-1499 _ NO-VO _ 15sec _  VR1.mp4",
+      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR1.mp4",
+      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR2.mp4",
+      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR3.mp4",
+      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR4.mp4",
+      "PAS3004 _ Short Videos _ CS_Rexie _ ED_Adam _ VR5.mp4"
+    ]},
+    { id:'portraitWallDecorVideos', type:'Portrait Wall Decor Video', folder:'Portrait Wall Decor', items:[
+      "General Collection _ SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_SND _ S- 1054_ VO-70 _ 15sec _ SET5_ITR1.mp4",
+      "General Collection _ SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_SND _ S- 1054_ VO-70 _ 15sec _ SET5_ITR7.mp4",
+      "INB823_BB-1001 _ AGL_Gift Reveal _ SC_INB823_BB-1001 _ Christa Somers - christasbliss _ CS_Inbal _ ED_Adam _ NN _ S-439 _ NO-VO _ 37sec _ VR1.mp4",
+      "INB823_BB-1001 _ AGL_Gift Reveal _ SC_INB823_BB-1001 _ ShortVersion _ CS_Inbal _ ED_Adam _ NN _ S-1059 _ NO-VO _ 20sec _ VR2.mp4",
+      "INB828_BB-1001 _ AGL_Gift Reveal _ SC_INB828_BB-1001 _ Khushi - khussshhiiee2 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-198 _ 39sec _ VR1.mp4",
+      "INB828_BB-1001 _ AGL_Gift Reveal _ SC_INB828_BB-1001 _ Khushi - khussshhiiee2 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-296 _ 39sec _ VR2.mp4",
+      "INB830_BB-1001 _ AGL_Gift Reveal _ SC_INB830_BB-1001 _ Khushi - khussshhiieee4 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-296 _ 31sec _ VR1.mp4",
+      "INB831_BB-1001 _ AGL_Gift Reveal _ SC_INB831_BB-1001 _ Khushi - khussshhiieee5 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1097 _ 28sec _ VR1.mp4",
+      "INB832_BB-1002 _ AGL_Gift Reveal _ SC_INB832_BB-1002 _ Gabriela - monday__mrning _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-484 _ 30sec _ VR1.mp4",
+      "INB836_WMB-1367 _ AGL_Gift Reveal _ SC_INB836_WMB-1367 _ Alexis - alexisfreytiz _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-28 _ 20sec _ VR1.mp4",
+      "INB837_WMB-1367 _ AGL_Gift Reveal _ SC_INB837_WMB-1367 _ Alexis - alexisfreytiz1 _ CS_Inbal _ ED_Adam _ NN _ VO-03 _ S-28 _ 20sec _ VR1.mp4",
+      "INB839_WMB-1367 _ AGL_Gift Reveal _ SC_INB839_WMB-1367 _ Alexis - alexisfreytiz3 _ CS_Inbal _ ED_Adam _  NN _ VO-03 _ S-713 _ 39sec _ VR1 .mp4",
+      "INB858 _ AGL_UnboxingAndDisplay _ SC_INB858_ The Majesty’s Bouquet1 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-01 _ 19sec _ VR1.mp4",
+      "INB859 _ AGL_UnboxingAndDisplay _ SC_INB859_ The Majesty’s Bouquet2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-07 _ 20sec _ VR1.mp4",
+      "INB863 _ AGL_UnboxingAndDisplay _ SC_INB863_The Frost Majesty2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1128 _ 21sec _ VR1.mp4",
+      "INB863 _ AGL_UnboxingAndDisplay _ SC_INB863_The Frost Majesty2 _ CS_Inbal _ ED_Adam _ NN _ NO-VO _ S-1128 _ 21sec _ VR2.mp4",
+      "Myth & fantasy-angle_WF-avatar_CG-script_the-discovery-dinoadventurer-insp_Loverse-STR_Rexie-ED_Adam-VO-370-S-1185-19secs-VR1.mp4",
+      "SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_HK _ S-378_ VO-70 _ 15sec _ SET2_ITR12 _ SET6 _ ITR1.mp4",
+      "SC_PFG-bday-14 _ CS_Francisco _ ED_Adam_ OT_HK _ S-378_ VO-70 _ 15sec _ SET2_ITR12 _ SET6 _ ITR10.mp4",
+      "Unicorn Collection-angle_CC-avatar_DG-script_grandma-confidence-pinkunicorn-insp_Keesley-STR_Rexie-ED_Adam-S_01-VO_249-62secs-VR1.mp4",
+      "WM-1011-angle_Not A Toy-avatar_The Proud Grandma-script_You know that feeling-insp_PetLab-STR_Inbal-ED_Adam-VO_357-S-1145-39secs-VR2.mp4",
+      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-NO-VO-S-1151-20secs-VR10.mp4",
+      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-NO-VO-S-1151-24secs-VR11.mp4",
+      "WM-1365-angle_NAT-avatar_TPG-script_LATC-insp_Look at this canvas-STR_Inbal-ED_Adam-VO-357-S-439-27secs-VR1.mp4"
+    ]}
+  ];
+
+  function videoTitle(filename){
+    return filename.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function createVideoCard(folder, filename, type, index){
+    const card = document.createElement('div');
+    card.className = `video-card reveal ${revealDelays[index % revealDelays.length]}`;
+    const frame = document.createElement('div');
+    frame.className = 'video-frame';
+    const video = document.createElement('video');
+    video.src = `${folder}/${filename}#t=0.1`;
+    video.controls = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    frame.appendChild(video);
+    const info = document.createElement('div');
+    info.className = 'video-info';
+    const title = document.createElement('div');
+    title.className = 'video-name';
+    title.textContent = videoTitle(filename);
+    const label = document.createElement('div');
+    label.className = 'video-type';
+    label.textContent = type;
+    info.append(title, label);
+    card.append(frame, info);
+    return card;
+  }
+
+  videoGroups.forEach(group => {
+    const grid = document.getElementById(group.id);
+    if(grid) grid.replaceChildren(...group.items.map((filename, index) => createVideoCard(group.folder, filename, group.type, index)));
+  });
+
+  document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('loadedmetadata', () => {
+      if(video.currentTime < 0.05 && video.duration > 0.2){
+        video.currentTime = 0.1;
+      }
+    }, {once:true});
+  });
+
   const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
   const tools = [
     { name: 'Adobe Photoshop', icon: `${ICON_CDN}/adobephotoshop.svg` },
