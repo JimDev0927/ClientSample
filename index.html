@@ -8,10 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="My%20Logo/My%20Logo/My%20Logo.png"/>
 
 <style>
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;width:100%;max-width:100vw}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
 
+/* ── TOKENS ── */
 :root{
   --paper:#FFFFFF;
   --paper2:#F7F6F1;
@@ -42,33 +50,28 @@
   --shadow-hover:0 20px 50px rgba(23,21,16,0.14),0 4px 14px rgba(23,21,16,0.08);
 }
 
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img,svg{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-ul{list-style:none}
-
-/* LOADER */
-#loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s ease,visibility .5s ease;border-bottom:1px solid var(--line)}
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s ease,visibility .5s ease}
 #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.loader-name{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--ink);letter-spacing:-0.02em;overflow:hidden}
+.loader-name{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--ink);letter-spacing:-0.02em;overflow:hidden;text-align:center;padding:0 1rem}
 .loader-name span{display:inline-block;animation:loaderChar .6s cubic-bezier(.22,1,.36,1) both}
 .loader-bar-wrap{width:160px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
 .loader-bar{height:100%;width:0;background:var(--amber);border-radius:2px;animation:loaderFill 1.2s ease forwards}
 @keyframes loaderChar{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes loaderFill{from{width:0}to{width:100%}}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;background:rgba(255,255,255,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:background .4s,border-color .4s,backdrop-filter .4s}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;background:rgba(255,255,255,0);backdrop-filter:blur(0px);border-bottom:1px solid transparent;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;transition:background .4s,border-color .4s,backdrop-filter .4s;width:100%}
 nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
-.nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap}
+.nav-mark{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--ink);white-space:nowrap;flex-shrink:0;min-width:0}
+.nav-logo{width:30px;height:30px;border-radius:9px;object-fit:contain;background:var(--white);border:1px solid var(--line);padding:3px;box-shadow:0 4px 12px rgba(23,21,16,0.08);flex-shrink:0}
 .nav-mark .dot{width:8px;height:8px;border-radius:50%;background:var(--clay);animation:pulse 2.5s ease-in-out infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}}
 .nav-links{display:flex;gap:1.3rem}
-.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);padding:6px 2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);padding:6px 2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--ink);border-color:var(--lime-d)}
 .nav-links a.active{color:var(--ink);border-color:var(--clay-d);font-weight:500}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:8px 16px;border-radius:100px;transition:background .25s,transform .25s,box-shadow .25s;white-space:nowrap}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:8px 16px;border-radius:100px;transition:background .25s,transform .25s,box-shadow .25s;white-space:nowrap;flex-shrink:0}
 .nav-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .nav-cta:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
 .hamburger{display:none;flex-direction:column;gap:5px;width:34px;height:34px;align-items:center;justify-content:center;border:none;background:none;cursor:pointer;flex-shrink:0}
@@ -81,8 +84,10 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .mobile-menu a{font-family:var(--display);font-weight:600;font-size:16px;padding:10px 4px 10px 12px;border-bottom:1px solid var(--line);color:var(--ink);border-left:3px solid transparent;transition:color .2s,border-color .2s,padding-left .2s}
 .mobile-menu a.active{color:var(--clay-d);border-left-color:var(--clay);padding-left:16px}
 
-/* SHARED / REVEAL */
-.wrap{max-width:1040px;margin:0 auto;padding:0 2.5rem}
+/* ── LAYOUT ── */
+.wrap{max-width:1040px;margin:0 auto;padding:0 2.5rem;width:100%}
+
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
@@ -93,28 +98,30 @@ nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);-webki
 .reveal-scale.visible{opacity:1;transform:scale(1)}
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
 .d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
+
+/* ── SHARED ── */
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--lime-ink);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.9rem}
 .eyebrow::before{content:'';width:18px;height:1.5px;background:var(--lime-d)}
 hr.rule{border:none;border-top:1px solid var(--line)}
 
-/* BAND TITLES */
+/* ── BAND ── */
 .band{background:var(--surface);color:var(--ink);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%, rgba(201,129,15,0.10), transparent 60%);pointer-events:none}
 .band-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--clay-d);margin-bottom:0.9rem;display:inline-flex;align-items:center;gap:8px}
 .band-title{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.01em;line-height:1;color:var(--ink)}
 .band-sub{font-family:var(--sans);font-size:13.5px;color:var(--ink2);max-width:430px;margin:1rem auto 0;line-height:1.7;padding:0 1.25rem}
 
-/* SECTION */
+/* ── SECTION ── */
 .section{padding:5rem 0}
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
 .section-title{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3vw,2rem);letter-spacing:-0.01em;color:var(--ink)}
 .section-note{font-size:12.5px;color:var(--ink3);max-width:280px;line-height:1.6}
 
-/* HERO */
-.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 1.5rem 3rem;background:
+/* ── HERO ── */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 1.5rem 3rem;background:
   radial-gradient(ellipse at 16% 18%, rgba(201,129,15,0.10), transparent 42%),
   radial-gradient(ellipse at 86% 84%, rgba(124,143,30,0.10), transparent 46%),
-  var(--paper);color:var(--ink);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  var(--paper);color:var(--ink);position:relative;overflow:hidden;border-bottom:1px solid var(--line);width:100%}
 .hero-doodle{position:absolute;color:var(--clay);pointer-events:none;z-index:0}
 .hero-doodle-bolt{top:18%;left:9%;width:46px;animation:floatA 6s ease-in-out infinite}
 .hero-doodle-wave{bottom:16%;right:10%;width:64px;animation:floatB 7s ease-in-out infinite;color:var(--lime-d)}
@@ -123,9 +130,9 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .hero-eyebrow{position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay-d);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:8px;opacity:0;animation:fadeUp .7s .3s cubic-bezier(.22,1,.36,1) forwards;text-align:center}
-.hero-title{position:relative;z-index:2;font-family:var(--display);font-weight:800;letter-spacing:-0.01em;line-height:0.9;font-size:clamp(3.2rem,15vw,8.5rem);color:var(--ink);opacity:0;animation:fadeUp .8s .5s cubic-bezier(.22,1,.36,1) forwards}
-.hero-sub{position:relative;z-index:2;margin-top:1.6rem;font-family:var(--sans);font-size:14px;color:var(--ink2);max-width:380px;line-height:1.75;opacity:0;animation:fadeUp .7s .75s cubic-bezier(.22,1,.36,1) forwards}
-.hero-roles{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:2.2rem;opacity:0;animation:fadeUp .7s .95s cubic-bezier(.22,1,.36,1) forwards}
+.hero-title{position:relative;z-index:2;font-family:var(--display);font-weight:800;letter-spacing:-0.01em;line-height:0.9;font-size:clamp(3.2rem,15vw,8.5rem);color:var(--ink);opacity:0;animation:fadeUp .8s .5s cubic-bezier(.22,1,.36,1) forwards;word-break:break-word}
+.hero-sub{position:relative;z-index:2;margin-top:1.6rem;font-family:var(--sans);font-size:14px;color:var(--ink2);max-width:380px;line-height:1.75;opacity:0;animation:fadeUp .7s .75s cubic-bezier(.22,1,.36,1) forwards;padding:0 0.5rem}
+.hero-roles{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:2.2rem;opacity:0;animation:fadeUp .7s .95s cubic-bezier(.22,1,.36,1) forwards;padding:0 1rem}
 .hero-roles span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;padding:6px 13px;border:1px solid var(--line);border-radius:100px;color:var(--ink2);background:var(--paper2);transition:border-color .3s,color .3s,background .3s}
 .hero-roles span:hover{border-color:var(--amber);color:var(--amber-d);background:var(--cream)}
 .hero-scroll{position:relative;z-index:2;margin-top:2.4rem;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink3);animation:bob 2.4s 1.4s ease-in-out infinite,fadeUp .5s 1.2s ease forwards;opacity:0}
@@ -133,57 +140,55 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle, rgba(201,129,15,0.08) 0%, transparent 70%);pointer-events:none;transition:transform .08s linear;transform:translate(-50%,-50%);z-index:0}
 
-/* HELLO / ABOUT */
+/* ── HELLO ── */
 .hello{padding:6rem 0}
 .hello-grid{display:grid;grid-template-columns:230px 1fr;gap:3rem;align-items:center}
 .portrait-wrap{position:relative;width:210px;height:210px}
 .portrait-circle{width:210px;height:210px;border-radius:50%;background:var(--cream);border:1px solid var(--line);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.22,1,.36,1)}
 .portrait-circle:hover{transform:scale(1.04)}
-.portrait-sketch{width:80%;color:var(--ink2)}
+.portrait-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
 .portrait-ring{position:absolute;inset:-12px;pointer-events:none;animation:spin 30s linear infinite}
 .hello-title{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4vw,2.6rem);letter-spacing:-0.01em;margin-bottom:1rem;color:var(--ink)}
 .hello-text{font-size:14.5px;color:var(--ink2);max-width:520px;line-height:1.85}
 .hello-text strong{color:var(--ink);font-weight:600}
-.hello-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.4rem;justify-content:center}
+.hello-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.4rem}
 .hello-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:0.05em;background:var(--paper2);border:1px solid var(--line);padding:4px 11px;border-radius:6px;color:var(--ink2);transition:background .25s,border-color .25s,color .25s,transform .25s}
 .hello-tags span:hover{background:var(--cream);border-color:var(--amber);color:var(--ink);transform:translateY(-2px)}
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CONTENTS MAP — FIXED RADIAL LAYOUT
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ── CONTENTS MAP ── */
 .contents-wrap{padding:1rem 0 6rem;text-align:center}
-.contents-map{max-width:760px;margin:2.5rem auto 0;position:relative}
+.contents-map{max-width:760px;margin:2.5rem auto 0;position:relative;width:100%}
+/* Desktop: normal SVG */
 .map-svg{width:100%;height:auto;overflow:visible}
-
-/* Edges */
 .map-edge{fill:none;stroke:var(--line);stroke-width:1.8;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.2s ease}
 .map-edge.drawn{stroke-dashoffset:0}
-
-/* Center node */
 .map-center circle{transition:r .3s}
 .map-center:hover circle{r:66}
-
-/* Outer nodes */
 .map-node{cursor:pointer}
 .map-node rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;rx:22;transition:stroke .25s,fill .25s,filter .25s}
 .map-node text{font-family:'Baloo 2',sans-serif;font-weight:600;font-size:13px;fill:var(--ink);pointer-events:none}
 .map-node:hover rect{stroke:var(--clay);fill:var(--cream);filter:drop-shadow(0 6px 16px rgba(181,72,31,0.18))}
 .map-node:hover text{fill:var(--clay-d)}
-
-/* Center labels */
 .map-center-label{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;fill:var(--white);pointer-events:none}
 .map-center-sub{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;pointer-events:none}
 
-/* LOGO GRID */
+/* Mobile contents map: pill links instead of SVG */
+.map-mobile{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin:1.75rem auto 0;max-width:400px}
+.map-mobile a{font-family:var(--display);font-weight:600;font-size:13.5px;padding:9px 20px;border:1.5px solid var(--line);border-radius:100px;color:var(--ink);background:var(--white);transition:background .2s,border-color .2s,color .2s}
+.map-mobile a:hover{background:var(--cream);border-color:var(--clay);color:var(--clay-d)}
+
+/* ── LOGO GRID ── */
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.logo-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:0.9rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.logo-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:0;display:flex;flex-direction:column;align-items:stretch;gap:0;text-align:center;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
 .logo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
 .logo-mark{width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:19px;color:var(--white);transition:transform .3s cubic-bezier(.22,1,.36,1)}
-.logo-card:hover .logo-mark{transform:scale(1.12) rotate(-4deg)}
-.logo-name{font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:-0.01em;color:var(--ink)}
-.logo-tag{font-family:var(--mono);font-size:10px;color:var(--ink3);letter-spacing:0.04em}
+.logo-mark.logo-image{width:100%;max-width:none;height:190px;background:var(--white);border:none;border-radius:0;padding:0;color:inherit;overflow:hidden}
+.logo-mark.logo-image img{width:100%;height:100%;object-fit:contain;padding:12px}
+.logo-card:hover .logo-mark{transform:none}
+.logo-name{display:none}
+.logo-tag{display:none}
 
-/* BRAND CASE */
+/* ── BRAND CASE ── */
 .case-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.4rem;box-shadow:var(--shadow);transition:box-shadow .35s}
 .case-card:hover{box-shadow:var(--shadow-hover)}
 .case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
@@ -194,7 +199,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .case-brand-sub{font-family:var(--mono);font-size:10.5px;color:var(--ink3);letter-spacing:0.05em;margin-top:2px}
 .case-desc{font-size:13px;color:var(--ink2);max-width:280px;line-height:1.7}
 .swatches{display:flex;gap:10px;margin-bottom:2rem}
-.swatch{flex:1;height:64px;border-radius:10px;position:relative;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.swatch{flex:1;height:64px;border-radius:10px;position:relative;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;min-width:0}
 .swatch:hover{transform:translateY(-4px) scaleY(1.08);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
 .swatch span{position:absolute;bottom:7px;left:9px;font-family:var(--mono);font-size:9.5px;color:rgba(255,255,255,0.9)}
 .type-specimen{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.6rem 0;margin-bottom:2rem;display:flex;flex-direction:column;gap:.4rem}
@@ -233,13 +238,13 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .phone-screen .bar.w50{width:50%;background:var(--amber-l)}
 .phone-screen .tile{flex:1;border-radius:6px;background:rgba(255,255,255,0.1)}
 
-/* COUNTER STRIP */
+/* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
 .counter-card{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center}
 .counter-num{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-0.03em;color:var(--clay-d);line-height:1}
 .counter-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:.4rem}
 
-/* SOCIAL MEDIA */
+/* ── SOCIAL MEDIA ── */
 .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .social-card{aspect-ratio:1;border-radius:12px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;border:1px solid var(--line)}
 .social-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-hover)}
@@ -254,7 +259,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .strategy-card .s-desc{font-size:12.5px;color:var(--ink3);line-height:1.65}
 .strategy-card .s-tag{display:inline-block;margin-top:.8rem;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;background:var(--paper2);border:1px solid var(--line);padding:3px 10px;border-radius:5px;color:var(--ink2)}
 
-/* CONTENT CREATION */
+/* ── CONTENT CREATION ── */
 .content-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .content-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;position:relative;overflow:hidden}
 .content-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,129,15,0.05),transparent);opacity:0;transition:opacity .35s}
@@ -274,67 +279,72 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .process-step .p-title{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-0.01em;margin-bottom:.25rem;color:var(--ink)}
 .process-step .p-desc{font-size:11.5px;color:var(--ink3);line-height:1.5}
 
-/* TICKER */
-.ticker-wrap{background:var(--surface);overflow:hidden;height:42px;display:flex;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 26s linear infinite}
-.ticker-item{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--clay-d);padding:0 2.4rem;display:flex;align-items:center;gap:10px;opacity:0.85}
+/* ── TICKER ── */
+.ticker-wrap{background:var(--surface);overflow:hidden;height:42px;display:flex;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:100%}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 26s linear infinite;will-change:transform}
+.ticker-item{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--clay-d);padding:0 2.4rem;display:flex;align-items:center;gap:10px;opacity:0.85;flex-shrink:0}
 .ticker-item::after{content:'✦';font-size:9px;opacity:0.5}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* EXPERTISE */
+/* ── EXPERTISE ── */
 .expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px}
 .expertise-item{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--line)}
 .expertise-item .check{flex-shrink:0;width:20px;height:20px;border-radius:5px;background:var(--sage-l);display:flex;align-items:center;justify-content:center;margin-top:1px}
 .expertise-item .check svg{width:12px;height:12px;color:var(--sage)}
 .expertise-item span.label{color:var(--ink);font-weight:500}
 
-/* TOOLS */
+/* ── TOOLS ── */
 .tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px 18px}
 .tool-item{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink2);padding:6px 0}
 .tool-logo{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--white);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .tool-logo img{width:14px;height:14px;object-fit:contain;display:block}
 .tool-logo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:10px;color:var(--white);background:var(--ink3)}
 
-/* BRANDS & CLIENTS */
+/* ── BRANDS & CLIENTS ── */
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.brand-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.brand-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:0;display:flex;flex-direction:column;align-items:stretch;gap:0;text-align:center;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .brand-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
 .brand-mark{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:16px;color:var(--white)}
-.brand-name{font-family:var(--display);font-weight:600;font-size:12.5px;color:var(--ink)}
-.brand-tag{font-family:var(--mono);font-size:9.5px;color:var(--ink3)}
+.brand-mark.brand-image{width:100%;max-width:none;height:160px;border-radius:0;background:var(--white);border:none;padding:0;color:inherit;overflow:hidden}
+.brand-mark.brand-image img{width:100%;height:100%;object-fit:contain;padding:12px}
+.brand-mark.brand-image.logo-zoom img,.brand-mark.brand-image.logo-zoom-lg img{transform:none}
+.brand-name{display:none}
+.brand-tag{display:none}
 
-/* CONTACT */
+/* ── CONTACT ── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .contact-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;align-items:center;gap:14px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .contact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
 .contact-icon{width:46px;height:46px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--clay-d)}
 .contact-label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-bottom:.2rem}
-.contact-value{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink)}
+.contact-value{font-family:var(--display);font-weight:700;font-size:15px;color:var(--ink);word-break:break-all}
 .contact-form{margin-top:2.5rem;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.2rem;box-shadow:var(--shadow)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .form-field{display:flex;flex-direction:column;gap:.4rem}
 .form-field.full{grid-column:1 / -1}
 .form-field label{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
-.form-field input,.form-field textarea{font-family:var(--sans);font-size:13.5px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--paper2);color:var(--ink);resize:vertical;transition:border-color .2s,background .2s}
+.form-field input,.form-field textarea{font-family:var(--sans);font-size:13.5px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--paper2);color:var(--ink);resize:vertical;transition:border-color .2s,background .2s;width:100%}
 .form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--amber);background:var(--white)}
 .form-submit{margin-top:.4rem;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s}
 .form-submit:hover{background:var(--amber);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,129,15,0.30)}
 
-/* THANKS / FOOTER */
+/* ── FOOTER / THANKS ── */
 .thanks{background:var(--surface);color:var(--ink);padding:6rem 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--line)}
 .thanks::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%, rgba(201,129,15,0.08), transparent 65%);pointer-events:none}
 .thanks-title{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-0.03em;color:var(--ink)}
 .thanks-sub{font-size:13.5px;color:var(--ink2);max-width:420px;margin:1rem auto 2rem;line-height:1.75;padding:0 1.25rem}
 .thanks-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--white);padding:13px 26px;border-radius:100px;transition:transform .25s,background .25s,box-shadow .25s}
 .thanks-cta:hover{transform:translateY(-3px);background:var(--amber);color:var(--ink);box-shadow:0 10px 28px rgba(201,129,15,0.30)}
-footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--line)}
+footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--line);width:100%}
 .foot-name{font-family:var(--display);font-weight:700;font-size:13px;color:var(--ink)}
 .foot-links{display:flex;gap:1.2rem;flex-wrap:wrap}
 .foot-links a{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 .foot-links a:hover{color:var(--ink);border-color:var(--clay)}
 .foot-meta{font-family:var(--mono);font-size:10px;color:var(--ink3)}
 
-/* RESPONSIVE */
+/* ════════════════════════════════
+   RESPONSIVE — 880px
+════════════════════════════════ */
 @media(max-width:880px){
   .logo-grid{grid-template-columns:repeat(2,1fr)}
   .social-grid{grid-template-columns:repeat(2,1fr)}
@@ -346,50 +356,166 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .tools-grid{grid-template-columns:repeat(3,1fr)}
   .brands-grid{grid-template-columns:repeat(3,1fr)}
   .contact-grid{grid-template-columns:1fr}
+  .process-step:nth-child(3){border-right:none}
+  .process-step:nth-child(4){border-top:1px solid var(--line)}
+  .process-step:nth-child(5){border-top:1px solid var(--line)}
 }
+
+/* ════════════════════════════════
+   RESPONSIVE — 680px (main mobile breakpoint)
+════════════════════════════════ */
 @media(max-width:680px){
-  nav{padding:0 1.25rem}
+  /* Nav */
+  nav{padding:0 1.25rem;height:60px}
   .nav-links{display:none}
-  .nav-actions{gap:10px}
+  .nav-cta{display:none}
   .hamburger{display:flex}
-  .nav-cta{padding:7px 13px;font-size:10px}
-  .wrap{padding:0 1.25rem}
-  .hero{min-height:auto;padding:100px 1.25rem 3.5rem}
-  .hero-doodle{width:30px !important}
-  .hero-doodle-bolt{top:8%;left:5%;width:28px !important}
-  .hero-doodle-wave{bottom:8%;right:6%;width:36px !important}
-  .hero-doodle-circle{display:none !important}
+  .mobile-menu{top:60px}
+
+  /* Layout */
+  .wrap{padding:0 1.1rem}
+
+  /* Hero */
+  .hero{min-height:100svh;padding:90px 1.1rem 3.5rem}
+  .hero-doodle-bolt{top:8%;left:4%;width:26px}
+  .hero-doodle-wave{bottom:8%;right:5%;width:34px}
+  .hero-doodle-circle{display:none}
   .hero-glow{display:none}
-  .hero-eyebrow{font-size:10px;letter-spacing:0.14em;text-align:center;margin-bottom:1.1rem;white-space:normal}
-  .hero-title{font-size:clamp(2.6rem,16vw,3.6rem);line-height:0.95}
-  .hero-sub{font-size:13px;max-width:280px;margin-top:1.2rem}
-  .hero-roles{margin-top:1.6rem;gap:8px}
-  .hero-roles span{font-size:9.5px;padding:5px 11px}
-  .hero-scroll{margin-top:2rem}
-  .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center}
-  .logo-grid{grid-template-columns:repeat(2,1fr)}
-  .social-grid{grid-template-columns:repeat(2,1fr)}
-  .strategy-row{grid-template-columns:1fr}
-  .case-mocks{grid-template-columns:repeat(2,1fr)}
-  .case-top{flex-direction:column}
-  .process-row{grid-template-columns:repeat(2,1fr)}
-  .process-step{border-bottom:1px solid var(--line)}
-  .counter-strip{grid-template-columns:1fr}
-  footer{flex-direction:column;align-items:flex-start}
+  .hero-eyebrow{font-size:10px;letter-spacing:0.12em;margin-bottom:1rem}
+  .hero-title{font-size:clamp(2.8rem,14vw,4.5rem)}
+  .hero-sub{font-size:13px;max-width:100%;padding:0 0.25rem}
+  .hero-roles{margin-top:1.5rem;gap:7px;padding:0 0.5rem}
+  .hero-roles span{font-size:9.5px;padding:5px 10px}
+
+  /* Ticker */
+  .ticker-item{font-size:10px;padding:0 1.4rem}
+
+  /* Hello */
+  .hello{padding:4rem 0}
+  .hello-grid{grid-template-columns:1fr;text-align:center;justify-items:center;gap:2rem}
+  .hello-text{max-width:100%}
+  .hello-tags{justify-content:center}
+
+  /* Contents: hide SVG, show pill links */
+  .contents-wrap{padding:1rem 0 3.5rem}
+  .map-svg-wrap{display:none}
+  .map-mobile{display:flex}
+
+  /* Band */
   .band{padding:3.5rem 0}
   .section{padding:3.5rem 0}
+  .section-head{align-items:flex-start;gap:.6rem;margin-bottom:1.75rem}
+  .section-note{max-width:100%;font-size:12px}
+
+  /* Logo grid */
+  .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .logo-mark.logo-image{height:150px}
+
+  /* Brand grid */
+  .brands-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .brand-mark.brand-image{height:130px}
+  .brand-card{padding:0}
+
+  /* Case card */
+  .case-card{padding:1.5rem 1.1rem;border-radius:14px}
+  .case-top{flex-direction:column;gap:1rem}
+  .case-desc{max-width:100%}
+  .swatches{gap:7px}
+  .swatch{height:52px}
+  .swatch span{font-size:8.5px;bottom:5px;left:7px}
+  .type-specimen .big{font-size:1.9rem}
+  .case-mocks{grid-template-columns:repeat(2,1fr);gap:10px}
+  .mock-tile{height:130px}
+  .device-row{grid-template-columns:1fr;gap:10px}
+
+  /* Social */
+  .social-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .strategy-row{grid-template-columns:1fr;gap:10px}
+  .counter-strip{grid-template-columns:1fr;gap:10px}
+
+  /* Content */
+  .content-grid{grid-template-columns:1fr;gap:10px}
+  .process-row{grid-template-columns:repeat(2,1fr);border-radius:12px}
+  .process-step{border-right:none;border-bottom:1px solid var(--line)}
+  .process-step:nth-child(odd){border-right:1px solid var(--line)}
+  .process-step:last-child{border-bottom:none;border-right:none}
+  .process-step:nth-child(4){border-top:none}
+  .process-step:nth-child(5){border-top:none}
+
+  /* Expertise */
   .expertise-grid{grid-template-columns:1fr}
-  .tools-grid{grid-template-columns:repeat(2,1fr)}
-  .brands-grid{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .nav-links{display:none}
+  .expertise-item{font-size:13px}
+
+  /* Tools */
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px 14px}
+  .tool-item{font-size:12px}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:10px}
+  .contact-value{font-size:13px;word-break:break-all}
+  .contact-form{padding:1.35rem;border-radius:14px}
+  .form-row{grid-template-columns:1fr;gap:10px}
+  .form-submit{width:100%;justify-content:center}
+
+  /* Footer */
+  footer{padding:2rem 1.1rem;flex-direction:column;align-items:flex-start}
+  .thanks{padding:4rem 0}
+  .thanks-cta{width:auto;padding:12px 22px}
 }
-@media(max-width:400px){
-  .hero-title{font-size:clamp(2.2rem,15vw,3rem)}
-  .hero-doodle-bolt{top:6%;left:4%;width:22px !important}
-  .hero-doodle-wave{bottom:6%;right:5%;width:28px !important}
+
+/* ════════════════════════════════
+   RESPONSIVE — 480px (small phones)
+════════════════════════════════ */
+@media(max-width:480px){
+  nav{height:56px;padding:0 1rem}
+  .nav-mark{font-size:13px;gap:6px}
+  .nav-logo{width:26px;height:26px}
+  .mobile-menu{top:56px}
+  .mobile-menu a{font-size:15px}
+
+  .hero{padding:80px 1rem 3rem}
+  .hero-title{font-size:clamp(2.5rem,16vw,3.8rem)}
+  .hero-sub{font-size:12.5px}
+  .hero-roles span{font-size:9px;padding:4px 9px}
+
+  .hello{padding:3rem 0}
+  .portrait-wrap,.portrait-circle{width:170px;height:170px}
+  .portrait-ring{inset:-10px}
+  .hello-title{font-size:1.8rem}
+  .hello-text{font-size:13.5px}
+
+  .band-title{font-size:clamp(2rem,12vw,3rem)}
+  .band-sub{font-size:12.5px}
+
+  .logo-grid{grid-template-columns:1fr;gap:10px}
+  .logo-mark.logo-image{max-width:none;height:180px}
+  .logo-name{display:none}
+
+  .brands-grid{grid-template-columns:1fr;gap:10px}
+  .brand-mark.brand-image{max-width:none;height:170px}
+  .brand-name{display:none}
+
+  .social-grid{grid-template-columns:1fr;gap:10px}
+
+  .counter-num{font-size:2.2rem}
+
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:8px 12px}
+
+  .case-mocks{grid-template-columns:1fr;gap:10px}
+  .mock-tile{height:140px}
+
+  .process-row{grid-template-columns:1fr}
+  .process-step{border-right:none !important;border-bottom:1px solid var(--line)}
+  .process-step:last-child{border-bottom:none}
+
+  footer{padding:1.75rem 1rem}
+  .foot-links{gap:.75rem}
+
+  .thanks-cta{width:100%;justify-content:center}
+  .form-submit{width:100%;justify-content:center}
 }
+
+/* ── Reduced motion ── */
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
@@ -399,7 +525,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-name" style="font-size:1.5rem">
+  <div class="loader-name">
     <span style="animation-delay:.02s">L</span><span style="animation-delay:.05s">E</span><span style="animation-delay:.08s">O</span><span style="animation-delay:.14s;margin-left:8px">A</span><span style="animation-delay:.17s">D</span><span style="animation-delay:.2s">A</span><span style="animation-delay:.23s">M</span><span style="animation-delay:.3s;margin-left:8px">B</span><span style="animation-delay:.33s">A</span><span style="animation-delay:.36s">L</span><span style="animation-delay:.39s">I</span><span style="animation-delay:.42s">N</span><span style="animation-delay:.45s">G</span><span style="animation-delay:.48s">I</span><span style="animation-delay:.51s">T</span>
   </div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
@@ -407,7 +533,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#top" class="nav-mark"><span class="dot"></span>LEO ADAM BALINGIT</a>
+  <a href="#top" class="nav-mark">
+    <img class="nav-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
+    LEO ADAM BALINGIT
+  </a>
   <ul class="nav-links">
     <li><a href="#brands">Brands</a></li>
     <li><a href="#graphic-design">Design</a></li>
@@ -435,15 +564,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-glow" id="heroGlow"></div>
-  <svg class="hero-doodle hero-doodle-bolt" viewBox="0 0 46 46" fill="none">
-    <path d="M8 6 L8 34 L16 27 L21 38 L26 36 L21 25 L31 24 Z" fill="currentColor"/>
-  </svg>
-  <svg class="hero-doodle hero-doodle-wave" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-    <path d="M4 28 Q20 4 38 24 T74 18 T98 26"/>
-  </svg>
-  <svg class="hero-doodle hero-doodle-circle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4">
-    <circle cx="20" cy="20" r="14" stroke-dasharray="3 6"/>
-  </svg>
+  <svg class="hero-doodle hero-doodle-bolt" viewBox="0 0 46 46" fill="none"><path d="M8 6 L8 34 L16 27 L21 38 L26 36 L21 25 L31 24 Z" fill="currentColor"/></svg>
+  <svg class="hero-doodle hero-doodle-wave" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 28 Q20 4 38 24 T74 18 T98 26"/></svg>
+  <svg class="hero-doodle hero-doodle-circle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="14" stroke-dasharray="3 6"/></svg>
   <div class="hero-eyebrow">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
     Leo Adam Balingit
@@ -489,12 +612,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
           <circle cx="105" cy="105" r="101" fill="none" stroke="#B5481F" stroke-width="2" stroke-dasharray="2 7" opacity="0.5"/>
         </svg>
         <div class="portrait-circle">
-          <svg class="portrait-sketch" viewBox="0 0 120 140" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <path d="M60 18c16 0 27 13 27 30 0 11-4 19-9 25 14 6 24 18 27 35l3 22H12l3-22c3-17 13-29 27-35-5-6-9-14-9-25 0-17 11-30 27-30Z"/>
-            <path d="M40 58c4 4 12 7 20 7s16-3 20-7" opacity="0.5"/>
-            <path d="M33 48c2-14 12-22 27-22s25 8 27 22" opacity="0.4"/>
-            <path d="M22 128c4-16 16-26 38-26s34 10 38 26" opacity="0.35"/>
-          </svg>
+          <img class="portrait-photo" src="My%20Photo/My%20Photo/My%20Pic.JPG" alt="Leo Adam Balingit"/>
         </div>
       </div>
       <div class="reveal-right d2">
@@ -510,99 +628,42 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
   <hr class="rule"/>
 
-  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       CONTENTS MAP — FIXED
-       Center: 400,260
-       Nodes fanned around the center with proper spacing
-       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <!-- CONTENTS MAP -->
   <section class="contents-wrap" id="contents">
     <p class="eyebrow" style="justify-content:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
 
-    <div class="contents-map reveal-scale">
-      <!--
-        Layout plan:
-        Center node:  cx=400, cy=270  r=62
-        5 outer nodes placed in a wide arc above + sides:
-          Node 0 (Brands & Clients):    far left     ~(80, 70)   pill 170×44
-          Node 1 (Graphic Design):      mid-left     ~(230, 40)  pill 154×44
-          Node 2 (Social Media):        top-center   ~(323, 22)  pill 154×44
-          Node 3 (Content Creation):    mid-right    ~(416, 40)  pill 166×44
-          Node 4 (Expertise & Tools):   far right    ~(570, 70)  pill 164×44
-
-        Edges connect from center (400,270) to pill mid-bottom:
-          Node 0 center: (165, 114) → (165 + 170/2, 114) = (250, 92)
-          ...etc — we connect to pill's bottom-center
-      -->
+    <!-- Desktop SVG map -->
+    <div class="contents-map reveal-scale map-svg-wrap">
       <svg class="map-svg" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
-
-        <!-- ── EDGES (center→node bottom-center) ── -->
-        <!-- To Brands & Clients: pill rect x=30 y=42 w=172 h=44 → bottom-center=(116,86) -->
         <path class="map-edge" id="e0" d="M400,208 C340,160 220,120 116,86"/>
-        <!-- To Graphic Design: pill rect x=196 y=22 w=152 h=44 → bottom-center=(272,66) -->
         <path class="map-edge" id="e1" d="M400,208 C370,150 320,100 272,66"/>
-        <!-- To Social Media: pill rect x=324 y=8 w=152 h=44 → bottom-center=(400,52) -->
         <path class="map-edge" id="e2" d="M400,208 L400,52"/>
-        <!-- To Content Creation: pill rect x=452 y=22 w=152 h=44 → bottom-center=(528,66) -->
         <path class="map-edge" id="e3" d="M400,208 C430,150 480,100 528,66"/>
-        <!-- To Expertise & Tools: pill rect x=598 y=42 w=172 h=44 → bottom-center=(684,86) -->
         <path class="map-edge" id="e4" d="M400,208 C460,160 580,120 684,86"/>
-
-        <!-- ── CENTER NODE ── -->
         <g class="map-center">
-          <!-- Outer dashed orbit ring -->
           <circle cx="400" cy="270" r="80" fill="none" stroke="#B5481F" stroke-width="1.4" stroke-dasharray="3 7" opacity="0.45"/>
-          <!-- Solid fill circle -->
           <circle cx="400" cy="270" r="62" fill="#171510"/>
-          <!-- Subtle inner ring -->
           <circle cx="400" cy="270" r="62" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-          <!-- Name lines -->
           <text x="400" y="261" text-anchor="middle" class="map-center-label" font-size="16">Adam</text>
           <text x="400" y="281" text-anchor="middle" class="map-center-label" font-size="16">Balingit</text>
           <text x="400" y="300" text-anchor="middle" class="map-center-sub">Portfolio</text>
         </g>
-
-        <!-- ── NODE 0 — Brands & Clients (far left) ── -->
-        <a href="#brands">
-          <g class="map-node" transform="translate(30,42)">
-            <rect width="172" height="44" rx="22" ry="22"/>
-            <text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Brands &amp; Clients</text>
-          </g>
-        </a>
-
-        <!-- ── NODE 1 — Graphic Design (mid-left) ── -->
-        <a href="#graphic-design">
-          <g class="map-node" transform="translate(196,22)">
-            <rect width="152" height="44" rx="22" ry="22"/>
-            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Graphic Design</text>
-          </g>
-        </a>
-
-        <!-- ── NODE 2 — Social Media (top center) ── -->
-        <a href="#social-media">
-          <g class="map-node" transform="translate(324,8)">
-            <rect width="152" height="44" rx="22" ry="22"/>
-            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Social Media</text>
-          </g>
-        </a>
-
-        <!-- ── NODE 3 — Content Creation (mid-right) ── -->
-        <a href="#content-creation">
-          <g class="map-node" transform="translate(452,22)">
-            <rect width="152" height="44" rx="22" ry="22"/>
-            <text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Content Creation</text>
-          </g>
-        </a>
-
-        <!-- ── NODE 4 — Expertise & Tools (far right) ── -->
-        <a href="#expertise">
-          <g class="map-node" transform="translate(598,42)">
-            <rect width="172" height="44" rx="22" ry="22"/>
-            <text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text>
-          </g>
-        </a>
-
+        <a href="#brands"><g class="map-node" transform="translate(30,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Brands &amp; Clients</text></g></a>
+        <a href="#graphic-design"><g class="map-node" transform="translate(196,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Graphic Design</text></g></a>
+        <a href="#social-media"><g class="map-node" transform="translate(324,8)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Social Media</text></g></a>
+        <a href="#content-creation"><g class="map-node" transform="translate(452,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Content Creation</text></g></a>
+        <a href="#expertise"><g class="map-node" transform="translate(598,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text></g></a>
       </svg>
+    </div>
+
+    <!-- Mobile pill nav (replaces SVG on small screens) -->
+    <div class="map-mobile reveal">
+      <a href="#brands">Brands &amp; Clients</a>
+      <a href="#graphic-design">Graphic Design</a>
+      <a href="#social-media">Social Media</a>
+      <a href="#content-creation">Content Creation</a>
+      <a href="#expertise">Expertise &amp; Tools</a>
     </div>
   </section>
 </div>
@@ -616,14 +677,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="wrap">
   <section class="section">
     <div class="brands-grid">
-      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#5C6E50">N</div><div class="brand-name">Northwell</div><div class="brand-tag">Wellness</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#B5481F">P</div><div class="brand-name">Petal &amp; Co</div><div class="brand-tag">Skincare</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#2E4D6B">V</div><div class="brand-name">Vessel</div><div class="brand-tag">Homeware</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#7A5C3E">A</div><div class="brand-name">Arcblock</div><div class="brand-tag">Fintech</div></div>
-      <div class="brand-card reveal d1"><div class="brand-mark" style="background:#C9810F">K</div><div class="brand-name">Kestrel</div><div class="brand-tag">Outdoor</div></div>
-      <div class="brand-card reveal d2"><div class="brand-mark" style="background:#56503F">B</div><div class="brand-name">Bloomhaus</div><div class="brand-tag">Florist</div></div>
-      <div class="brand-card reveal d3"><div class="brand-mark" style="background:#8A3B2B">F</div><div class="brand-name">Ferro</div><div class="brand-tag">Coffee</div></div>
-      <div class="brand-card reveal d4"><div class="brand-mark" style="background:#3E6B5C">S</div><div class="brand-name">Salt &amp; Smoke</div><div class="brand-tag">Restaurant</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend%20Experience%20LLC.jpg" alt="Ascend Experience LLC"/></div><div class="brand-name">Ascend Experience LLC</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div><div class="brand-name">AVA Gaming</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div><div class="brand-name">BetAlly</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.jpg" alt="BolaTV"/></div><div class="brand-name">BolaTV</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.jpg" alt="HP"/></div><div class="brand-name">HP</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark brand-image logo-zoom"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div><div class="brand-name">Khelo100</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark brand-image logo-zoom-lg"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LF.jpg" alt="LF"/></div><div class="brand-name">LF</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div><div class="brand-name">LIVEFEST</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div><div class="brand-name">LNPLAY</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div><div class="brand-name">Mikiworld</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div><div class="brand-name">OC Togel</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777.jpg" alt="ole777"/></div><div class="brand-name">ole777</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="OlimpicVIP"/></div><div class="brand-name">OlimpicVIP</div></div>
+      <div class="brand-card reveal d2"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div><div class="brand-name">One2play</div></div>
+      <div class="brand-card reveal d3"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div><div class="brand-name">Tailored Canvases</div></div>
+      <div class="brand-card reveal d4"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="TellmyTale"/></div><div class="brand-name">TellmyTale</div></div>
+      <div class="brand-card reveal d1"><div class="brand-mark brand-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div><div class="brand-name">WonderMe</div></div>
     </div>
   </section>
 </div>
@@ -641,67 +711,21 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       <p class="section-note reveal d2">A selection of marks designed to hold up at app-icon size and on a building face.</p>
     </div>
     <div class="logo-grid">
-      <div class="logo-card reveal d1"><div class="logo-mark" style="background:#5C6E50">N</div><div class="logo-name">Northwell</div><div class="logo-tag">Wellness / 2025</div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark" style="background:#B5481F">P</div><div class="logo-name">Petal &amp; Co</div><div class="logo-tag">Skincare / 2025</div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark" style="background:#2E4D6B">V</div><div class="logo-name">Vessel</div><div class="logo-tag">Homeware / 2024</div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark" style="background:#7A5C3E">A</div><div class="logo-name">Arcblock</div><div class="logo-tag">Fintech / 2024</div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark" style="background:#C9810F">K</div><div class="logo-name">Kestrel</div><div class="logo-tag">Outdoor / 2023</div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark" style="background:#56503F">B</div><div class="logo-name">Bloomhaus</div><div class="logo-tag">Florist / 2023</div></div>
-      <div class="logo-card reveal d1"><div class="logo-mark" style="background:#8A3B2B">F</div><div class="logo-name">Ferro</div><div class="logo-tag">Coffee / 2023</div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark" style="background:#3E6B5C">S</div><div class="logo-name">Salt &amp; Smoke</div><div class="logo-tag">Restaurant / 2022</div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark" style="background:#445A8A">M</div><div class="logo-name">Meridian</div><div class="logo-tag">Travel / 2022</div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div><div class="logo-name">A3 Graphics</div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div><div class="logo-name">Barista Hub</div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div><div class="logo-name">Cup &amp; Go</div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div><div class="logo-name">Eleve Wellness</div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div><div class="logo-name">Golden Cafe</div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Logo collection"/></div><div class="logo-name">Logo Collection</div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div><div class="logo-name">MediTrust</div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div><div class="logo-name">Nails O'Clock</div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Studio Belleza"/></div><div class="logo-name">Studio Belleza</div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div><div class="logo-name">The Quiet Cup</div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div><div class="logo-name">Unwind</div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div><div class="logo-name">Veraluxe</div></div>
     </div>
 
-    <div style="margin-top:3.5rem">
-      <div class="section-head">
-        <h3 class="section-title reveal">Brand Identity — Case Study</h3>
-        <p class="section-note reveal d2">One full system, start to finish.</p>
-      </div>
-      <div class="case-card reveal">
-        <div class="case-top">
-          <div class="case-brand">
-            <div class="case-brand-mark">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3c2.5 2 4 4.6 4 7.5a4 4 0 0 1-8 0C8 7.6 9.5 5 12 3Z"/><path d="M12 14v7"/><path d="M8 21h8"/></svg>
-            </div>
-            <div>
-              <div class="case-brand-name">Petal &amp; Co.</div>
-              <div class="case-brand-sub">BOTANICAL SKINCARE — FULL IDENTITY</div>
-            </div>
-          </div>
-          <p class="case-desc">A skincare line that wanted to feel like a quiet ritual rather than a routine — soft botanicals, warm neutrals, and a wordmark with room to breathe.</p>
-        </div>
-        <div class="swatches">
-          <div class="swatch" style="background:#5C6E50"><span>SAGE</span></div>
-          <div class="swatch" style="background:#B5481F"><span>CLAY</span></div>
-          <div class="swatch" style="background:#EFE6CF"><span style="color:#56503F">CREAM</span></div>
-          <div class="swatch" style="background:#171510"><span>INK</span></div>
-        </div>
-        <div class="type-specimen">
-          <div class="big">Petal &amp; Co</div>
-          <div class="small">Space Grotesk / Inter — set wide, lower-case wordmark, sentence-case everywhere else.</div>
-        </div>
-        <div class="case-mocks">
-          <div class="mock-tile"><div class="biz-card"><div class="mark"></div><div class="l1"></div><div class="l2"></div></div><span class="label">Business card</span></div>
-          <div class="mock-tile"><div class="tote"><div class="mark"></div></div><span class="label">Tote bag</span></div>
-          <div class="mock-tile"><div class="label-mock"><div class="mark"></div><div class="l"></div><div class="l"></div></div><span class="label">Product label</span></div>
-        </div>
-        <div class="device-row">
-          <div class="laptop">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="bar w60"></div><div class="bar w40"></div>
-                <div class="grid3"><div></div><div></div><div></div></div>
-              </div>
-              <div class="laptop-base"></div>
-            </div>
-          </div>
-          <div class="phone">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="bar"></div><div class="bar w50"></div>
-                <div class="tile"></div>
-              </div>
-            </div>
+    
           </div>
         </div>
       </div>
@@ -891,7 +915,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div><div class="contact-label">Phone</div><div class="contact-value">0967-387-5905</div></div>
       </div>
       <div class="contact-card reveal d2">
-        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6L12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
+        <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6L12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
         <div><div class="contact-label">Email</div><div class="contact-value">hello@leoadambalingit.design</div></div>
       </div>
     </div>
@@ -942,12 +966,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       const subject = document.getElementById('cf-subject').value.trim() || 'New project inquiry';
       const message = document.getElementById('cf-message').value.trim();
       const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-      const mailtoLink = `mailto:saturog350@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
+      window.location.href = `mailto:saturog350@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 
-  /* TOOLS — brand logos */
+  /* TOOLS */
   const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
   const tools = [
     { name: 'Adobe Photoshop', icon: `${ICON_CDN}/adobephotoshop.svg` },
@@ -1030,14 +1053,14 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
   /* NAV SCROLL + ACTIVE SECTION */
   const navbar = document.getElementById('navbar');
-  const navSections = document.querySelectorAll('#brands, #graphic-design, #social-media, #content-creation, #expertise, #tools, #contact-page');
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mlink[href^="#"]');
+  const navSections = document.querySelectorAll('#brands,#graphic-design,#social-media,#content-creation,#expertise,#tools,#contact-page');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"],.mlink[href^="#"]');
 
   function setActiveNav(id){
     navLinks.forEach(link => {
       const isActive = link.getAttribute('href') === `#${id}`;
       link.classList.toggle('active', isActive);
-      if(isActive) link.setAttribute('aria-current', 'true');
+      if(isActive) link.setAttribute('aria-current','true');
       else link.removeAttribute('aria-current');
     });
   }
@@ -1083,7 +1106,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     }
   });
 
-  /* HERO CURSOR GLOW */
+  /* HERO CURSOR GLOW — desktop only */
   const heroSection = document.querySelector('.hero');
   const glow = document.getElementById('heroGlow');
   if(heroSection && glow && window.matchMedia('(min-width:681px)').matches){
@@ -1094,26 +1117,20 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }
 
   /* SCROLL REVEAL */
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  const revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
     });
   }, {threshold:0.08});
   revealEls.forEach(el => io.observe(el));
 
-  /* MAP EDGE DRAW — triggered when the SVG enters viewport */
+  /* MAP EDGE DRAW */
   const edges = document.querySelectorAll('.map-edge');
   const edgeIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
-        /* stagger each edge */
-        edges.forEach((edge, i) => {
-          setTimeout(() => edge.classList.add('drawn'), i * 120);
-        });
+        edges.forEach((edge, i) => setTimeout(() => edge.classList.add('drawn'), i * 120));
         edgeIO.disconnect();
       }
     });
@@ -1138,10 +1155,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   }
   const counterIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting){
-        animateCounter(e.target);
-        counterIO.unobserve(e.target);
-      }
+      if(e.isIntersecting){ animateCounter(e.target); counterIO.unobserve(e.target); }
     });
   }, {threshold:0.4});
   document.querySelectorAll('.counter-num[data-target]').forEach(el => counterIO.observe(el));
