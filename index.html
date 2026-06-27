@@ -181,114 +181,32 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .service-card:hover .service-emoji{background:var(--cream)}
 .service-name{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-0.01em;color:var(--ink);line-height:1.35}
 
-/* ── CONTENTS MAP ── */
-.contents-wrap{padding:1rem 0 6rem;text-align:center}
-.contents-map{max-width:760px;margin:2.5rem auto 0;position:relative;width:100%}
-.map-svg{width:100%;height:auto;overflow:visible}
-.map-edge{fill:none;stroke:var(--line);stroke-width:1.8;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.2s ease}
-.map-edge.drawn{stroke-dashoffset:0}
-.map-center circle{transition:r .3s}
-.map-center:hover circle{r:66}
-.map-node{cursor:pointer}
-.map-node rect{fill:var(--white);stroke:var(--line);stroke-width:1.5;rx:22;transition:stroke .25s,fill .25s,filter .25s}
-.map-node text{font-family:'Baloo 2',sans-serif;font-weight:600;font-size:13px;fill:var(--ink);pointer-events:none}
-.map-node:hover rect{stroke:var(--clay);fill:var(--cream);filter:drop-shadow(0 6px 16px rgba(181,72,31,0.18))}
-.map-node:hover text{fill:var(--clay-d)}
-.map-center-label{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:15px;fill:var(--white);pointer-events:none}
-.map-center-sub{font-family:'IBM Plex Mono',monospace;font-size:8.5px;fill:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;pointer-events:none}
-.map-mobile{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin:1.75rem auto 0;max-width:400px}
-.map-mobile a{font-family:var(--display);font-weight:600;font-size:13.5px;padding:9px 20px;border:1.5px solid var(--line);border-radius:100px;color:var(--ink);background:var(--white);transition:background .2s,border-color .2s,color .2s}
-.map-mobile a:hover{background:var(--cream);border-color:var(--clay);color:var(--clay-d)}
+/* ── CONTENTS BOARD ── */
+.contents-wrap{padding:1rem 0 6rem}
+.contents-board{margin:2.25rem auto 0;width:min(100%,940px);padding:0;text-align:left}
+.contents-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.content-toc-card{position:relative;display:flex;flex-direction:column;min-height:250px;background:var(--white);border:1px solid #ececec;color:#111;overflow:hidden;transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s,border-color .28s}
+.content-toc-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(23,21,16,0.14);border-color:#d8d8d8}
+.toc-title{min-height:42px;padding:18px 34px 7px 10px;font-family:var(--display);font-size:13px;font-weight:800;line-height:1.05;letter-spacing:0;color:#111}
+.toc-number{position:absolute;top:10px;right:10px;font-family:var(--display);font-size:20px;font-weight:800;line-height:1;color:#111}
+.toc-image{flex:1;display:flex;min-height:0;padding:0 10px 10px}
+.toc-image img{width:100%;height:100%;min-height:185px;object-fit:cover;object-position:center top;background:#f7f7f7}
 
 /* ═══════════════════════════════
    BRANDS GRID
 ═══════════════════════════════ */
-.brands-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.brand-card,
-.logo-card{
-  background:var(--white);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:22px 14px 18px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  gap:14px;
-  text-align:center;
-  min-height:184px;
-  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;
-}
-.brand-card:hover,
-.logo-card:hover{
-  transform:translateY(-5px);
-  box-shadow:var(--shadow-hover);
-  border-color:var(--amber);
-}
-
-.brand-img-wrap,
-.logo-mark.logo-image{
-  width:76px;
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:18px;
-  color:inherit;
-  overflow:hidden;
-  padding:12px;
-  transition:background .3s;
-}
-.brand-card:hover .brand-img-wrap,
-.logo-card:hover .logo-mark.logo-image{background:var(--cream)}
-.brand-img-wrap img,
-.logo-mark.logo-image img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  padding:0;
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.brand-card:hover .brand-img-wrap img,
-.logo-card:hover .logo-mark.logo-image img{transform:scale(1.06)}
+.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.brand-card,.logo-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 14px 18px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;text-align:center;min-height:184px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.brand-card:hover,.logo-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
+.brand-img-wrap,.logo-mark.logo-image{width:76px;height:76px;display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;color:inherit;overflow:hidden;padding:12px;transition:background .3s}
+.brand-card:hover .brand-img-wrap,.logo-card:hover .logo-mark.logo-image{background:var(--cream)}
+.brand-img-wrap img,.logo-mark.logo-image img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:0;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.brand-card:hover .brand-img-wrap img,.logo-card:hover .logo-mark.logo-image img{transform:scale(1.06)}
 .logo-mark.logo-image img.logo-lf{transform:scale(1.75)}
 .logo-card:hover .logo-mark.logo-image img.logo-lf{transform:scale(1.86)}
-
-.brand-info{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  width:100%;
-  min-width:0;
-}
-.brand-name{
-  font-family:var(--display);
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-  line-height:1.2;
-  max-width:100%;
-  overflow-wrap:anywhere;
-}
-.brand-tag{
-  font-family:var(--mono);
-  font-size:9.5px;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--ink3);
-  overflow-wrap:anywhere;
-}
+.brand-info{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;min-width:0}
+.brand-name{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-0.01em;color:var(--ink);line-height:1.2;max-width:100%;overflow-wrap:anywhere}
+.brand-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink3);overflow-wrap:anywhere}
 
 /* ── LOGO GRID ── */
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -300,7 +218,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .portfolio-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-ink);margin-bottom:.35rem}
 .portfolio-note{font-size:12px;color:var(--ink3);max-width:300px;line-height:1.55}
 
-/* ── STANDARD ASSET GRID (branding, packaging, booth) ── */
+/* ── STANDARD ASSET GRID ── */
 .asset-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .asset-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
 .asset-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--amber)}
@@ -317,162 +235,81 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .email-feature img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow);object-fit:contain}
 
 /* ═══════════════════════════════════════════════════
-   INSTAGRAM-STYLE CARD — used for Email, Website,
-   Social Posts, Digital Ads
+   INSTAGRAM-STYLE CARD
 ═══════════════════════════════════════════════════ */
-.ig-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ig-card{background:#fff;border:1px solid #dbdbdb;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 12px rgba(0,0,0,0.07);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;cursor:pointer;text-decoration:none;color:inherit}
+.ig-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.13)}
+.ig-header{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid #f0f0f0;flex-shrink:0}
+.ig-logo{flex-shrink:0;display:flex;align-items:center}
+.ig-logo svg{width:18px;height:18px}
+.ig-username{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#111;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ig-dots{display:flex;gap:2.5px;flex-shrink:0}
+.ig-dots span{width:3px;height:3px;background:#aaa;border-radius:50%;display:block}
+.ig-image-wrap{width:100%;aspect-ratio:1/1;background:var(--surface);overflow:hidden;flex-shrink:0;position:relative}
+.ig-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.ig-card:hover .ig-image-wrap img{transform:scale(1.04)}
+.ig-image-wrap.ig-tall{aspect-ratio:4/5}
+.ig-image-wrap.ig-fullpage{aspect-ratio:3/4;background:var(--paper2)}
+.ig-image-wrap.ig-fullpage img{object-fit:contain;object-position:top center}
+.ig-card:hover .ig-image-wrap.ig-fullpage img{transform:none}
+#websiteAssets{grid-template-columns:minmax(0,620px);justify-content:center}
+.ig-image-wrap.ig-landscape{aspect-ratio:auto;height:auto;background:var(--paper2)}
+.ig-image-wrap.ig-landscape img{width:100%;height:auto;object-fit:contain;display:block}
+.ig-card:hover .ig-image-wrap.ig-landscape img{transform:none}
+#emailAssets{grid-template-columns:minmax(0,620px);justify-content:center}
+.ig-actions{display:flex;align-items:center;gap:10px;padding:7px 10px 4px;flex-shrink:0}
+.ig-action-left{display:flex;gap:9px;align-items:center;flex:1}
+.ig-action-icon{width:18px;height:18px;color:#262626;flex-shrink:0}
+.ig-action-icon.save{margin-left:auto;color:#262626}
+.ig-caption{padding:3px 10px 9px;flex-shrink:0}
+.ig-caption-user{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;color:#111}
+.ig-caption-text{font-family:'Inter',sans-serif;font-size:10.5px;color:#555;margin-top:1px;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 
-/* The outer "phone chrome" wrapper */
-.ig-card{
-  background:#fff;
-  border:1px solid #dbdbdb;
-  border-radius:12px;
-  overflow:hidden;
+/* ════════════════════════════════════════
+   DIGITAL ADS CAROUSEL
+════════════════════════════════════════ */
+.ads-carousel-wrap{
+  position:relative;
+  width:100%;
+  user-select:none;
+}
+.ads-carousel-stack{
   display:flex;
   flex-direction:column;
-  box-shadow:0 2px 12px rgba(0,0,0,0.07);
-  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;
-  cursor:pointer;
-  text-decoration:none;
-  color:inherit;
+  gap:18px;
 }
-.ig-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.13);
+.ads-carousel-viewport{
+  overflow:hidden;
+  border-radius:var(--radius);
 }
-
-/* Top bar: logo + username + dots */
-.ig-header{
+.ads-carousel-track{
   display:flex;
-  align-items:center;
-  gap:8px;
-  padding:7px 10px;
-  border-bottom:1px solid #f0f0f0;
-  flex-shrink:0;
+  gap:16px;
+  width:max-content;
+  will-change:transform;
 }
-.ig-logo{
-  flex-shrink:0;
+.ads-carousel-set{
   display:flex;
-  align-items:center;
+  gap:16px;
+  flex:0 0 auto;
+  padding-right:16px;
 }
-.ig-logo svg{
-  width:18px;
-  height:18px;
+.ads-carousel-track.ads-track-blue{
+  animation:adsSlideLeft 34s linear infinite;
 }
-.ig-username{
-  font-family:'Inter',sans-serif;
-  font-size:11px;
-  font-weight:600;
-  color:#111;
-  flex:1;
+.ads-carousel-track.ads-track-green{
+  animation:adsSlideRight 34s linear infinite;
+}
+.ads-carousel-wrap:hover .ads-carousel-track{
+  animation-play-state:paused;
+}
+.ads-carousel-track .ig-card{
+  flex:0 0 clamp(190px,22vw,250px);
   min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
 }
-.ig-dots{
-  display:flex;
-  gap:2.5px;
-  flex-shrink:0;
-}
-.ig-dots span{
-  width:3px;
-  height:3px;
-  background:#aaa;
-  border-radius:50%;
-  display:block;
-}
-
-/* Image area */
-.ig-image-wrap{
-  width:100%;
-  aspect-ratio:1/1;
-  background:var(--surface);
-  overflow:hidden;
-  flex-shrink:0;
-  position:relative;
-}
-.ig-image-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .4s cubic-bezier(.22,1,.36,1);
-}
-.ig-card:hover .ig-image-wrap img{
-  transform:scale(1.04);
-}
-/* Tall variant for email / website designs */
-.ig-image-wrap.ig-tall{
-  aspect-ratio:4/5;
-}
-.ig-image-wrap.ig-fullpage{
-  aspect-ratio:3/4;
-  background:var(--paper2);
-}
-.ig-image-wrap.ig-fullpage img{
-  object-fit:contain;
-  object-position:top center;
-}
-.ig-card:hover .ig-image-wrap.ig-fullpage img{
-  transform:none;
-}
-#websiteAssets{
-  grid-template-columns:minmax(0,620px);
-  justify-content:center;
-}
-
-/* Action bar */
-.ig-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:7px 10px 4px;
-  flex-shrink:0;
-}
-.ig-action-left{
-  display:flex;
-  gap:9px;
-  align-items:center;
-  flex:1;
-}
-.ig-action-icon{
-  width:18px;
-  height:18px;
-  color:#262626;
-  flex-shrink:0;
-}
-.ig-action-icon.save{
-  margin-left:auto;
-  color:#262626;
-}
-
-/* Caption / label */
-.ig-caption{
-  padding:3px 10px 9px;
-  flex-shrink:0;
-}
-.ig-caption-user{
-  font-family:'Inter',sans-serif;
-  font-size:10.5px;
-  font-weight:700;
-  color:#111;
-}
-.ig-caption-text{
-  font-family:'Inter',sans-serif;
-  font-size:10.5px;
-  color:#555;
-  margin-top:1px;
-  line-height:1.4;
-  overflow:hidden;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-}
+@keyframes adsSlideLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes adsSlideRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 /* ── COUNTER STRIP ── */
 .counter-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:3rem}
@@ -482,7 +319,7 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .counter-side{font-family:var(--sans);font-weight:500;font-size:1.15rem;color:var(--ink3);line-height:1.15;margin-top:.28rem}
 .counter-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:.4rem}
 
-/* ── SOCIAL MEDIA (placeholder swatches kept, real grid uses ig-grid) ── */
+/* ── SOCIAL MEDIA ── */
 .social-card{aspect-ratio:1;border-radius:12px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;border:1px solid var(--line)}
 .social-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-hover)}
 .social-card .tag{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;opacity:.85}
@@ -614,6 +451,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .process-step:nth-child(3){border-right:none}
   .process-step:nth-child(4){border-top:1px solid var(--line)}
   .process-step:nth-child(5){border-top:1px solid var(--line)}
+  .ads-carousel-track .ig-card{flex-basis:clamp(180px,32vw,230px)}
 }
 
 /* ════════════════ RESPONSIVE 680px ════════════════ */
@@ -641,8 +479,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .hello-tags{justify-content:center}
   .services-grid{grid-template-columns:1fr;gap:10px}
   .contents-wrap{padding:1rem 0 3.5rem}
-  .map-svg-wrap{display:none}
-  .map-mobile{display:flex}
+  .contents-board{margin-top:1.75rem;padding:0}
+  .contents-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .content-toc-card{min-height:220px}
+  .toc-image img{min-height:155px}
   .band{padding:3.5rem 0}
   .section{padding:3.5rem 0}
   .section-head{align-items:flex-start;gap:.6rem;margin-bottom:1.75rem}
@@ -675,6 +515,8 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   footer{padding:2rem 1.1rem;flex-direction:column;align-items:flex-start}
   .thanks{padding:4rem 0}
   .thanks-cta{width:auto;padding:12px 22px}
+  .ads-carousel-stack{gap:14px}
+  .ads-carousel-track .ig-card{flex-basis:clamp(160px,44vw,210px)}
 }
 
 /* ════════════════ RESPONSIVE 480px ════════════════ */
@@ -695,6 +537,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .hello-text{font-size:13.5px}
   .band-title{font-size:clamp(2rem,12vw,3rem)}
   .band-sub{font-size:12.5px}
+  .contents-grid{grid-template-columns:1fr}
+  .content-toc-card{min-height:260px}
+  .toc-image img{min-height:195px}
   .logo-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .asset-grid{grid-template-columns:1fr;gap:10px}
   .asset-thumb,.asset-grid.compact .asset-thumb,.asset-grid.wide .asset-thumb{height:210px}
@@ -717,6 +562,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .foot-links{gap:.75rem}
   .thanks-cta{width:100%;justify-content:center}
   .form-submit{width:100%;justify-content:center}
+  .ads-carousel-track .ig-card{flex-basis:78vw}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -825,21 +671,20 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <h2 class="hello-title">I'm Leo Adam Balingit.</h2>
         <p class="hello-text">I'm a <strong>Digital Marketing and Creative Professional</strong> passionate about transforming ideas into impactful brands through strategic marketing, creative design, and compelling digital experiences.</p>
         <p class="hello-text">With a strong foundation in <strong>leadership, marketing strategy, and visual communication</strong>, I help businesses achieve their goals by creating campaigns that not only look great but also deliver meaningful results. I thrive in fast-paced environments, embrace continuous learning, and enjoy collaborating with teams to turn creative ideas into successful outcomes.</p>
-
         <h3 class="hello-edu-title">Education</h3>
         <div class="hello-edu-list">
-        <div class="hello-edu-block">
-          <span class="deg">Master of Arts in Communication</span>
-          <span class="maj">Major in Communication Management</span>
-          <span class="sch">Polytechnic University of the Philippines</span>
-          <span class="yrs">2025 – 2026</span>
-        </div>
-        <div class="hello-edu-block">
-          <span class="deg">Bachelor of Multimedia Arts</span>
-          <span class="maj">Major in Film</span>
-          <span class="sch">University of Makati</span>
-          <span class="yrs">2018 – 2022</span>
-        </div>
+          <div class="hello-edu-block">
+            <span class="deg">Master of Arts in Communication</span>
+            <span class="maj">Major in Communication Management</span>
+            <span class="sch">Polytechnic University of the Philippines</span>
+            <span class="yrs">2025 – 2026</span>
+          </div>
+          <div class="hello-edu-block">
+            <span class="deg">Bachelor of Multimedia Arts</span>
+            <span class="maj">Major in Film</span>
+            <span class="sch">University of Makati</span>
+            <span class="yrs">2018 – 2022</span>
+          </div>
         </div>
       </div>
     </div>
@@ -866,38 +711,38 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
   <hr class="rule"/>
 
-  <!-- CONTENTS MAP -->
+  <!-- CONTENTS -->
   <section class="contents-wrap" id="contents">
     <p class="eyebrow" style="justify-content:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
-    <div class="contents-map reveal-scale map-svg-wrap">
-      <svg class="map-svg" viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
-        <path class="map-edge" id="e0" d="M400,208 C340,160 220,120 116,86"/>
-        <path class="map-edge" id="e1" d="M400,208 C370,150 320,100 272,66"/>
-        <path class="map-edge" id="e2" d="M400,208 L400,52"/>
-        <path class="map-edge" id="e3" d="M400,208 C430,150 480,100 528,66"/>
-        <path class="map-edge" id="e4" d="M400,208 C460,160 580,120 684,86"/>
-        <g class="map-center">
-          <circle cx="400" cy="270" r="80" fill="none" stroke="#B5481F" stroke-width="1.4" stroke-dasharray="3 7" opacity="0.45"/>
-          <circle cx="400" cy="270" r="62" fill="#171510"/>
-          <circle cx="400" cy="270" r="62" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-          <text x="400" y="261" text-anchor="middle" class="map-center-label" font-size="16">Adam</text>
-          <text x="400" y="281" text-anchor="middle" class="map-center-label" font-size="16">Balingit</text>
-          <text x="400" y="300" text-anchor="middle" class="map-center-sub">Portfolio</text>
-        </g>
-        <a href="#brands"><g class="map-node" transform="translate(30,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Logofolio</text></g></a>
-        <a href="#graphic-design"><g class="map-node" transform="translate(196,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Graphic Design</text></g></a>
-        <a href="#social-media"><g class="map-node" transform="translate(324,8)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Social Media</text></g></a>
-        <a href="#content-creation"><g class="map-node" transform="translate(452,22)"><rect width="152" height="44" rx="22" ry="22"/><text x="76" y="27" text-anchor="middle" class="map-node-label" font-size="13">Video Editing</text></g></a>
-        <a href="#expertise"><g class="map-node" transform="translate(598,42)"><rect width="172" height="44" rx="22" ry="22"/><text x="86" y="27" text-anchor="middle" class="map-node-label" font-size="13">Expertise &amp; Tools</text></g></a>
-      </svg>
-    </div>
-    <div class="map-mobile reveal">
-      <a href="#brands">Logofolio</a>
-      <a href="#graphic-design">Graphic Design</a>
-      <a href="#social-media">Social Media</a>
-      <a href="#content-creation">Content Creation / Video Editing</a>
-      <a href="#expertise">Expertise &amp; Tools</a>
+    <div class="contents-board reveal-scale">
+      <div class="contents-grid">
+        <a class="content-toc-card" href="#brands" aria-label="Go to Logofolio">
+          <span class="toc-title">Logofolio</span>
+          <span class="toc-number">01</span>
+          <span class="toc-image"><img src="Table%20of%20Content/Logofolo.png" alt="Logofolio preview"/></span>
+        </a>
+        <a class="content-toc-card" href="#graphic-design" aria-label="Go to Branding">
+          <span class="toc-title">Branding</span>
+          <span class="toc-number">02</span>
+          <span class="toc-image"><img src="Table%20of%20Content/Branding.png" alt="Branding preview"/></span>
+        </a>
+        <a class="content-toc-card" href="#social-media" aria-label="Go to Social Media">
+          <span class="toc-title">Social Media</span>
+          <span class="toc-number">03</span>
+          <span class="toc-image"><img src="Table%20of%20Content/Social%20Media.png" alt="Social media preview"/></span>
+        </a>
+        <a class="content-toc-card" href="#content-creation" aria-label="Go to Video Editing">
+          <span class="toc-title">Video Editing</span>
+          <span class="toc-number">04</span>
+          <span class="toc-image"><img src="Table%20of%20Content/Video%20Editing.png" alt="Video editing preview"/></span>
+        </a>
+        <a class="content-toc-card" href="#expertise" aria-label="Go to Tools and Expertise">
+          <span class="toc-title">Tools and Expertise</span>
+          <span class="toc-number">05</span>
+          <span class="toc-image"><img src="Table%20of%20Content/Tools%20and%20Expertise.png" alt="Tools and expertise preview"/></span>
+        </a>
+      </div>
     </div>
   </section>
 </div>
@@ -911,74 +756,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="wrap">
   <section class="section">
     <div class="logo-grid">
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div>
-        <div class="brand-info"><div class="brand-name">Ascend Experience LLC</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div>
-        <div class="brand-info"><div class="brand-name">AVA Gaming</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div>
-        <div class="brand-info"><div class="brand-name">BetAlly</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div>
-        <div class="brand-info"><div class="brand-name">BolaTV</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP"/></div>
-        <div class="brand-info"><div class="brand-name">HP</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div>
-        <div class="brand-info"><div class="brand-name">Khelo100</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="LF"/></div>
-        <div class="brand-info"><div class="brand-name">LF</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div>
-        <div class="brand-info"><div class="brand-name">LIVEFEST</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div>
-        <div class="brand-info"><div class="brand-name">LNPLAY</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div>
-        <div class="brand-info"><div class="brand-name">Mikiworld</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div>
-        <div class="brand-info"><div class="brand-name">OC Togel</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div>
-        <div class="brand-info"><div class="brand-name">OLE777</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="Olimpic VIP"/></div>
-        <div class="brand-info"><div class="brand-name">Olimpic VIP</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div>
-        <div class="brand-info"><div class="brand-name">One2play</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div>
-        <div class="brand-info"><div class="brand-name">Tailored Canvases</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="Tell My Tale"/></div>
-        <div class="brand-info"><div class="brand-name">Tell My Tale</div><div class="brand-tag">Client Brand</div></div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div>
-        <div class="brand-info"><div class="brand-name">WonderMe</div><div class="brand-tag">Client Brand</div></div>
-      </div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div><div class="brand-info"><div class="brand-name">Ascend Experience LLC</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div><div class="brand-info"><div class="brand-name">AVA Gaming</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div><div class="brand-info"><div class="brand-name">BetAlly</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div><div class="brand-info"><div class="brand-name">BolaTV</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP"/></div><div class="brand-info"><div class="brand-name">HP</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div><div class="brand-info"><div class="brand-name">Khelo100</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="LF"/></div><div class="brand-info"><div class="brand-name">LF</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div><div class="brand-info"><div class="brand-name">LIVEFEST</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div><div class="brand-info"><div class="brand-name">LNPLAY</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div><div class="brand-info"><div class="brand-name">Mikiworld</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div><div class="brand-info"><div class="brand-name">OC Togel</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div><div class="brand-info"><div class="brand-name">OLE777</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="Olimpic VIP"/></div><div class="brand-info"><div class="brand-name">Olimpic VIP</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div><div class="brand-info"><div class="brand-name">One2play</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div><div class="brand-info"><div class="brand-name">Tailored Canvases</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="Tell My Tale"/></div><div class="brand-info"><div class="brand-name">Tell My Tale</div><div class="brand-tag">Client Brand</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div><div class="brand-info"><div class="brand-name">WonderMe</div><div class="brand-tag">Client Brand</div></div></div>
     </div>
   </section>
 </div>
@@ -987,61 +781,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="band" id="brands">
   <p class="band-tag reveal">02 - Identity</p>
   <h2 class="band-title reveal">Logofolio</h2>
-  <p class="band-sub reveal">A logo is often the first impression of a brand, and I believe it should be memorable, meaningful,
-and built to last. In this collection, you'll find logos I've designed to work seamlessly across
-digital platforms, print materials, packaging, and everything in between.</p>
+  <p class="band-sub reveal">A logo is often the first impression of a brand, and I believe it should be memorable, meaningful, and built to last. In this collection, you'll find logos I've designed to work seamlessly across digital platforms, print materials, packaging, and everything in between.</p>
 </div>
 <div class="wrap">
   <section class="section">
     <div class="logo-grid">
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div>
-        <div class="brand-info"><div class="brand-name">A3 Graphics</div><div class="brand-tag">Creative Services</div></div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div>
-        <div class="brand-info"><div class="brand-name">Barista Hub</div><div class="brand-tag">Barista Training Center</div></div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div>
-        <div class="brand-info"><div class="brand-name">Cup &amp; Go</div><div class="brand-tag">Coffee Shop</div></div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div>
-        <div class="brand-info"><div class="brand-name">Eleve Wellness</div><div class="brand-tag">Health &amp; Wellness</div></div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div>
-        <div class="brand-info"><div class="brand-name">Golden Cafe</div><div class="brand-tag">Coffee Shop</div></div>
-      </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div>
-        <div class="brand-info"><div class="brand-name">Fork Republic</div><div class="brand-tag">Restaurant</div></div>
-      </div>
-      <div class="logo-card reveal d1">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div>
-        <div class="brand-info"><div class="brand-name">MediTrust</div><div class="brand-tag">Pharmacy</div></div>
-      </div>
-      <div class="logo-card reveal d2">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div>
-        <div class="brand-info"><div class="brand-name">Nails O'Clock</div><div class="brand-tag">Spa Services</div></div>
-      </div>
-      <div class="logo-card reveal d3">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div>
-        <div class="brand-info"><div class="brand-name">Nature Cosmetic</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
-      </div>
-      <div class="logo-card reveal d4">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div>
-        <div class="brand-info"><div class="brand-name">The Quiet Cup</div><div class="brand-tag">Coffee Shop</div></div>
-      </div>
-      <div class="logo-card reveal d5">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div>
-        <div class="brand-info"><div class="brand-name">Unwind</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
-      </div>
-      <div class="logo-card reveal d6">
-        <div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div>
-        <div class="brand-info"><div class="brand-name">Veraluxe</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div>
-      </div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div><div class="brand-info"><div class="brand-name">A3 Graphics</div><div class="brand-tag">Creative Services</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div><div class="brand-info"><div class="brand-name">Barista Hub</div><div class="brand-tag">Barista Training Center</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div><div class="brand-info"><div class="brand-name">Cup &amp; Go</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div><div class="brand-info"><div class="brand-name">Eleve Wellness</div><div class="brand-tag">Health &amp; Wellness</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div><div class="brand-info"><div class="brand-name">Golden Cafe</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div><div class="brand-info"><div class="brand-name">Fork Republic</div><div class="brand-tag">Restaurant</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div><div class="brand-info"><div class="brand-name">MediTrust</div><div class="brand-tag">Pharmacy</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div><div class="brand-info"><div class="brand-name">Nails O'Clock</div><div class="brand-tag">Spa Services</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div><div class="brand-info"><div class="brand-name">Nature Cosmetic</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div><div class="brand-info"><div class="brand-name">The Quiet Cup</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div><div class="brand-info"><div class="brand-name">Unwind</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div><div class="brand-info"><div class="brand-name">Veraluxe</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
     </div>
   </section>
 </div>
@@ -1050,88 +806,52 @@ digital platforms, print materials, packaging, and everything in between.</p>
 <div class="band" id="graphic-design">
   <p class="band-tag reveal">02 — Visual</p>
   <h2 class="band-title reveal">Graphic Design</h2>
-  <p class="band-sub reveal">This section showcases some of my favorite design projects from social media creatives and
-brand guidelines to packaging, website visuals, email campaigns, flyers, and event materials. I
-enjoy turning ideas into visuals that not only look great but also communicate a brand's
-message effectively.</p>
+  <p class="band-sub reveal">This section showcases some of my favorite design projects from social media creatives and brand guidelines to packaging, website visuals, email campaigns, flyers, and event materials. I enjoy turning ideas into visuals that not only look great but also communicate a brand's message effectively.</p>
 </div>
 <div class="wrap">
   <section class="section">
-
-    <!-- 02a Branding — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02a</div>
-          <h3 class="portfolio-title reveal">Branding</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02a</div><h3 class="portfolio-title reveal">Branding</h3></div>
         <p class="portfolio-note reveal d2">Brand guidelines and identity systems prepared for consistent rollout.</p>
       </div>
       <div class="asset-grid" id="brandingAssets"></div>
     </div>
-
-    <!-- 02b Packaging — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02b</div>
-          <h3 class="portfolio-title reveal">Package Designs / Merch Designs</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02b</div><h3 class="portfolio-title reveal">Package Designs / Merch Designs</h3></div>
         <p class="portfolio-note reveal d2">Packaging mockups, product concepts, and branded merchandise applications.</p>
       </div>
       <div class="asset-grid" id="packagingAssets"></div>
     </div>
-
-    <!-- 02c Booth — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02c</div>
-          <h3 class="portfolio-title reveal">Booth Designs</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02c</div><h3 class="portfolio-title reveal">Booth Designs</h3></div>
         <p class="portfolio-note reveal d2">Event booth layouts built for different activation levels and footprints.</p>
       </div>
       <div class="ig-grid" id="boothAssets"></div>
     </div>
-
-    <!-- 02d Email Designs — INSTAGRAM STYLE -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02d</div>
-          <h3 class="portfolio-title reveal">Email Designs</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02d</div><h3 class="portfolio-title reveal">Email Designs</h3></div>
         <p class="portfolio-note reveal d2">Campaign-ready email banners and newsletters designed for clean, quick scanning.</p>
       </div>
-      <a class="email-feature reveal" href="Cle777design.jpg" target="_blank" rel="noopener" aria-label="Open CLE777 email design full view">
-        <img src="Cle777design.jpg" alt="CLE777 email design"/>
-      </a>
+      <div class="ig-grid" id="emailAssets"></div>
     </div>
-
-    <!-- 02e Website Design — INSTAGRAM STYLE -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02e</div>
-          <h3 class="portfolio-title reveal">Website Design</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02e</div><h3 class="portfolio-title reveal">Website Design</h3></div>
         <p class="portfolio-note reveal d2">Web page visuals and layout design for digital-first presentation.</p>
       </div>
       <div class="ig-grid" id="websiteAssets"></div>
     </div>
-
-    <!-- 02f Flyers — standard cards -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">02f</div>
-          <h3 class="portfolio-title reveal">Flyers</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">02f</div><h3 class="portfolio-title reveal">Flyers</h3></div>
         <p class="portfolio-note reveal d2">Promotional layouts for campaign and event communication.</p>
       </div>
       <div class="asset-grid" id="flyerAssets"></div>
     </div>
-
   </section>
 </div>
 
@@ -1145,48 +865,42 @@ message effectively.</p>
   <section class="section">
     <div class="counter-strip">
       <div class="counter-card reveal-scale d1">
-        <div class="counter-main">
-          <div class="counter-num" data-target="340">0</div>
-          <div class="counter-side">k+</div>
-        </div>
+        <div class="counter-main"><div class="counter-num" data-target="340">0</div><div class="counter-side">k+</div></div>
         <div class="counter-label">Followers grown across client accounts</div>
       </div>
       <div class="counter-card reveal-scale d2">
-        <div class="counter-main">
-          <div class="counter-num" data-target="500">0</div>
-          <div class="counter-side">+</div>
-        </div>
+        <div class="counter-main"><div class="counter-num" data-target="500">0</div><div class="counter-side">+</div></div>
         <div class="counter-label">Social media posts created</div>
       </div>
       <div class="counter-card reveal-scale d3">
-        <div class="counter-main">
-          <div class="counter-num" data-target="50">0</div>
-          <div class="counter-side">+</div>
-        </div>
+        <div class="counter-main"><div class="counter-num" data-target="50">0</div><div class="counter-side">+</div></div>
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
 
-    <!-- 03a Social Media Posts — INSTAGRAM STYLE -->
+    <!-- 03a Social Media Posts -->
     <div class="portfolio-head">
-      <div>
-        <div class="portfolio-kicker reveal">03a</div>
-        <h3 class="portfolio-title reveal">Social Media Posts</h3>
-      </div>
+      <div><div class="portfolio-kicker reveal">03a</div><h3 class="portfolio-title reveal">Social Media Posts</h3></div>
       <p class="portfolio-note reveal d2">Feed-ready social visuals built for campaigns, announcements, and engagement.</p>
     </div>
     <div class="ig-grid" id="socialPostAssets"></div>
 
-    <!-- 03b Digital Ads — INSTAGRAM STYLE -->
+    <!-- 03b Digital Ads — CAROUSEL -->
     <div class="portfolio-block">
       <div class="portfolio-head">
-        <div>
-          <div class="portfolio-kicker reveal">03b</div>
-          <h3 class="portfolio-title reveal">Digital Ads</h3>
-        </div>
+        <div><div class="portfolio-kicker reveal">03b</div><h3 class="portfolio-title reveal">Digital Ads</h3></div>
         <p class="portfolio-note reveal d2">Static ads, story placements, and carousel creatives for paid campaigns.</p>
       </div>
-      <div class="ig-grid" id="digitalAdAssets"></div>
+      <div class="ads-carousel-wrap reveal">
+        <div class="ads-carousel-stack" aria-label="Digital ads carousel">
+          <div class="ads-carousel-viewport">
+            <div class="ads-carousel-track ads-track-blue" id="adsTrackBlue"></div>
+          </div>
+          <div class="ads-carousel-viewport">
+            <div class="ads-carousel-track ads-track-green" id="adsTrackGreen"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="strategy-row">
@@ -1213,9 +927,7 @@ message effectively.</p>
 <div class="band" id="content-creation">
   <p class="band-tag reveal">04 — Video</p>
   <h2 class="band-title reveal">Content Creation / Video Editing</h2>
-  <p class="band-sub reveal">Video is one of the most powerful ways to tell a story. I create and edit videos that are optimized
-for different platforms, whether it's short-form content for Reels and TikTok or longer promotional
-videos that strengthen a brand's identity and message.</p>
+  <p class="band-sub reveal">Video is one of the most powerful ways to tell a story. I create and edit videos that are optimized for different platforms, whether it's short-form content for Reels and TikTok or longer promotional videos that strengthen a brand's identity and message.</p>
 </div>
 <div class="wrap">
   <section class="section video-section">
@@ -1228,31 +940,19 @@ videos that strengthen a brand's identity and message.</p>
     </div>
     <div class="video-grid video-reels">
       <div class="video-card reveal d1">
-        <div class="video-frame">
-          <span class="video-pill">Reel</span>
-          <video src="Videos/Wall%20Decors.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
-        </div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Wall%20Decors.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
         <div class="video-info"><div class="video-name">Wall Decors</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d2">
-        <div class="video-frame">
-          <span class="video-pill">Reel</span>
-          <video src="Videos/Portraits.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
-        </div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Portraits.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
         <div class="video-info"><div class="video-name">Portraits</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d3">
-        <div class="video-frame">
-          <span class="video-pill">Reel</span>
-          <video src="Videos/Kid%20Books.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
-        </div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Kid%20Books.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
         <div class="video-info"><div class="video-name">Kid Books</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d4">
-        <div class="video-frame">
-          <span class="video-pill">Reel</span>
-          <video src="Videos/iGaming.mp4#t=0.1" controls muted playsinline preload="metadata"></video>
-        </div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/iGaming.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
         <div class="video-info"><div class="video-name">iGaming</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
     </div>
@@ -1357,7 +1057,12 @@ videos that strengthen a brand's identity and message.</p>
   </section>
 </div>
 
-
+<!-- THANKS -->
+<section class="thanks" id="thanks">
+  <h2 class="thanks-title reveal">Thanks for scrolling!</h2>
+  <p class="thanks-sub reveal d2">If something here sparked an idea for your brand, I'd love to hear about it.</p>
+  <a class="thanks-cta reveal d3" href="mailto:leoadambalingit@gmail.com">Email Me →</a>
+</section>
 
 <footer>
   <div class="foot-name" style="display:flex;align-items:center;gap:8px;">
@@ -1365,8 +1070,8 @@ videos that strengthen a brand's identity and message.</p>
     Leo Adam Balingit
   </div>
   <div class="foot-links">
-    <a href="https://wa.me/639673875905">WhatsApp</a>
-    <a href="http://linkedin.com/in/leo-adam-balingit-0b4428217/tl?originalSubdomain=ph">LinkedIn</a>
+    <a href="https://wa.me/639673875905" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="http://linkedin.com/in/leo-adam-balingit-0b4428217/tl?originalSubdomain=ph" target="_blank" rel="noopener">LinkedIn</a>
   </div>
   <div class="foot-meta">© 2026</div>
 </footer>
@@ -1397,7 +1102,7 @@ videos that strengthen a brand's identity and message.</p>
 
   /* ── BUILD INSTAGRAM CARD ── */
   function createIgCard(opts){
-    const { src, name, type, href, username, caption, tall, fullPage } = opts;
+    const { src, name, href, username, caption, tall, fullPage, landscape } = opts;
     const card = document.createElement('a');
     card.className = 'ig-card reveal';
     card.href = href || src;
@@ -1405,7 +1110,6 @@ videos that strengthen a brand's identity and message.</p>
     card.rel = 'noopener';
     card.setAttribute('aria-label', `Open ${name}`);
 
-    // Header
     const header = document.createElement('div');
     header.className = 'ig-header';
     const logoWrap = document.createElement('div');
@@ -1419,9 +1123,11 @@ videos that strengthen a brand's identity and message.</p>
     dots.innerHTML = '<span></span><span></span><span></span>';
     header.append(logoWrap, uname, dots);
 
-    // Image
     const imgWrap = document.createElement('div');
-    imgWrap.className = 'ig-image-wrap' + (tall ? ' ig-tall' : '') + (fullPage ? ' ig-fullpage' : '');
+    imgWrap.className = 'ig-image-wrap'
+      + (tall ? ' ig-tall' : '')
+      + (fullPage ? ' ig-fullpage' : '')
+      + (landscape ? ' ig-landscape' : '');
     const img = document.createElement('img');
     img.src = src;
     img.alt = name;
@@ -1429,7 +1135,6 @@ videos that strengthen a brand's identity and message.</p>
     img.decoding = 'async';
     imgWrap.appendChild(img);
 
-    // Actions
     const actions = document.createElement('div');
     actions.className = 'ig-actions';
     const left = document.createElement('div');
@@ -1438,7 +1143,6 @@ videos that strengthen a brand's identity and message.</p>
     actions.append(left);
     actions.innerHTML += SAVE_SVG;
 
-    // Caption
     const cap = document.createElement('div');
     cap.className = 'ig-caption';
     const capUser = document.createElement('span');
@@ -1453,7 +1157,7 @@ videos that strengthen a brand's identity and message.</p>
     return card;
   }
 
-  /* ── STANDARD ASSET CARD (unchanged) ── */
+  /* ── STANDARD ASSET CARD ── */
   const revealDelays = ['d1','d2','d3','d4','d5','d6'];
 
   function createAssetCard(item, type, index){
@@ -1513,14 +1217,17 @@ videos that strengthen a brand's identity and message.</p>
       ['BetAlly Merch Set C','Product Packaging/BetAlly/magnific_create-a-premium-professi_WMlzYWJcXe.png','image']
     ]},
     { id:'boothAssets', type:'Booth Design', mode:'instagram', username:'leoadambalingit', items:[
-      ['','Booth Designs/Entry Level 2 Mock Up.png','image'],
-      ['','Booth Designs/Mid Level Mock Up 1.png','image'],
-      ['','Booth Designs/Mid Level Mockup 2.png','image'],
-      ['','Booth Designs/Top Level Mock Up 1.png','image'],
-      ['','Booth Designs/Top Level Mock Up 2.png','image']
+      ['January 5','Booth Designs/Entry Level 2 Mock Up.png'],
+      ['January 7','Booth Designs/Mid Level Mock Up 1.png'],
+      ['January 10','Booth Designs/Mid Level Mockup 2.png'],
+      ['January 12','Booth Designs/Top Level Mock Up 1.png'],
+      ['January 15','Booth Designs/Top Level Mock Up 2.png']
+    ]},
+    { id:'emailAssets', type:'Email Design', mode:'instagram', landscape:true, username:'leoadambalingit', items:[
+      ['','Cle777design.jpg']
     ]},
     { id:'websiteAssets', type:'Website Design', mode:'instagram', fullPage:true, username:'leoadambalingit', items:[
-      ['Elementor Homepage','Website Design/Elementor Homepage.png']
+      ['','Website Design/Elementor Homepage.png']
     ]},
     { id:'flyerAssets', type:'Flyer', mode:'standard', items:[
       ['BetAlly Flyer 1','Flyers/BetAlly Flyer 1.png','image'],
@@ -1537,7 +1244,7 @@ videos that strengthen a brand's identity and message.</p>
       ['March 5','Social Media Posts/March 5 Repost.png'],['March 7','Social Media Posts/March 7.png'],
       ['March 7','Social Media Posts/March 7 Repost.png'],['March 10','Social Media Posts/March 10.png'],
       ['March 10','Social Media Posts/March 10 New.png'],['March 12','Social Media Posts/March 12.png'],
-      ['March 12','Social Media Posts/March 12 New.png'],['March 14 New','Social Media Posts/March 14 New.png'],
+      ['March 12','Social Media Posts/March 12 New.png'],['March 14','Social Media Posts/March 14 New.png'],
       ['March 17','Social Media Posts/March 17.png'],['March 19','Social Media Posts/March 19.png'],
       ['March 21','Social Media Posts/March 21.png'],['March 24','Social Media Posts/March 24.png'],
       ['March 26','Social Media Posts/March 26.png'],['March 28','Social Media Posts/March 28.png'],
@@ -1547,18 +1254,6 @@ videos that strengthen a brand's identity and message.</p>
       ['July 6','Social Media Posts/Message 6.png'],['July 7','Social Media Posts/Message 7.png'],
       ['July 8','Social Media Posts/Message 8.png'],['July 9','Social Media Posts/Message 9.png'],
       ['July 10','Social Media Posts/Message 10.png']
-    ]},
-    { id:'digitalAdAssets', type:'Digital Ad', mode:'instagram', username:'leoadambalingit', items:[
-      ['July 11','Digital Ads/1080X1080 TH.png'],['July 12','Digital Ads/1080x1920 TH.png'],
-      ['July 14','Digital Ads/1200x628 TH.png'],['July 18','Digital Ads/BetAlly-Ads-Cindy-1080x1080-EN.png'],
-      ['August 1','Digital Ads/BetAlly-Ads-Cindy-1080x1920 -EN.png'],
-      ['August 3','Digital Ads/BetAlly-Ads-Cindy-1200x628  -EN.png'],
-      ['August 4','Digital Ads/Sales Team Final.png'],['August 6','Digital Ads/Sales Team.png'],
-      ['August 7','Digital Ads/Carousel Ads/Design 1/1.png'],['August 9','Digital Ads/Carousel Ads/Design 1/2.png'],
-      ['August 14','Digital Ads/Carousel Ads/Design 1/3.png'],['August 18','Digital Ads/Carousel Ads/Design 1/4.png'],
-      ['August 20','Digital Ads/Carousel Ads/Design 1/5.png'],['August 22','Digital Ads/Carousel Ads/Design 2/1.jpg'],
-      ['September 3','Digital Ads/Carousel Ads/Design 2/2.png'],['September 5','Digital Ads/Carousel Ads/Design 2/3.png'],
-      ['September 8','Digital Ads/Carousel Ads/Design 2/4.png'],['September 16','Digital Ads/Carousel Ads/Design 2/5.png']
     ]}
   ];
 
@@ -1570,12 +1265,12 @@ videos that strengthen a brand's identity and message.</p>
         const [name, src] = item;
         const card = createIgCard({
           src, name,
-          type: group.type,
           href: src,
           username: group.username || 'leoadambalingit',
           caption: name,
           tall: group.tall || false,
-          fullPage: group.fullPage || false
+          fullPage: group.fullPage || false,
+          landscape: group.landscape || false
         });
         card.classList.add(revealDelays[i % revealDelays.length]);
         return card;
@@ -1586,46 +1281,79 @@ videos that strengthen a brand's identity and message.</p>
     }
   });
 
+  /* ══════════════════════════════════════
+     DIGITAL ADS CAROUSEL
+  ══════════════════════════════════════ */
+  const digitalAdBlueItems = [
+    ['August 22','Digital Ads/Carousel Ads/Design 2/1.jpg'],
+    ['September 3','Digital Ads/Carousel Ads/Design 2/2.png'],
+    ['September 5','Digital Ads/Carousel Ads/Design 2/3.png'],
+    ['September 8','Digital Ads/Carousel Ads/Design 2/4.png'],
+    ['September 16','Digital Ads/Carousel Ads/Design 2/5.png']
+  ];
+  const digitalAdGreenItems = [
+    ['August 7','Digital Ads/Carousel Ads/Design 1/1.png'],
+    ['August 9','Digital Ads/Carousel Ads/Design 1/2.png'],
+    ['August 14','Digital Ads/Carousel Ads/Design 1/3.png'],
+    ['August 18','Digital Ads/Carousel Ads/Design 1/4.png'],
+    ['August 20','Digital Ads/Carousel Ads/Design 1/5.png']
+  ];
+
+  function buildAdsMarquee(trackId, items){
+    const track = document.getElementById(trackId);
+    if(!track) return;
+    const cards = [...items, ...items].map(([name, src], index) => {
+      const card = createIgCard({ src, name, href: src, username: 'leoadambalingit', caption: name });
+      card.classList.remove('reveal');
+      if(index >= items.length) card.setAttribute('aria-hidden', 'true');
+      return card;
+    });
+    track.replaceChildren(...cards);
+  }
+
+  buildAdsMarquee('adsTrackBlue', digitalAdBlueItems);
+  buildAdsMarquee('adsTrackGreen', digitalAdGreenItems);
+
   /* ── TOOLS ── */
   const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
   const tools = [
-    { name: 'Adobe Photoshop', icon: `${ICON_CDN}/adobephotoshop.svg` },
-    { name: 'Canva', icon: `${ICON_CDN}/canva.svg` },
-    { name: 'Capcut', icon: 'https://www.google.com/s2/favicons?domain=capcut.com&sz=64' },
-    { name: 'Filmora', icon: 'https://www.google.com/s2/favicons?domain=filmora.wondershare.com&sz=64' },
-    { name: 'Freepik', icon: `${ICON_CDN}/freepik.svg` },
-    { name: 'Google Veo', icon: `${ICON_CDN}/google.svg` },
-    { name: 'Elementor', icon: `${ICON_CDN}/elementor.svg` },
-    { name: 'Frame.io', icon: 'https://www.google.com/s2/favicons?domain=frame.io&sz=64' },
-    { name: 'Figma', icon: `${ICON_CDN}/figma.svg` },
-    { name: 'Opusclip', icon: 'https://www.google.com/s2/favicons?domain=opus.pro&sz=64' },
-    { name: 'Semrush', icon: `${ICON_CDN}/semrush.svg` },
-    { name: 'Reachout.Ai', icon: 'https://www.google.com/s2/favicons?domain=reachout.ai&sz=64' },
-    { name: 'Envato', icon: `${ICON_CDN}/envato.svg` },
-    { name: 'Adobe Firefly', icon: 'https://www.google.com/s2/favicons?domain=firefly.adobe.com&sz=64' },
-    { name: 'Vercel', icon: `${ICON_CDN}/vercel.svg` },
-    { name: 'Magnific', icon: 'https://www.google.com/s2/favicons?domain=magnific.ai&sz=64' },
-    { name: 'Phantombuster', icon: 'https://www.google.com/s2/favicons?domain=phantombuster.com&sz=64' },
-    { name: 'Quickmail', icon: 'https://www.google.com/s2/favicons?domain=quickmail.io&sz=64' },
-    { name: 'Instantly', icon: 'https://www.google.com/s2/favicons?domain=instantly.ai&sz=64' },
-    { name: 'Sales Navigator', icon: `${ICON_CDN}/linkedin.svg` },
-    { name: 'Lastpass', icon: `${ICON_CDN}/lastpass.svg` },
-    { name: 'Wix', icon: `${ICON_CDN}/wix.svg` },
-    { name: 'Dropbox', icon: `${ICON_CDN}/dropbox.svg` },
-    { name: 'Onedrive', icon: `${ICON_CDN}/microsoftonedrive.svg` },
-    { name: 'Expandi.io', icon: 'https://www.google.com/s2/favicons?domain=expandi.io&sz=64' },
-    { name: 'Slack', icon: `${ICON_CDN}/slack.svg` },
-    { name: 'Dingtalk', icon: 'https://www.google.com/s2/favicons?domain=dingtalk.com&sz=64' },
-    { name: 'Yamdu', icon: 'https://www.google.com/s2/favicons?domain=yamdu.com&sz=64' },
-    { name: 'Publer', icon: 'https://www.google.com/s2/favicons?domain=publer.io&sz=64' },
-    { name: 'ChatGPT', icon: `${ICON_CDN}/openai.svg` },
-    { name: 'Typeform', icon: `${ICON_CDN}/typeform.svg` },
-    { name: 'Calendly', icon: `${ICON_CDN}/calendly.svg` },
-    { name: 'Meta Ads', icon: `${ICON_CDN}/meta.svg` },
-    { name: 'Google Ads', icon: `${ICON_CDN}/googleads.svg` },
-    { name: 'Wordstream', icon: 'https://www.google.com/s2/favicons?domain=wordstream.com&sz=64' },
-    { name: 'Buffer', icon: `${ICON_CDN}/buffer.svg` },
-    { name: 'Veed.io', icon: 'https://www.google.com/s2/favicons?domain=veed.io&sz=64' }
+    { name:'Adobe Photoshop', icon:`${ICON_CDN}/adobephotoshop.svg` },
+    { name:'Canva', icon:`${ICON_CDN}/canva.svg` },
+    { name:'Capcut', icon:'https://www.google.com/s2/favicons?domain=capcut.com&sz=64' },
+    { name:'Filmora', icon:'https://www.google.com/s2/favicons?domain=filmora.wondershare.com&sz=64' },
+    { name:'Freepik', icon:`${ICON_CDN}/freepik.svg` },
+    { name:'Google Veo', icon:`${ICON_CDN}/google.svg` },
+    { name:'Elementor', icon:`${ICON_CDN}/elementor.svg` },
+    { name:'Frame.io', icon:'https://www.google.com/s2/favicons?domain=frame.io&sz=64' },
+    { name:'Figma', icon:`${ICON_CDN}/figma.svg` },
+    { name:'Opusclip', icon:'https://www.google.com/s2/favicons?domain=opus.pro&sz=64' },
+    { name:'Semrush', icon:`${ICON_CDN}/semrush.svg` },
+    { name:'Reachout.Ai', icon:'https://www.google.com/s2/favicons?domain=reachout.ai&sz=64' },
+    { name:'Envato', icon:`${ICON_CDN}/envato.svg` },
+    { name:'Adobe Firefly', icon:'https://www.google.com/s2/favicons?domain=firefly.adobe.com&sz=64' },
+    { name:'Vercel', icon:`${ICON_CDN}/vercel.svg` },
+    { name:'Magnific', icon:'https://www.google.com/s2/favicons?domain=magnific.ai&sz=64' },
+    { name:'Phantombuster', icon:'https://www.google.com/s2/favicons?domain=phantombuster.com&sz=64' },
+    { name:'Quickmail', icon:'https://www.google.com/s2/favicons?domain=quickmail.io&sz=64' },
+    { name:'Instantly', icon:'https://www.google.com/s2/favicons?domain=instantly.ai&sz=64' },
+    { name:'Sales Navigator', icon:`${ICON_CDN}/linkedin.svg` },
+    { name:'Lastpass', icon:`${ICON_CDN}/lastpass.svg` },
+    { name:'Wix', icon:`${ICON_CDN}/wix.svg` },
+    { name:'Dropbox', icon:`${ICON_CDN}/dropbox.svg` },
+    { name:'Onedrive', icon:`${ICON_CDN}/microsoftonedrive.svg` },
+    { name:'Expandi.io', icon:'https://www.google.com/s2/favicons?domain=expandi.io&sz=64' },
+    { name:'Slack', icon:`${ICON_CDN}/slack.svg` },
+    { name:'Dingtalk', icon:'https://www.google.com/s2/favicons?domain=dingtalk.com&sz=64' },
+    { name:'Yamdu', icon:'https://www.google.com/s2/favicons?domain=yamdu.com&sz=64' },
+    { name:'Publer', icon:'https://www.google.com/s2/favicons?domain=publer.io&sz=64' },
+    { name:'ChatGPT', icon:`${ICON_CDN}/openai.svg` },
+    { name:'Typeform', icon:`${ICON_CDN}/typeform.svg` },
+    { name:'Calendly', icon:`${ICON_CDN}/calendly.svg` },
+    { name:'Meta Ads', icon:`${ICON_CDN}/meta.svg` },
+    { name:'Google Ads', icon:`${ICON_CDN}/googleads.svg` },
+    { name:'Wordstream', icon:'https://www.google.com/s2/favicons?domain=wordstream.com&sz=64' },
+    { name:'Buffer', icon:`${ICON_CDN}/buffer.svg` },
+    { name:'Veed.io', icon:'https://www.google.com/s2/favicons?domain=veed.io&sz=64' }
   ];
   const delays = ['d1','d2','d3','d4','d5'];
   const toolsGrid = document.getElementById('toolsGrid');
@@ -1741,19 +1469,6 @@ videos that strengthen a brand's identity and message.</p>
   }, {threshold:0.08});
   revealEls.forEach(el => io.observe(el));
 
-  /* ── MAP EDGE DRAW ── */
-  const edges = document.querySelectorAll('.map-edge');
-  const edgeIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        edges.forEach((edge, i) => setTimeout(() => edge.classList.add('drawn'), i * 120));
-        edgeIO.disconnect();
-      }
-    });
-  }, {threshold:0.3});
-  const mapSvg = document.querySelector('.map-svg');
-  if(mapSvg) edgeIO.observe(mapSvg);
-
   /* ── COUNTER ANIMATION ── */
   function animateCounter(el){
     const target = parseFloat(el.dataset.target);
@@ -1776,7 +1491,7 @@ videos that strengthen a brand's identity and message.</p>
   }, {threshold:0.4});
   document.querySelectorAll('.counter-num[data-target]').forEach(el => counterIO.observe(el));
 
-  /* ── REVEAL newly injected ig-cards after they're in DOM ── */
+  /* ── REVEAL ig-cards ── */
   const igRevealIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){ e.target.classList.add('visible'); igRevealIO.unobserve(e.target); }
