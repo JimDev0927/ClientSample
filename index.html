@@ -5,11 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Leo Adam Balingit — Graphic Design · Social Media · Content Creation</title>
 
+<!-- PRECONNECT for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<!-- Non-blocking font load -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/></noscript>
+
+<!-- PRELOAD above-fold critical images only -->
+<link rel="preload" as="image" href="My%20Logo/My%20Logo/My%20Logo.png" fetchpriority="high"/>
+<link rel="preload" as="image" href="My%20Photo/My%20Photo/My%20Pic.JPG" fetchpriority="high"/>
+
 <link rel="icon" type="image/png" href="My%20Logo/My%20Logo/My%20Logo.png"/>
-<link rel="preload" as="image" href="My%20Logo/My%20Logo/My%20Logo.png"/>
 
 <style>
 /* ── RESET ── */
@@ -50,6 +57,21 @@ ul{list-style:none}
   --shadow:0 10px 30px rgba(23,21,16,0.08),0 2px 8px rgba(23,21,16,0.05);
   --shadow-hover:0 20px 50px rgba(23,21,16,0.14),0 4px 14px rgba(23,21,16,0.08);
 }
+
+/* ── IMAGE SKELETON (fast perceived load) ── */
+img{content-visibility:auto}
+.img-wrap{position:relative;overflow:hidden;background:var(--surface)}
+.img-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--surface) 25%,var(--surface2) 50%,var(--surface) 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.4s infinite;
+  z-index:0;
+}
+.img-wrap img{position:relative;z-index:1;transition:opacity .3s ease}
+.img-wrap img.loaded{opacity:1}
+.img-wrap img:not(.loaded){opacity:0}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
 /* ── LOADER ── */
 #loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .7s ease,visibility .7s ease}
@@ -246,8 +268,11 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 .ig-username{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#111;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ig-dots{display:flex;gap:2.5px;flex-shrink:0}
 .ig-dots span{width:3px;height:3px;background:#aaa;border-radius:50%;display:block}
+/* IMAGE WRAP with skeleton */
 .ig-image-wrap{width:100%;aspect-ratio:1/1;background:var(--surface);overflow:hidden;flex-shrink:0;position:relative}
-.ig-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.ig-image-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--surface) 25%,var(--surface2) 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;z-index:0}
+.ig-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .3s ease;position:relative;z-index:1;opacity:0}
+.ig-image-wrap img.loaded{opacity:1}
 .ig-card:hover .ig-image-wrap img{transform:scale(1.04)}
 .ig-image-wrap.ig-tall{aspect-ratio:4/5}
 .ig-image-wrap.ig-fullpage{aspect-ratio:3/4;background:var(--paper2)}
@@ -269,45 +294,15 @@ hr.rule{border:none;border-top:1px solid var(--line)}
 /* ════════════════════════════════════════
    DIGITAL ADS CAROUSEL
 ════════════════════════════════════════ */
-.ads-carousel-wrap{
-  position:relative;
-  width:100%;
-  user-select:none;
-}
-.ads-carousel-stack{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-.ads-carousel-viewport{
-  overflow:hidden;
-  border-radius:var(--radius);
-}
-.ads-carousel-track{
-  display:flex;
-  gap:16px;
-  width:max-content;
-  will-change:transform;
-}
-.ads-carousel-set{
-  display:flex;
-  gap:16px;
-  flex:0 0 auto;
-  padding-right:16px;
-}
-.ads-carousel-track.ads-track-blue{
-  animation:adsSlideLeft 34s linear infinite;
-}
-.ads-carousel-track.ads-track-green{
-  animation:adsSlideRight 34s linear infinite;
-}
-.ads-carousel-wrap:hover .ads-carousel-track{
-  animation-play-state:paused;
-}
-.ads-carousel-track .ig-card{
-  flex:0 0 clamp(190px,22vw,250px);
-  min-width:0;
-}
+.ads-carousel-wrap{position:relative;width:100%;user-select:none}
+.ads-carousel-stack{display:flex;flex-direction:column;gap:18px}
+.ads-carousel-viewport{overflow:hidden;border-radius:var(--radius)}
+.ads-carousel-track{display:flex;gap:16px;width:max-content;will-change:transform}
+.ads-carousel-set{display:flex;gap:16px;flex:0 0 auto;padding-right:16px}
+.ads-carousel-track.ads-track-blue{animation:adsSlideLeft 34s linear infinite}
+.ads-carousel-track.ads-track-green{animation:adsSlideRight 34s linear infinite}
+.ads-carousel-wrap:hover .ads-carousel-track{animation-play-state:paused}
+.ads-carousel-track .ig-card{flex:0 0 clamp(190px,22vw,250px);min-width:0}
 @keyframes adsSlideLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes adsSlideRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
@@ -453,8 +448,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .process-step:nth-child(5){border-top:1px solid var(--line)}
   .ads-carousel-track .ig-card{flex-basis:clamp(180px,32vw,230px)}
 }
-
-/* ════════════════ RESPONSIVE 680px ════════════════ */
 @media(max-width:680px){
   nav{padding:0 1.25rem;height:60px}
   .nav-links{display:none}
@@ -518,8 +511,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .ads-carousel-stack{gap:14px}
   .ads-carousel-track .ig-card{flex-basis:clamp(160px,44vw,210px)}
 }
-
-/* ════════════════ RESPONSIVE 480px ════════════════ */
 @media(max-width:480px){
   nav{height:56px;padding:0 1rem}
   .nav-mark{font-size:13px;gap:6px}
@@ -564,7 +555,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .form-submit{width:100%;justify-content:center}
   .ads-carousel-track .ig-card{flex-basis:78vw}
 }
-
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
@@ -574,7 +564,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <!-- LOADER -->
 <div id="loader">
-  <img class="loader-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
+  <img class="loader-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" fetchpriority="high"/>
   <div class="loader-name">
     <span style="animation-delay:.02s">L</span><span style="animation-delay:.05s">E</span><span style="animation-delay:.08s">O</span><span style="animation-delay:.14s;margin-left:8px">A</span><span style="animation-delay:.17s">D</span><span style="animation-delay:.2s">A</span><span style="animation-delay:.23s">M</span><span style="animation-delay:.3s;margin-left:8px">B</span><span style="animation-delay:.33s">A</span><span style="animation-delay:.36s">L</span><span style="animation-delay:.39s">I</span><span style="animation-delay:.42s">N</span><span style="animation-delay:.45s">G</span><span style="animation-delay:.48s">I</span><span style="animation-delay:.51s">T</span>
   </div>
@@ -584,7 +574,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <!-- NAV -->
 <nav id="navbar">
   <a href="#top" class="nav-mark">
-    <img class="nav-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
+    <img class="nav-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" fetchpriority="high" loading="eager"/>
     LEO ADAM BALINGIT
   </a>
   <ul class="nav-links">
@@ -620,9 +610,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   <svg class="hero-doodle hero-doodle-wave" viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 28 Q20 4 38 24 T74 18 T98 26"/></svg>
   <svg class="hero-doodle hero-doodle-circle" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="20" r="14" stroke-dasharray="3 6"/></svg>
   <div class="hero-eyebrow">
-    <img class="hero-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo"/>
+    <img class="hero-logo" src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" fetchpriority="high" loading="eager"/>
   </div>
-  <h1 class="hero-title">Leo Adam Balingit </h1>
+  <h1 class="hero-title">Leo Adam Balingit</h1>
   <p class="hero-sub">Creating designs and marketing strategies that help businesses attract, engage, and convert customers</p>
   <div class="hero-roles">
     <span>Digital Marketing Specialist</span><span>Graphic Designer</span><span>Social Media Manager</span>
@@ -663,11 +653,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
           <circle cx="105" cy="105" r="101" fill="none" stroke="#B5481F" stroke-width="2" stroke-dasharray="2 7" opacity="0.5"/>
         </svg>
         <div class="portrait-circle">
-          <img class="portrait-photo" src="My%20Photo/My%20Photo/My%20Pic.JPG" alt="Leo Adam Balingit"/>
+          <img class="portrait-photo" src="My%20Photo/My%20Photo/My%20Pic.JPG" alt="Leo Adam Balingit" fetchpriority="high" loading="eager" decoding="sync"/>
         </div>
       </div>
       <div class="reveal-right d2">
-        <p class=>Hello!</p>
+        <p>Hello!</p>
         <h2 class="hello-title">I'm Leo Adam Balingit.</h2>
         <p class="hello-text">I'm a <strong>Digital Marketing and Creative Professional</strong> passionate about transforming ideas into impactful brands through strategic marketing, creative design, and compelling digital experiences.</p>
         <p class="hello-text">With a strong foundation in <strong>leadership, marketing strategy, and visual communication</strong>, I help businesses achieve their goals by creating campaigns that not only look great but also deliver meaningful results. I thrive in fast-paced environments, embrace continuous learning, and enjoy collaborating with teams to turn creative ideas into successful outcomes.</p>
@@ -693,7 +683,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
   <!-- SERVICES -->
   <section class="section" id="services">
-    <p class="">What I Offer</p>
+    <p>What I Offer</p>
     <h2 class="section-title" style="margin-bottom:2rem">My Services</h2>
     <div class="services-grid">
       <div class="service-card reveal d1"><div class="service-emoji">🎨</div><div class="service-name">Graphic Design</div></div>
@@ -713,34 +703,34 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
   <!-- CONTENTS -->
   <section class="contents-wrap" id="contents">
-    <p class="" style="justify-content:center">What's Inside</p>
+    <p style="text-align:center">What's Inside</p>
     <h2 class="section-title" style="text-align:center">Contents</h2>
     <div class="contents-board reveal-scale">
       <div class="contents-grid">
         <a class="content-toc-card" href="#brands" aria-label="Go to Logofolio">
           <span class="toc-title">Logofolio</span>
           <span class="toc-number">01</span>
-          <span class="toc-image"><img src="Table%20of%20Content/Logofolo.png" alt="Logofolio preview"/></span>
+          <span class="toc-image"><img src="Table%20of%20Content/Logofolo.png" alt="Logofolio preview" loading="lazy" decoding="async"/></span>
         </a>
         <a class="content-toc-card" href="#graphic-design" aria-label="Go to Branding">
           <span class="toc-title">Branding</span>
           <span class="toc-number">02</span>
-          <span class="toc-image"><img src="Table%20of%20Content/Branding.png" alt="Branding preview"/></span>
+          <span class="toc-image"><img src="Table%20of%20Content/Branding.png" alt="Branding preview" loading="lazy" decoding="async"/></span>
         </a>
         <a class="content-toc-card" href="#social-media" aria-label="Go to Social Media">
           <span class="toc-title">Social Media</span>
           <span class="toc-number">03</span>
-          <span class="toc-image"><img src="Table%20of%20Content/Social%20Media.png" alt="Social media preview"/></span>
+          <span class="toc-image"><img src="Table%20of%20Content/Social%20Media.png" alt="Social media preview" loading="lazy" decoding="async"/></span>
         </a>
         <a class="content-toc-card" href="#content-creation" aria-label="Go to Video Editing">
           <span class="toc-title">Video Editing</span>
           <span class="toc-number">04</span>
-          <span class="toc-image"><img src="Table%20of%20Content/Video%20Editing.png" alt="Video editing preview"/></span>
+          <span class="toc-image"><img src="Table%20of%20Content/Video%20Editing.png" alt="Video editing preview" loading="lazy" decoding="async"/></span>
         </a>
         <a class="content-toc-card" href="#expertise" aria-label="Go to Tools and Expertise">
           <span class="toc-title">Tools and Expertise</span>
           <span class="toc-number">05</span>
-          <span class="toc-image"><img src="Table%20of%20Content/Tools%20and%20Expertise.png" alt="Tools and expertise preview"/></span>
+          <span class="toc-image"><img src="Table%20of%20Content/Tools%20and%20Expertise.png" alt="Tools and expertise preview" loading="lazy" decoding="async"/></span>
         </a>
       </div>
     </div>
@@ -756,23 +746,23 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="wrap">
   <section class="section">
     <div class="logo-grid">
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC"/></div><div class="brand-info"><div class="brand-name">Ascend Experience LLC</div><div class="brand-tag">Sales Coaching</div></div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming"/></div><div class="brand-info"><div class="brand-name">AVA Gaming</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly"/></div><div class="brand-info"><div class="brand-name">BetAlly</div><div class="brand-tag">White Label Solutions</div></div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV"/></div><div class="brand-info"><div class="brand-name">BolaTV</div><div class="brand-tag">Entertainment</div></div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP"/></div><div class="brand-info"><div class="brand-name">HP</div><div class="brand-tag">Lottery System</div></div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100"/></div><div class="brand-info"><div class="brand-name">Khelo100</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="LF"/></div><div class="brand-info"><div class="brand-name">LF</div><div class="brand-tag">Film</div></div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST"/></div><div class="brand-info"><div class="brand-name">LIVEFEST</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY"/></div><div class="brand-info"><div class="brand-name">LNPLAY</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld"/></div><div class="brand-info"><div class="brand-name">Mikiworld</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel"/></div><div class="brand-info"><div class="brand-name">OC Togel</div><div class="brand-tag">Lottery System</div></div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777"/></div><div class="brand-info"><div class="brand-name">OLE777</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="Olimpic VIP"/></div><div class="brand-info"><div class="brand-name">Olimpic VIP</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play"/></div><div class="brand-info"><div class="brand-name">One2play</div><div class="brand-tag">IGaming</div></div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases"/></div><div class="brand-info"><div class="brand-name">Tailored Canvases</div><div class="brand-tag">Wall Decors</div></div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="Tell My Tale"/></div><div class="brand-info"><div class="brand-name">Tell My Tale</div><div class="brand-tag">Kid Books</div></div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe"/></div><div class="brand-info"><div class="brand-name">WonderMe</div><div class="brand-tag">Portraits</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Ascend_Experience_LLC.png" alt="Ascend Experience LLC" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Ascend Experience LLC</div><div class="brand-tag">Sales Coaching</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/AVAGaming.png" alt="AVA Gaming" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">AVA Gaming</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BetAlly.png" alt="BetAlly" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">BetAlly</div><div class="brand-tag">White Label Solutions</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/BolaTV.png" alt="BolaTV" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">BolaTV</div><div class="brand-tag">Entertainment</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/HP.png" alt="HP" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">HP</div><div class="brand-tag">Lottery System</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Khelo100.png" alt="Khelo100" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Khelo100</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img class="logo-lf" src="Clients%20and%20Brands/Clients%20and%20Brands/LF.png" alt="LF" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">LF</div><div class="brand-tag">Film</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LIVEFEST%20Logo.png" alt="LIVEFEST" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">LIVEFEST</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/LNPLAY-Orig.png" alt="LNPLAY" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">LNPLAY</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Mikiworld%20Logo.png" alt="Mikiworld" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Mikiworld</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OC%20Togel%20Square%20Full%20Original.png" alt="OC Togel" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">OC Togel</div><div class="brand-tag">Lottery System</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/ole777-removebg-preview.png" alt="OLE777" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">OLE777</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/OlimpicVIP%20Horizontal%20Full%20Original.png.png" alt="Olimpic VIP" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Olimpic VIP</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/One2play.png" alt="One2play" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">One2play</div><div class="brand-tag">IGaming</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/Tailored%20Canvases.png" alt="Tailored Canvases" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Tailored Canvases</div><div class="brand-tag">Wall Decors</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/TEllmyTale_Logo_wide_1.avif" alt="Tell My Tale" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Tell My Tale</div><div class="brand-tag">Kid Books</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Clients%20and%20Brands/Clients%20and%20Brands/WonderMe.png" alt="WonderMe" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">WonderMe</div><div class="brand-tag">Portraits</div></div></div>
     </div>
   </section>
 </div>
@@ -786,18 +776,18 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 <div class="wrap">
   <section class="section">
     <div class="logo-grid">
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics"/></div><div class="brand-info"><div class="brand-name">A3 Graphics</div><div class="brand-tag">Creative Services</div></div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub"/></div><div class="brand-info"><div class="brand-name">Barista Hub</div><div class="brand-tag">Barista Training Center</div></div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go"/></div><div class="brand-info"><div class="brand-name">Cup &amp; Go</div><div class="brand-tag">Coffee Shop</div></div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness"/></div><div class="brand-info"><div class="brand-name">Eleve Wellness</div><div class="brand-tag">Health &amp; Wellness</div></div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe"/></div><div class="brand-info"><div class="brand-name">Golden Cafe</div><div class="brand-tag">Coffee Shop</div></div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic"/></div><div class="brand-info"><div class="brand-name">Fork Republic</div><div class="brand-tag">Restaurant</div></div></div>
-      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust"/></div><div class="brand-info"><div class="brand-name">MediTrust</div><div class="brand-tag">Pharmacy</div></div></div>
-      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock"/></div><div class="brand-info"><div class="brand-name">Nails O'Clock</div><div class="brand-tag">Spa Services</div></div></div>
-      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic"/></div><div class="brand-info"><div class="brand-name">Nature Cosmetic</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
-      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup"/></div><div class="brand-info"><div class="brand-name">The Quiet Cup</div><div class="brand-tag">Coffee Shop</div></div></div>
-      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind"/></div><div class="brand-info"><div class="brand-name">Unwind</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
-      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe"/></div><div class="brand-info"><div class="brand-name">Veraluxe</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/A3%20Graphics.png" alt="A3 Graphics" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">A3 Graphics</div><div class="brand-tag">Creative Services</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/BARISTA%20HUB.png" alt="Barista Hub" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Barista Hub</div><div class="brand-tag">Barista Training Center</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Cup%20%26%20Go.png" alt="Cup &amp; Go" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Cup &amp; Go</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Elev%C3%A9%20Wellness.png" alt="Eleve Wellness" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Eleve Wellness</div><div class="brand-tag">Health &amp; Wellness</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/GOLDEN%20CAFE.png" alt="Golden Cafe" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Golden Cafe</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Logos.png" alt="Fork Republic" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Fork Republic</div><div class="brand-tag">Restaurant</div></div></div>
+      <div class="logo-card reveal d1"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/MediTrust.png" alt="MediTrust" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">MediTrust</div><div class="brand-tag">Pharmacy</div></div></div>
+      <div class="logo-card reveal d2"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Nails%20O%E2%80%99Clock.png" alt="Nails O'Clock" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Nails O'Clock</div><div class="brand-tag">Spa Services</div></div></div>
+      <div class="logo-card reveal d3"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/Studio%20Belleza.png" alt="Nature Cosmetic" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Nature Cosmetic</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
+      <div class="logo-card reveal d4"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/The%20Quiet%20Cup.png" alt="The Quiet Cup" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">The Quiet Cup</div><div class="brand-tag">Coffee Shop</div></div></div>
+      <div class="logo-card reveal d5"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/unwind.png" alt="Unwind" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Unwind</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
+      <div class="logo-card reveal d6"><div class="logo-mark logo-image"><img src="Logofolio/Logofolio/veraluxe.png" alt="Veraluxe" loading="lazy" decoding="async"/></div><div class="brand-info"><div class="brand-name">Veraluxe</div><div class="brand-tag">Beauty &amp; Cosmetics</div></div></div>
     </div>
   </section>
 </div>
@@ -877,15 +867,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         <div class="counter-label">Brands managed</div>
       </div>
     </div>
-
-    <!-- 03a Social Media Posts -->
     <div class="portfolio-head">
       <div><div class="portfolio-kicker reveal">03a</div><h3 class="portfolio-title reveal">Social Media Posts</h3></div>
       <p class="portfolio-note reveal d2">Feed-ready social visuals built for campaigns, announcements, and engagement.</p>
     </div>
     <div class="ig-grid" id="socialPostAssets"></div>
-
-    <!-- 03b Digital Ads — CAROUSEL -->
     <div class="portfolio-block">
       <div class="portfolio-head">
         <div><div class="portfolio-kicker reveal">03b</div><h3 class="portfolio-title reveal">Digital Ads</h3></div>
@@ -902,7 +888,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
         </div>
       </div>
     </div>
-
     <div class="strategy-row">
       <div class="strategy-card reveal d1">
         <div class="s-title">Content Calendar</div>
@@ -940,19 +925,19 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     </div>
     <div class="video-grid video-reels">
       <div class="video-card reveal d1">
-        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Wall%20Decors.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Wall%20Decors.h264.mp4#t=0.1" controls muted playsinline preload="none"></video></div>
         <div class="video-info"><div class="video-name">Wall Decors</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d2">
-        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Portraits.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Portraits.h264.mp4#t=0.1" controls muted playsinline preload="none"></video></div>
         <div class="video-info"><div class="video-name">Portraits</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d3">
-        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Kid%20Books.h264.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/Kid%20Books.h264.mp4#t=0.1" controls muted playsinline preload="none"></video></div>
         <div class="video-info"><div class="video-name">Kid Books</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
       <div class="video-card reveal d4">
-        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/iGaming.mp4#t=0.1" controls muted playsinline preload="metadata"></video></div>
+        <div class="video-frame"><span class="video-pill">Reel</span><video src="Videos/iGaming.mp4#t=0.1" controls muted playsinline preload="none"></video></div>
         <div class="video-info"><div class="video-name">iGaming</div><div class="video-type">Reel / Video Editing</div></div>
       </div>
     </div>
@@ -1057,10 +1042,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
   </section>
 </div>
 
-
 <footer>
   <div class="foot-name" style="display:flex;align-items:center;gap:8px;">
-    <img src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" style="width:24px;height:24px;object-fit:contain;"/>
+    <img src="My%20Logo/My%20Logo/My%20Logo.png" alt="Leo Adam Balingit logo" style="width:24px;height:24px;object-fit:contain;" loading="lazy" decoding="async"/>
     Leo Adam Balingit
   </div>
   <div class="foot-links">
@@ -1072,14 +1056,30 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
 <script>
 (function(){
+  'use strict';
 
-  /* ── CONTACT FORM → MAILTO ── */
+  /* ─────────────────────────────────────────
+     LAZY IMAGE FADE-IN: marks images as loaded
+     so skeleton shimmer disappears smoothly
+  ───────────────────────────────────────── */
+  function onImgLoad(img){
+    if(img.complete && img.naturalWidth > 0){
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'), {once:true});
+      img.addEventListener('error', () => img.classList.add('loaded'), {once:true});
+    }
+  }
+
+  /* ─────────────────────────────────────────
+     CONTACT FORM → MAILTO
+  ───────────────────────────────────────── */
   const contactForm = document.getElementById('contactForm');
   if(contactForm){
     contactForm.addEventListener('submit', function(e){
       e.preventDefault();
-      const name = document.getElementById('cf-name').value.trim();
-      const email = document.getElementById('cf-email').value.trim();
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
       const subject = document.getElementById('cf-subject').value.trim() || 'New project inquiry';
       const message = document.getElementById('cf-message').value.trim();
       const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
@@ -1087,14 +1087,18 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* ── INSTAGRAM CARD SVG ICONS ── */
-  const IG_LOGO_SVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#262626" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="#262626" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="#262626"/></svg>`;
-  const HEART_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-  const COMMENT_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-  const SEND_SVG = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
-  const SAVE_SVG = `<svg class="ig-action-icon save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+  /* ─────────────────────────────────────────
+     INSTAGRAM CARD SVG ICONS
+  ───────────────────────────────────────── */
+  const IG_LOGO_SVG  = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#262626" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="#262626" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="#262626"/></svg>`;
+  const HEART_SVG    = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  const COMMENT_SVG  = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+  const SEND_SVG     = `<svg class="ig-action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+  const SAVE_SVG     = `<svg class="ig-action-icon save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
 
-  /* ── BUILD INSTAGRAM CARD ── */
+  /* ─────────────────────────────────────────
+     BUILD INSTAGRAM CARD with lazy loading
+  ───────────────────────────────────────── */
   function createIgCard(opts){
     const { src, name, href, username, caption, tall, fullPage, landscape } = opts;
     const card = document.createElement('a');
@@ -1119,14 +1123,16 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
 
     const imgWrap = document.createElement('div');
     imgWrap.className = 'ig-image-wrap'
-      + (tall ? ' ig-tall' : '')
+      + (tall     ? ' ig-tall'     : '')
       + (fullPage ? ' ig-fullpage' : '')
-      + (landscape ? ' ig-landscape' : '');
+      + (landscape? ' ig-landscape': '');
+
     const img = document.createElement('img');
-    img.src = src;
     img.alt = name;
     img.loading = 'lazy';
     img.decoding = 'async';
+    /* Use data-src; real src set by IntersectionObserver below */
+    img.dataset.src = src;
     imgWrap.appendChild(img);
 
     const actions = document.createElement('div');
@@ -1151,7 +1157,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     return card;
   }
 
-  /* ── STANDARD ASSET CARD ── */
+  /* ─────────────────────────────────────────
+     STANDARD ASSET CARD with lazy loading
+  ───────────────────────────────────────── */
   const revealDelays = ['d1','d2','d3','d4','d5','d6'];
 
   function createAssetCard(item, type, index){
@@ -1168,10 +1176,10 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       thumb.textContent = 'PDF';
     } else {
       const img = document.createElement('img');
-      img.src = placeholder || src;
       img.alt = name;
       img.loading = 'lazy';
       img.decoding = 'async';
+      img.dataset.src = placeholder || src;
       thumb.appendChild(img);
     }
     const info = document.createElement('div');
@@ -1187,7 +1195,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     return card;
   }
 
-  /* ── DATA ── */
+  /* ─────────────────────────────────────────
+     DATA
+  ───────────────────────────────────────── */
   const portfolioGroups = [
     { id:'brandingAssets', type:'Brand Guidelines', mode:'standard', items:[
       ['BetAlly Brand Guide','Brand Guides/BetAlly Brand Guide.pdf','pdf','betAlly.png'],
@@ -1258,8 +1268,7 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
       const cards = group.items.map((item, i) => {
         const [name, src] = item;
         const card = createIgCard({
-          src, name,
-          href: src,
+          src, name, href: src,
           username: group.username || 'leoadambalingit',
           caption: name,
           tall: group.tall || false,
@@ -1275,9 +1284,9 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     }
   });
 
-  /* ══════════════════════════════════════
+  /* ─────────────────────────────────────────
      DIGITAL ADS CAROUSEL
-  ══════════════════════════════════════ */
+  ───────────────────────────────────────── */
   const digitalAdBlueItems = [
     ['August 22','Digital Ads/Carousel Ads/Design 2/1.jpg'],
     ['September 3','Digital Ads/Carousel Ads/Design 2/2.png'],
@@ -1299,55 +1308,56 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     const cards = [...items, ...items].map(([name, src], index) => {
       const card = createIgCard({ src, name, href: src, username: 'leoadambalingit', caption: name });
       card.classList.remove('reveal');
-      if(index >= items.length) card.setAttribute('aria-hidden', 'true');
+      if(index >= items.length) card.setAttribute('aria-hidden','true');
       return card;
     });
     track.replaceChildren(...cards);
   }
-
-  buildAdsMarquee('adsTrackBlue', digitalAdBlueItems);
+  buildAdsMarquee('adsTrackBlue',  digitalAdBlueItems);
   buildAdsMarquee('adsTrackGreen', digitalAdGreenItems);
 
-  /* ── TOOLS ── */
+  /* ─────────────────────────────────────────
+     TOOLS GRID
+  ───────────────────────────────────────── */
   const ICON_CDN = 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons';
   const tools = [
     { name:'Adobe Photoshop', icon:`${ICON_CDN}/adobephotoshop.svg` },
-    { name:'Canva', icon:`${ICON_CDN}/canva.svg` },
-    { name:'Capcut', icon:'https://www.google.com/s2/favicons?domain=capcut.com&sz=64' },
-    { name:'Filmora', icon:'https://www.google.com/s2/favicons?domain=filmora.wondershare.com&sz=64' },
-    { name:'Freepik', icon:`${ICON_CDN}/freepik.svg` },
-    { name:'Google Veo', icon:`${ICON_CDN}/google.svg` },
-    { name:'Elementor', icon:`${ICON_CDN}/elementor.svg` },
-    { name:'Frame.io', icon:'https://www.google.com/s2/favicons?domain=frame.io&sz=64' },
-    { name:'Figma', icon:`${ICON_CDN}/figma.svg` },
-    { name:'Opusclip', icon:'https://www.google.com/s2/favicons?domain=opus.pro&sz=64' },
-    { name:'Semrush', icon:`${ICON_CDN}/semrush.svg` },
-    { name:'Reachout.Ai', icon:'https://www.google.com/s2/favicons?domain=reachout.ai&sz=64' },
-    { name:'Envato', icon:`${ICON_CDN}/envato.svg` },
-    { name:'Adobe Firefly', icon:'https://www.google.com/s2/favicons?domain=firefly.adobe.com&sz=64' },
-    { name:'Vercel', icon:`${ICON_CDN}/vercel.svg` },
-    { name:'Magnific', icon:'https://www.google.com/s2/favicons?domain=magnific.ai&sz=64' },
-    { name:'Phantombuster', icon:'https://www.google.com/s2/favicons?domain=phantombuster.com&sz=64' },
-    { name:'Quickmail', icon:'https://www.google.com/s2/favicons?domain=quickmail.io&sz=64' },
-    { name:'Instantly', icon:'https://www.google.com/s2/favicons?domain=instantly.ai&sz=64' },
+    { name:'Canva',           icon:`${ICON_CDN}/canva.svg` },
+    { name:'Capcut',          icon:'https://www.google.com/s2/favicons?domain=capcut.com&sz=64' },
+    { name:'Filmora',         icon:'https://www.google.com/s2/favicons?domain=filmora.wondershare.com&sz=64' },
+    { name:'Freepik',         icon:`${ICON_CDN}/freepik.svg` },
+    { name:'Google Veo',      icon:`${ICON_CDN}/google.svg` },
+    { name:'Elementor',       icon:`${ICON_CDN}/elementor.svg` },
+    { name:'Frame.io',        icon:'https://www.google.com/s2/favicons?domain=frame.io&sz=64' },
+    { name:'Figma',           icon:`${ICON_CDN}/figma.svg` },
+    { name:'Opusclip',        icon:'https://www.google.com/s2/favicons?domain=opus.pro&sz=64' },
+    { name:'Semrush',         icon:`${ICON_CDN}/semrush.svg` },
+    { name:'Reachout.Ai',     icon:'https://www.google.com/s2/favicons?domain=reachout.ai&sz=64' },
+    { name:'Envato',          icon:`${ICON_CDN}/envato.svg` },
+    { name:'Adobe Firefly',   icon:'https://www.google.com/s2/favicons?domain=firefly.adobe.com&sz=64' },
+    { name:'Vercel',          icon:`${ICON_CDN}/vercel.svg` },
+    { name:'Magnific',        icon:'https://www.google.com/s2/favicons?domain=magnific.ai&sz=64' },
+    { name:'Phantombuster',   icon:'https://www.google.com/s2/favicons?domain=phantombuster.com&sz=64' },
+    { name:'Quickmail',       icon:'https://www.google.com/s2/favicons?domain=quickmail.io&sz=64' },
+    { name:'Instantly',       icon:'https://www.google.com/s2/favicons?domain=instantly.ai&sz=64' },
     { name:'Sales Navigator', icon:`${ICON_CDN}/linkedin.svg` },
-    { name:'Lastpass', icon:`${ICON_CDN}/lastpass.svg` },
-    { name:'Wix', icon:`${ICON_CDN}/wix.svg` },
-    { name:'Dropbox', icon:`${ICON_CDN}/dropbox.svg` },
-    { name:'Onedrive', icon:`${ICON_CDN}/microsoftonedrive.svg` },
-    { name:'Expandi.io', icon:'https://www.google.com/s2/favicons?domain=expandi.io&sz=64' },
-    { name:'Slack', icon:`${ICON_CDN}/slack.svg` },
-    { name:'Dingtalk', icon:'https://www.google.com/s2/favicons?domain=dingtalk.com&sz=64' },
-    { name:'Yamdu', icon:'https://www.google.com/s2/favicons?domain=yamdu.com&sz=64' },
-    { name:'Publer', icon:'https://www.google.com/s2/favicons?domain=publer.io&sz=64' },
-    { name:'ChatGPT', icon:`${ICON_CDN}/openai.svg` },
-    { name:'Typeform', icon:`${ICON_CDN}/typeform.svg` },
-    { name:'Calendly', icon:`${ICON_CDN}/calendly.svg` },
-    { name:'Meta Ads', icon:`${ICON_CDN}/meta.svg` },
-    { name:'Google Ads', icon:`${ICON_CDN}/googleads.svg` },
-    { name:'Wordstream', icon:'https://www.google.com/s2/favicons?domain=wordstream.com&sz=64' },
-    { name:'Buffer', icon:`${ICON_CDN}/buffer.svg` },
-    { name:'Veed.io', icon:'https://www.google.com/s2/favicons?domain=veed.io&sz=64' }
+    { name:'Lastpass',        icon:`${ICON_CDN}/lastpass.svg` },
+    { name:'Wix',             icon:`${ICON_CDN}/wix.svg` },
+    { name:'Dropbox',         icon:`${ICON_CDN}/dropbox.svg` },
+    { name:'Onedrive',        icon:`${ICON_CDN}/microsoftonedrive.svg` },
+    { name:'Expandi.io',      icon:'https://www.google.com/s2/favicons?domain=expandi.io&sz=64' },
+    { name:'Slack',           icon:`${ICON_CDN}/slack.svg` },
+    { name:'Dingtalk',        icon:'https://www.google.com/s2/favicons?domain=dingtalk.com&sz=64' },
+    { name:'Yamdu',           icon:'https://www.google.com/s2/favicons?domain=yamdu.com&sz=64' },
+    { name:'Publer',          icon:'https://www.google.com/s2/favicons?domain=publer.io&sz=64' },
+    { name:'ChatGPT',         icon:`${ICON_CDN}/openai.svg` },
+    { name:'Typeform',        icon:`${ICON_CDN}/typeform.svg` },
+    { name:'Calendly',        icon:`${ICON_CDN}/calendly.svg` },
+    { name:'Meta Ads',        icon:`${ICON_CDN}/meta.svg` },
+    { name:'Google Ads',      icon:`${ICON_CDN}/googleads.svg` },
+    { name:'Wordstream',      icon:'https://www.google.com/s2/favicons?domain=wordstream.com&sz=64' },
+    { name:'Buffer',          icon:`${ICON_CDN}/buffer.svg` },
+    { name:'Veed.io',         icon:'https://www.google.com/s2/favicons?domain=veed.io&sz=64' }
   ];
   const delays = ['d1','d2','d3','d4','d5'];
   const toolsGrid = document.getElementById('toolsGrid');
@@ -1358,7 +1368,6 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     span.textContent = name.charAt(0);
     return span;
   }
-
   function createToolLogo(tool){
     const wrap = document.createElement('div');
     wrap.className = 'tool-logo';
@@ -1366,12 +1375,11 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.src = tool.icon;
+    img.src = tool.icon; /* tool icons are tiny — load normally */
     img.onerror = () => wrap.replaceChildren(toolLogoFallback(tool.name));
     wrap.appendChild(img);
     return wrap;
   }
-
   if(toolsGrid){
     tools.forEach((tool, i) => {
       const item = document.createElement('div');
@@ -1382,52 +1390,45 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     });
   }
 
-  /* ── LOADER ── */
+  /* ─────────────────────────────────────────
+     LOADER — hide once page resources ready
+  ───────────────────────────────────────── */
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hidden');
-    }, 1400);
+    setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1400);
   });
 
-  /* ── NAV SCROLL + ACTIVE SECTION ── */
-  const navbar = document.getElementById('navbar');
+  /* ─────────────────────────────────────────
+     NAV SCROLL + ACTIVE SECTION
+  ───────────────────────────────────────── */
+  const navbar      = document.getElementById('navbar');
   const navSections = document.querySelectorAll('#clients-brands,#brands,#graphic-design,#social-media,#content-creation,#expertise,#tools,#contact-page');
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"],.mlink[href^="#"]');
+  const navLinks    = document.querySelectorAll('.nav-links a[href^="#"],.mlink[href^="#"]');
 
   function setActiveNav(id){
     navLinks.forEach(link => {
-      const isActive = link.getAttribute('href') === `#${id}`;
-      link.classList.toggle('active', isActive);
-      if(isActive) link.setAttribute('aria-current','true');
-      else link.removeAttribute('aria-current');
+      const active = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', active);
+      active ? link.setAttribute('aria-current','true') : link.removeAttribute('aria-current');
     });
   }
-
   function updateActiveNav(){
     const offset = navbar.offsetHeight + 120;
     let current = navSections[0]?.id || '';
-    navSections.forEach(section => {
-      if(window.scrollY >= section.offsetTop - offset) current = section.id;
-    });
+    navSections.forEach(s => { if(window.scrollY >= s.offsetTop - offset) current = s.id; });
     if(window.scrollY < (navSections[0]?.offsetTop - offset || 0)) current = '';
     setActiveNav(current);
   }
-
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
     updateActiveNav();
   }, {passive:true});
   updateActiveNav();
+  navLinks.forEach(link => link.addEventListener('click', () => setActiveNav(link.getAttribute('href').slice(1))));
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const id = link.getAttribute('href').slice(1);
-      if(id) setActiveNav(id);
-    });
-  });
-
-  /* ── HAMBURGER ── */
-  const hamburger = document.getElementById('hamburger');
+  /* ─────────────────────────────────────────
+     HAMBURGER
+  ───────────────────────────────────────── */
+  const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
@@ -1444,54 +1445,106 @@ footer{padding:2.4rem 2.5rem;display:flex;align-items:center;justify-content:spa
     }
   });
 
-  /* ── HERO CURSOR GLOW ── */
+  /* ─────────────────────────────────────────
+     HERO CURSOR GLOW
+  ───────────────────────────────────────── */
   const heroSection = document.querySelector('.hero');
-  const glow = document.getElementById('heroGlow');
+  const glow        = document.getElementById('heroGlow');
   if(heroSection && glow && window.matchMedia('(min-width:681px)').matches){
     heroSection.addEventListener('mousemove', e => {
       const rect = heroSection.getBoundingClientRect();
-      glow.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px) translate(-50%,-50%)`;
+      glow.style.transform = `translate(${e.clientX - rect.left}px,${e.clientY - rect.top}px) translate(-50%,-50%)`;
     });
   }
 
-  /* ── SCROLL REVEAL ── */
-  const revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.08});
-  revealEls.forEach(el => io.observe(el));
+  /* ─────────────────────────────────────────
+     UNIFIED INTERSECTION OBSERVER
+     Handles: reveal animations + lazy img src
+  ───────────────────────────────────────── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
 
-  /* ── COUNTER ANIMATION ── */
+      /* Reveal animation */
+      if(el.classList.contains('reveal') || el.classList.contains('reveal-left') ||
+         el.classList.contains('reveal-right') || el.classList.contains('reveal-scale')){
+        el.classList.add('visible');
+      }
+
+      /* Lazy image: swap data-src → src */
+      if(el.tagName === 'IMG' && el.dataset.src){
+        el.src = el.dataset.src;
+        delete el.dataset.src;
+        onImgLoad(el);
+      }
+
+      io.unobserve(el);
+    });
+  }, {threshold:0.05, rootMargin:'0px 0px 200px 0px'});
+
+  /* Observe reveal elements */
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => io.observe(el));
+
+  /* Observe lazy images (data-src set by JS card builders above) */
+  /* We use a MutationObserver to catch dynamically added imgs */
+  const imgObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const img = entry.target;
+      if(img.dataset.src){
+        img.src = img.dataset.src;
+        delete img.dataset.src;
+        onImgLoad(img);
+      }
+      imgObserver.unobserve(img);
+    });
+  }, {threshold:0, rootMargin:'0px 0px 300px 0px'});
+
+  function observeNewImages(root){
+    root.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
+  }
+
+  /* Observe images already in DOM */
+  observeNewImages(document);
+
+  /* Watch for newly injected images (from card builders) */
+  const mutObs = new MutationObserver(mutations => {
+    mutations.forEach(m => m.addedNodes.forEach(node => {
+      if(node.nodeType !== 1) return;
+      if(node.tagName === 'IMG' && node.dataset.src) imgObserver.observe(node);
+      else observeNewImages(node);
+    }));
+  });
+  mutObs.observe(document.body, {childList:true, subtree:true});
+
+  /* Also observe existing static imgs (portrait, toc, client logos) */
+  document.querySelectorAll('img:not([data-src])').forEach(img => onImgLoad(img));
+
+  /* ─────────────────────────────────────────
+     COUNTER ANIMATION
+  ───────────────────────────────────────── */
   function animateCounter(el){
-    const target = parseFloat(el.dataset.target);
+    const target    = parseFloat(el.dataset.target);
     const isDecimal = el.dataset.decimal === 'true';
-    const duration = 1600;
-    const start = performance.now();
+    const duration  = 1600;
+    const start     = performance.now();
     function step(now){
-      const t = Math.min((now - start) / duration, 1);
+      const t   = Math.min((now - start) / duration, 1);
       const ease = 1 - Math.pow(1 - t, 3);
-      const val = target * ease;
-      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val);
+      el.textContent = isDecimal ? (target * ease).toFixed(1) : Math.floor(target * ease);
       if(t < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
   const counterIO = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting){ animateCounter(e.target); counterIO.unobserve(e.target); }
+      if(!e.isIntersecting) return;
+      animateCounter(e.target);
+      counterIO.unobserve(e.target);
     });
   }, {threshold:0.4});
   document.querySelectorAll('.counter-num[data-target]').forEach(el => counterIO.observe(el));
-
-  /* ── REVEAL ig-cards ── */
-  const igRevealIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('visible'); igRevealIO.unobserve(e.target); }
-    });
-  }, {threshold:0.05});
-  document.querySelectorAll('.ig-card').forEach(el => igRevealIO.observe(el));
 
 })();
 </script>
